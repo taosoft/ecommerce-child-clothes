@@ -1,6 +1,5 @@
 import React from 'react';
 import Carousel from "react-material-ui-carousel"
-import '../style/Example.scss';
 import {
     Card,
     CardContent,
