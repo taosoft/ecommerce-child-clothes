@@ -9,8 +9,7 @@ import {
     Button
 } from '@material-ui/core';
 
-function Banner(props) {
-    const contentPosition = props.contentPosition ? props.contentPosition : "left"
+function Banner({item, contentPosition}) {
     const totalItems = props.length ? props.length : 3;
     const mediaLength = totalItems - 1;
 
@@ -19,11 +18,11 @@ function Banner(props) {
         <Grid item xs={12 / totalItems} key="content">
             <CardContent className="Content">
                 <Typography className="Title">
-                    {props.item.Name}
+                    {item.Name}
                 </Typography>
 
                 <Typography className="Caption">
-                    {props.item.Caption}
+                    {item.Caption}
                 </Typography>
 
                 <Button variant="outlined" className="ViewButton">
@@ -34,30 +33,28 @@ function Banner(props) {
     )
 
     for (let i = 0; i < mediaLength; i++) {
-        const item = props.item.Items[i];
-
         const media = (
-            <Grid item xs={12 / totalItems} key={item.Name}>
+            <Grid item xs={12 / totalItems} key={item.Items[i].Name}>
                 <CardMedia
                     className="Media"
-                    image={item.Image}
-                    title={item.Name}
+                    image={item.Items[i].Image}
+                    title={item.Items[i].Name}
                 >
                     <Typography className="MediaCaption">
-                        {item.Name}
+                        {item.Items[i].Name}
                     </Typography>
                 </CardMedia>
             </Grid>
         )
         items.push(media);
     }
-
-    if (contentPosition === "left") {
-        items.unshift(content);
-    } else if (contentPosition === "right") {
+        
+    if (contentPosition === "right") {
         items.push(content);
     } else if (contentPosition === "middle") {
         items.splice(items.length / 2, 0, content);
+    } else { // contentPosition === 'left'
+        items.unshift(content);
     }
 
     return (
