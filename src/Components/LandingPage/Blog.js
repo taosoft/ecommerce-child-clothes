@@ -15,6 +15,7 @@ import Footer from './Footer';
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
+import BannerExample from '../Banner/Banner';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -98,7 +99,8 @@ export default function Blog() {
       <Container maxWidth="lg">
         <Header title="E-Commerce" sections={sections} />
         <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
+          {/* <MainFeaturedPost post={mainFeaturedPost} /> */}
+          <BannerExample />
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />

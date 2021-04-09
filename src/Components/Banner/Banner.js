@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 
 function Banner({item, contentPosition}) {
-    const totalItems = props.length ? props.length : 3;
+    const totalItems = item.length ? item.length : 3;
     const mediaLength = totalItems - 1;
 
     let items = [];
