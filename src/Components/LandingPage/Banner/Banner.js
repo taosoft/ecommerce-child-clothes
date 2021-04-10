@@ -1,4 +1,3 @@
-import React from 'react';
 import Carousel from "react-material-ui-carousel"
 import {
     Card,
@@ -118,8 +117,6 @@ const items = [
 function BannerExample() {
     return (
         <div style={{ marginTop: "50px", color: "#494949" }}>
-            <h2>Example: Ropa de niños</h2>
-
             <Carousel>
             {
                 items.map((item, index) => {
