@@ -1,8 +1,8 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Footer from './components/Footer';
-import SearchAppBar from './components/SearchAppBar';
-import ProductGrid from './components/ProductGrid';
+import Footer from './components/ProductList/Footer';
+import SearchAppBar from './components/ProductList/SearchAppBar';
+import ProductGrid from './components/ProductList/ProductGrid';
 
 export default function App() {
   return (
