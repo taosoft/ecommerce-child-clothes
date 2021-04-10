@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
-import Blog from './Components/LandingPage/Blog';
+import Blog from './components/LandingPage/Blog';
 
 ReactDOM.render(
   <React.StrictMode>
