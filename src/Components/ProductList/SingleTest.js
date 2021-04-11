@@ -8,7 +8,7 @@ function SingleTestProduct(props) {
         {
             const { id } = props.match.params;
             getProduct(id)
-                .then(res => setPerson(res.data))
+                .then(res => setPerson(res.data[0]))
                 .catch((err) => console.log(err))
         },[props.match.params])
 
@@ -21,39 +21,4 @@ function SingleTestProduct(props) {
       )
 }
 
-
-
-// class SingleTest extends React.Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//           name: "",
-//           email: "",
-//         }
-//     }
-  
-//     componentDidMount() {
-//       const { id } = this.props.match.params;
-      
-//       getProduct(id)
-//         .then((res) => {
-//           const { name, email } = res.data[0];
-  
-//           this.setState({
-//             name: name,
-//             email: email
-//           });
-//         })
-//         .catch((err) => console.log(err))
-//     }
-  
-//     render() {
-//       return (
-//         <ul>
-//           <li> { this.state.name + ", " + this.state.email } </li>
-//         </ul>
-//       )
-//     }
-//   }
-  
-  export default SingleTestProduct;
+export default SingleTestProduct;

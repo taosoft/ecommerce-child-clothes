@@ -14,7 +14,7 @@ function TestProducts(props) {
     return (
         <ol>
             {
-                persons.map(person => <li>{person.name + ", " + person.email}</li>)
+                persons.map(person => <li key={person.id}>{person.name + ", " + person.email}</li>)
             }
         </ol>
     )
