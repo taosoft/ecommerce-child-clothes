@@ -7,9 +7,9 @@ function TestProducts(props) {
     useEffect(() => 
         { 
             getProducts()
-                .then(res => setPersons( res.data ))
+                .then(res => setPersons(res.data))
                 .catch((err) => console.log(err))
-        }, [])
+        }, [persons])
 
     return (
         <ol>

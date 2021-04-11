@@ -2,20 +2,20 @@ import axios from 'axios';
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com/users'
 
-export function getProducts() {
-  return axios.get(BASE_URL);
+export async function getProducts() {
+  return await axios.get(BASE_URL);
 }
 
-export function getProduct(id) {
-  return axios({
+export async function getProduct(id) {
+  return await axios({
     method: 'get',
     url: BASE_URL,
-    params: { id },
+    params: { id }
   })
 }
 
-export function postProduct({ title, price }) {
-  return axios({
+export async function postProduct({ title, price }) {
+  return await axios({
     method: 'post',
     url: BASE_URL,
     data: {

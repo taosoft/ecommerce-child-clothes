@@ -2,19 +2,21 @@ import { getProduct } from './../../api'
 import { useState, useEffect } from 'react'
 
 function SingleTestProduct(props) {
-    const [person, setPerson] = useState([])
-    const { id } = props.match.params;
+    const [person, setPerson] = useState({})
 
     useEffect(() => 
         {
+            const { id } = props.match.params;
             getProduct(id)
                 .then(res => setPerson(res.data))
                 .catch((err) => console.log(err))
-        }, [id])
+        },[props.match.params])
 
     return (
         <ol>
-          <li> { person.name + ", " + person.email } </li>
+          <li> 
+            { person.name + ", " + person.username + ", " + person.email } 
+          </li>
         </ol>
       )
 }
