@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
     },
 }));
   
-export default function Product() {
+export default function Product( {price, description, title} ) {
     const classes = useStyles();
   
     return (
@@ -29,14 +29,14 @@ export default function Product() {
             <CardMedia
                 className={classes.cardMedia}
                 image="https://source.unsplash.com/random"
-                title="Image title"
+                title={title}
             />
             <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
-                    Precio producto
+                    {price}
                 </Typography>
                 <Typography>
-                    Detalle y nombre producto blablabla bla bla bla
+                    {description}
                 </Typography>
             </CardContent>
             <CardActions>

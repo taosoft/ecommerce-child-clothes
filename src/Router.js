@@ -10,7 +10,7 @@ function Router() {
       <BrowserRouter>
         <Switch>
             <Route path="/products" component={ProductGrid}/>
-            <Route path="/test/:id" component={SingleTestProduct}/>
+            <Route path="/product/:id" component={SingleTestProduct}/>
             <Route path="/test" component={TestProducts}/>
             <Route path="/" exact component={LandingPage}/>
         </Switch>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../api'
+import Product from './Product';
 
 function TestProducts(props) {
     const [persons, setPersons] = useState([])
@@ -12,11 +13,13 @@ function TestProducts(props) {
         }, [persons])
 
     return (
-        <ol>
-            {
-                persons.map(person => <li key={person.id}>{person.name + ", " + person.email}</li>)
-            }
-        </ol>
+        persons.map( person =>
+            <Product 
+                key={person.id}
+                price={"price"}
+                description={person.email}
+                title={person.name}
+            />)
     )
 }
 
