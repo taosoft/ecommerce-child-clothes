@@ -14,13 +14,13 @@ export function getProduct(id) {
   })
 }
 
-export function postProduct({ title, body }) {
+export function postProduct({ title, price }) {
   return axios({
     method: 'post',
     url: BASE_URL,
     data: {
       title,
-      body,
+      price,
     }
   })
 }
