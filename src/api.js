@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com/posts'
+const BASE_URL = 'https://jsonplaceholder.typicode.com/users'
 
 export function getProducts() {
   return axios.get(BASE_URL);
