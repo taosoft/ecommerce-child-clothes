@@ -1,3 +1,4 @@
+import React from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Paper from '@material-ui/core/Paper';
@@ -40,8 +41,8 @@ const tutorialSteps = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 400,
-    flexGrow: 1,
+    // maxWidth: 10000,
+    flexGrow: 1
   },
   header: {
     display: 'flex',
@@ -53,13 +54,13 @@ const useStyles = makeStyles((theme) => ({
   img: {
     height: 255,
     display: 'block',
-    maxWidth: 400,
+    // maxWidth: 10000,
     overflow: 'hidden',
     width: '100%',
   },
 }));
 
-function SwipeableTextMobileStepper() {
+function Stepper() {
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);

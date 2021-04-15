@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Header from './Header';
 import FeaturedPost from './FeaturedPost';
 import Footer from './Footer';
-import Stepper from './Banner/Banner';
+import Stepper from './Banner/Stepper';
 
 const featuredPosts = [
   {
