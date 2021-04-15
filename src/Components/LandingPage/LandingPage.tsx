@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Header from './Header';
 import FeaturedPost from './FeaturedPost';
 import Footer from './Footer';
-import BannerExample from './Banner/Banner';
+import Stepper from './Banner/Banner';
 
 const featuredPosts = [
   {
@@ -50,7 +50,7 @@ export default function LandingPage() {
       <Container maxWidth="lg">
         <Header title="Ropa de niños"/>
         <main>
-          <BannerExample />
+          <Stepper />
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
