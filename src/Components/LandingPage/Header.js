@@ -66,6 +66,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Header({title}) {
   const classes = useStyles();
 
+  const handleMenu = () => {
+    alert('sss')
+  }
+
+  const handleSearch = (event) => {
+    if(event.key === 'Enter') {
+      alert(event.target.value)
+    }
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -75,7 +85,7 @@ export default function Header({title}) {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-            onClick={()=>alert('sss')}
+            onClick={handleMenu}
           >
             <MenuIcon />
           </IconButton>
@@ -93,6 +103,7 @@ export default function Header({title}) {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onKeyUp={handleSearch}
             />
           </div>
         </Toolbar>
