@@ -39,14 +39,19 @@ export default function Header(props) {
 
   const handleSearchClick = (e) => {
     const text = document.getElementById("standard-basic").value
-    alert(text)
+    
+    if(text === "") alert('No escribió nada')
+    else alert(text)
+
     window.location.reload(false);
   }
 
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
-        <DehazeIcon />
+        <Button>
+          <DehazeIcon />
+        </Button>
         <Typography
           component="h2"
           variant="h5"
@@ -57,9 +62,9 @@ export default function Header(props) {
         >
           {title}
         </Typography>
-        <Button onClick={handleSearchClick}>
-            <SearchIcon />
-        </Button>
+        <IconButton onClick={handleSearchClick}>
+          <SearchIcon />
+        </IconButton>
         <form className={classes.root} noValidate autoComplete="off">
           <TextField id="standard-basic" label="Search" /> 
         </form>
