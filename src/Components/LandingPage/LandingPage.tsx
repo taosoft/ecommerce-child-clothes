@@ -4,12 +4,13 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import FeaturedPost from './FeaturedPost';
 import Footer from './Footer';
-import Stepper from './Stepper';
 import Header from './Header';
+import Stepper from './Stepper';
 import { makeStyles } from '@material-ui/core/styles';
 
 const featuredPosts = [
   {
+    id: "1",
     title: 'Featured post',
     date: 'Nov 12',
     description:
@@ -18,6 +19,7 @@ const featuredPosts = [
     imageText: 'Image Text',
   },
   {
+    id: "2",
     title: 'Post title',
     date: 'Nov 11',
     description:
@@ -26,6 +28,7 @@ const featuredPosts = [
     imageText: 'Image Text',
   },
   {
+    id: "3",
     title: 'Post title',
     date: 'Nov 11',
     description:
@@ -34,6 +37,7 @@ const featuredPosts = [
     imageText: 'Image Text',
   },
   {
+    id: "4",
     title: 'Post title',
     date: 'Nov 11',
     description:

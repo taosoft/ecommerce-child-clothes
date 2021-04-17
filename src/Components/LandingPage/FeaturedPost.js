@@ -20,13 +20,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function FeaturedPost(props) {
+export default function FeaturedPost({post}) {
   const classes = useStyles();
-  const { post } = props;
+  const path = `/product/${post.id}`
 
   return (
     <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href="#">
+      <CardActionArea component="a" href={path}>
         <Card className={classes.card}>
           <div className={classes.cardDetails}>
             <CardContent>

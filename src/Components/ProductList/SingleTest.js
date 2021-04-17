@@ -4,19 +4,24 @@ import Product from './../ProductList/Product';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import CardActionArea from '@material-ui/core/CardActionArea';
+import React from 'react';
+import Footer from '../LandingPage/Footer';
+import Header from '../LandingPage/Header';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles({
+  container: {
+    minHeight: '100%',
+    margin: '0 auto 88px',
+    height: '100%'
+  },
   card: {
     display: 'flex',
   },
   cardDetails: {
     flex: 1,
-  },
-  cardMedia: {
-    width: 160,
   },
 });
 
@@ -24,33 +29,37 @@ function SingleTestProduct(props) {
     const [person, setPerson] = useState({})
     const classes = useStyles();
 
-    useEffect(() => 
-        {
-            const { id } = props.match.params;
-            getProduct(id)
-                .then(res => setPerson(res.data[0]))
-                .catch((err) => console.log(err))
-        },[props.match.params])
+    useEffect(() => {
+        const { id } = props.match.params;
+        getProduct(id)
+            .then(res => setPerson(res.data[0]))
+            .catch((err) => console.log(err))
+    },[props.match.params])
 
     return (
-      <Grid item xs={12} md={6}>
-        <CardActionArea component="a" href="#">
+      <React.Fragment>
+      <CssBaseline />
+      <Header title="Ropa de niños"/>
+      <Container maxWidth="lg" className={classes.container}>
+      <main>
+        <Grid item xs={6}>
           <Card className={classes.card}>
             <div className={classes.cardDetails}>
-              <CardContent>
-                <Typography component="h2" variant="h5">
-                  <Product
-                      key={person.id}
-                      price={"price"}
-                      description={person.email}
-                      title={person.name}
-                  />
-                </Typography>
-              </CardContent>
+              <Typography component="h2" variant="h5">
+                <Product
+                    key={person.id}
+                    price={"1000"}
+                    description={person.email}
+                    title={person.name}
+                />
+              </Typography>
             </div>
           </Card>
-        </CardActionArea>
-      </Grid>
+        </Grid>
+      </main>
+      </Container>
+      <Footer/>
+    </React.Fragment>
     )
 }
 

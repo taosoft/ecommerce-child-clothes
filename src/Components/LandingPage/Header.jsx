@@ -81,17 +81,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header({title}) {
   const classes = useStyles();
+  
+  const [state, setState] = useState({
+    left: false,
+    name: 'left'
+  });
+
+  const handleMenuButtons = (id) => {
+    alert(id)
+  }
 
   const handleSearch = (event) => {
     if(event.key === 'Enter') {
       alert(event.target.value)
     }
   }
-
-  const [state, setState] = useState({
-    left: false,
-    name: 'left'
-  });
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -117,7 +121,9 @@ export default function Header({title}) {
             const SpecificIcon = data.component;
             return (
               <ListItem button key={index}>
-                <ListItemIcon><SpecificIcon key={index}></SpecificIcon></ListItemIcon>
+                <ListItemIcon>
+                    <SpecificIcon key={index} />
+                </ListItemIcon>
                 <ListItemText primary={data.text} />
               </ListItem>
             );
