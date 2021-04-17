@@ -46,7 +46,7 @@ const featuredPosts = [
 const useStyles = makeStyles(() => ({
   container: {
     minHeight: '100%',
-    margin: '0 auto 50px',
+    margin: '0 auto 88px',
     height: '100%'
   },
 }));
