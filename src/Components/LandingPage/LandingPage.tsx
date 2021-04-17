@@ -47,8 +47,8 @@ export default function LandingPage() {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Header title="Ropa de niños"/>
       <Container maxWidth="lg">
-        <Header title="Ropa de niños"/>
         <main>
           <Stepper />
           <Grid container spacing={4}>
