@@ -1,4 +1,3 @@
-import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -7,6 +6,17 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import { useState } from 'react';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,14 +71,16 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  list: {
+    width: 250,
+  },
+  fullList: {
+    width: 'auto',
+  },
 }));
 
 export default function Header({title}) {
   const classes = useStyles();
-
-  const handleMenu = () => {
-    alert('sss')
-  }
 
   const handleSearch = (event) => {
     if(event.key === 'Enter') {
@@ -76,8 +88,70 @@ export default function Header({title}) {
     }
   }
 
+  const [state, setState] = useState({
+    left: false,
+    name: 'left'
+  });
+
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
+
+    setState({ ...state, left: open });
+  };
+
+  const list = (anchor) => (
+    <div
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {[{text: 'Productos', show: true, component: ShoppingBasketIcon}, 
+          {text: 'Dashboard', show: true, component: DashboardIcon}].filter((data) => data.show === true).map((data, index) => {
+            const SpecificIcon = data.component;
+            return (
+              <ListItem button key={index}>
+                <ListItemIcon><SpecificIcon key={index}></SpecificIcon></ListItemIcon>
+                <ListItemText primary={data.text} />
+              </ListItem>
+            );
+          }
+        )}
+      </List>
+      <Divider />
+      <List>
+        {[{text: 'Sign In', show: true, component: VpnKeyIcon}, 
+          {text: 'Sign Up', show: true, component: VpnKeyIcon}, 
+          {text: 'Log Out', show: true, component: ExitToAppIcon}].filter((data) => data.show === true).map((data, index) => {
+            const SpecificIcon = data.component;
+            return (
+              <ListItem button key={index}>
+                <ListItemIcon><SpecificIcon key={index}></SpecificIcon></ListItemIcon>
+                <ListItemText primary={data.text} />
+              </ListItem>
+            );
+          }
+        )}
+      </List>
+    </div>
+  );
+
   return (
     <div className={classes.root}>
+      <SwipeableDrawer
+        anchor={state.name}
+        open={state.left}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+      >
+        {list(state.name)}
+      </SwipeableDrawer>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -85,7 +159,7 @@ export default function Header({title}) {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-            onClick={handleMenu}
+            onClick={toggleDrawer(true)}
           >
             <MenuIcon />
           </IconButton>
