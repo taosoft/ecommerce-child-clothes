@@ -18,6 +18,8 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import { Redirect } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({title}) {
+export default function Header() {
   const classes = useStyles();
   
   const [redirect, setRedirect] = useState(null)
@@ -160,47 +162,54 @@ export default function Header({title}) {
       </List>
     </div>
   );
-
-  return (
-    <div className={classes.root}>
-      <SwipeableDrawer
-        anchor={state.name}
-        open={state.left}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-      >
-        {list(state.name)}
-      </SwipeableDrawer>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" align="center" noWrap>
-            {title}
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+  
+  if(redirect !== null) {
+    return <Redirect push to={redirect} />
+  }
+  else {
+    return (
+      <div className={classes.root}>
+        <SwipeableDrawer
+          anchor={state.name}
+          open={state.left}
+          onClose={toggleDrawer(false)}
+          onOpen={toggleDrawer(true)}
+        >
+          {list(state.name)}
+        </SwipeableDrawer>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="open drawer"
+              onClick={toggleDrawer(true)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <div className={classes.title}>
+              <Button onClick={() => setRedirect("/")}>
+                Ropa de niños
+              </Button>
             </div>
-            <InputBase
-              placeholder="Buscar…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              onKeyUp={handleSearch}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Buscar…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+                onKeyUp={handleSearch}
+              />
+            </div>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
