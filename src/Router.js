@@ -4,6 +4,8 @@ import ProductGrid from "./components/ProductList/ProductGrid";
 import TestProducts from './components/ProductList/TestProducts'
 import SingleTestProduct from './components/ProductList/SingleTest'
 import Dashboard from './components/Dashboard/Dashboard';
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
 
 function Router() {
   return (
@@ -12,8 +14,10 @@ function Router() {
         <Switch>
             <Route path="/products" component={ProductGrid}/>
             <Route path="/product/:id" component={SingleTestProduct}/>
-            <Route path="/test" component={TestProducts}/>
+            {/* <Route path="/test" component={TestProducts}/> */}
             <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/singup" component={SignUp}/>
             <Route path="/" exact component={LandingPage}/>
         </Switch>
       </BrowserRouter>

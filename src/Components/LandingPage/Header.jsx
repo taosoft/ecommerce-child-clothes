@@ -17,6 +17,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import { Redirect } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,14 +83,11 @@ const useStyles = makeStyles((theme) => ({
 export default function Header({title}) {
   const classes = useStyles();
   
+  const [redirect, setRedirect] = useState(null)
   const [state, setState] = useState({
     left: false,
     name: 'left'
   });
-
-  const handleMenuButtons = (id) => {
-    alert(id)
-  }
 
   const handleSearch = (event) => {
     if(event.key === 'Enter') {
@@ -116,32 +114,46 @@ export default function Header({title}) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {[{text: 'Productos', show: true, component: ShoppingBasketIcon}, 
-          {text: 'Dashboard', show: true, component: DashboardIcon}].filter((data) => data.show === true).map((data, index) => {
+        {[{text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products"}, 
+          {text: 'Dashboard', show: true, component: DashboardIcon, path: "/dashboard"}].
+          filter((data) => data.show === true).
+          map((data, index) => {
             const SpecificIcon = data.component;
-            return (
-              <ListItem button key={index}>
-                <ListItemIcon>
-                    <SpecificIcon key={index} />
-                </ListItemIcon>
-                <ListItemText primary={data.text} />
-              </ListItem>
-            );
+            if(redirect !== null) {
+              return <Redirect push to={redirect} />
+            }
+            else {
+              return (
+                <ListItem button key={index} onClick={() => setRedirect(data.path)}>
+                  <ListItemIcon>
+                      <SpecificIcon key={index} />
+                  </ListItemIcon>
+                  <ListItemText primary={data.text} />
+                </ListItem>
+              );
+            }
           }
         )}
       </List>
       <Divider />
       <List>
-        {[{text: 'Sign In', show: true, component: VpnKeyIcon}, 
-          {text: 'Sign Up', show: true, component: VpnKeyIcon}, 
-          {text: 'Log Out', show: true, component: ExitToAppIcon}].filter((data) => data.show === true).map((data, index) => {
+        {[{text: 'Sign In', show: true, component: VpnKeyIcon, path: "/login"}, 
+          {text: 'Sign Up', show: true, component: VpnKeyIcon, path: "/singup"}, 
+          {text: 'Log Out', show: true, component: ExitToAppIcon, path: "/"}].filter((data) => data.show === true).map((data, index) => {
             const SpecificIcon = data.component;
-            return (
-              <ListItem button key={index}>
-                <ListItemIcon><SpecificIcon key={index}></SpecificIcon></ListItemIcon>
-                <ListItemText primary={data.text} />
-              </ListItem>
-            );
+            if(redirect !== null) {
+              return <Redirect push to={redirect} />
+            }
+            else {
+              return (
+                <ListItem button key={index} onClick={() => setRedirect(data.path)}>
+                  <ListItemIcon>
+                    <SpecificIcon key={index} />
+                    </ListItemIcon>
+                  <ListItemText primary={data.text} />
+                </ListItem>
+              );
+            }
           }
         )}
       </List>
