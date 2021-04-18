@@ -17,7 +17,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 
 
@@ -189,9 +189,9 @@ export default function Header() {
               <MenuIcon />
             </IconButton>
             <div className={classes.title}>
-              <Button onClick={() => setRedirect("/")}>
-                Ropa de niños
-              </Button>
+              <Link to="/">
+                <Button>Ropa de niños</Button>
+              </Link>
             </div>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
