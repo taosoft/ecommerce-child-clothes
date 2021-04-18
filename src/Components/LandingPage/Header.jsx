@@ -22,6 +22,7 @@ import { Redirect } from 'react-router-dom'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom: '1%'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -115,9 +116,9 @@ export default function Header({title}) {
     >
       <List>
         {[{text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products"}, 
-          {text: 'Dashboard', show: true, component: DashboardIcon, path: "/dashboard"}].
-          filter((data) => data.show === true).
-          map((data, index) => {
+          {text: 'Dashboard', show: true, component: DashboardIcon, path: "/dashboard"}]
+          .filter((data) => data.show === true)
+          .map((data, index) => {
             const SpecificIcon = data.component;
             if(redirect !== null) {
               return <Redirect push to={redirect} />
