@@ -1,6 +1,6 @@
-import { getProduct } from './../../api';
+import { getProduct } from '../../api';
 import { useState, useEffect } from 'react';
-import Product from './../ProductList/Product';
+import Product from './Product';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-function SingleTestProduct(props) {
+function SingleProduct(props) {
     const [person, setPerson] = useState({})
     const classes = useStyles();
 
@@ -63,4 +63,4 @@ function SingleTestProduct(props) {
     )
 }
 
-export default SingleTestProduct;
+export default SingleProduct;

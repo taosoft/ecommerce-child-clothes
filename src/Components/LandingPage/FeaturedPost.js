@@ -7,6 +7,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom'
 
 const useStyles = makeStyles({
   card: {
@@ -22,35 +24,41 @@ const useStyles = makeStyles({
 
 export default function FeaturedPost({post}) {
   const classes = useStyles();
-  const path = `/product/${post.id}`
 
-  return (
-    <Grid item xs={12} md={6}>
-      <CardActionArea component="a" href={path}>
-        <Card className={classes.card}>
-          <div className={classes.cardDetails}>
-            <CardContent>
-              <Typography component="h2" variant="h5">
-                {post.title}
-              </Typography>
-              <Typography variant="subtitle1" color="textSecondary">
-                {post.date}
-              </Typography>
-              <Typography variant="subtitle1" paragraph>
-                {post.description}
-              </Typography>
-              <Typography variant="subtitle1" color="primary">
-                Continue reading...
-              </Typography>
-            </CardContent>
-          </div>
-          <Hidden xsDown>
-            <CardMedia className={classes.cardMedia} image={post.image} title={post.imageTitle} />
-          </Hidden>
-        </Card>
-      </CardActionArea>
-    </Grid>
-  );
+  const [redirect, setRedirect] = useState(null)
+
+  if(redirect !== null) {
+    return <Redirect push to={redirect} />
+  }
+  else {
+    return (
+      <Grid item xs={12} md={6}>
+        <CardActionArea component="a" onClick={() => setRedirect(`/product/${post.id}`)}>
+          <Card className={classes.card}>
+            <div className={classes.cardDetails}>
+              <CardContent>
+                <Typography component="h2" variant="h5">
+                  {post.title}
+                </Typography>
+                <Typography variant="subtitle1" color="textSecondary">
+                  {post.date}
+                </Typography>
+                <Typography variant="subtitle1" paragraph>
+                  {post.description}
+                </Typography>
+                <Typography variant="subtitle1" color="primary">
+                  Continue reading...
+                </Typography>
+              </CardContent>
+            </div>
+            <Hidden xsDown>
+              <CardMedia className={classes.cardMedia} image={post.image} title={post.imageTitle} />
+            </Hidden>
+          </Card>
+        </CardActionArea>
+      </Grid>
+    );
+  }
 }
 
 FeaturedPost.propTypes = {

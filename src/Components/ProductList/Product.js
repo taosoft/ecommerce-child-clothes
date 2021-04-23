@@ -23,7 +23,11 @@ const useStyles = makeStyles(() => ({
   
 export default function Product( {price, description, title} ) {
     const classes = useStyles();
-  
+    
+    const handleAddShoppingCart = () => {
+        alert('Added to Cart')
+    }
+
     return (
         <Card className={classes.card}>
             <CardMedia
@@ -40,7 +44,7 @@ export default function Product( {price, description, title} ) {
                 </Typography>
             </CardContent>
             <CardActions>
-                <IconButton aria-label="Agregar a carrito">
+                <IconButton aria-label="Agregar a carrito" onClick={handleAddShoppingCart}>
                     <AddShoppingCartIcon />
                 </IconButton>
             </CardActions>

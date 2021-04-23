@@ -62,7 +62,7 @@ export default function LandingPage() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Header title="Ropa de niños"/>
+      <Header/>
       <Container maxWidth="lg" className={classes.container}>
         <main>
           <Stepper />
