@@ -1,80 +1,49 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from '../store';
-
-const featuredPosts: Product[] = [
-  {
-    id: "1",
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-  {
-    id: "2",
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-  {
-    id: "3",
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-  {
-    id: "4",
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  }
-];
-
-interface Product {
-  id: string;
-  title: string;
-  date: string;
-  description: string;
-  image: string;
-  imageText: string;
-}
+import { getLandingPageProducts } from '../../services/product.service';
+import Product from '../../models/product';
 
 interface LandingProductState {
   products: Product[];
+  failed: boolean;
+  loading: boolean;
 }
 
 const initialState: LandingProductState = {
   products: [],
+  failed: false,
+  loading: false
 };
 
 export const landingProductSlice = createSlice({
   name: 'landingProduct',
   initialState,
   reducers: {
-    get: (state, action: PayloadAction<Product[]>) => {
+    loadProductsSuccess: (state, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
+      state.loading = false;
     },
+    loadingProducts: (state) => {
+      state.loading = true;
+      state.failed = false;
+    },
+    loadProductsFailed: (state) => {
+      state.products = [];
+      state.failed = true;
+      state.loading = false;
+    }
   },
 });
 
-export const { get } = landingProductSlice.actions;
+export const { loadProductsSuccess, loadProductsFailed, loadingProducts } = landingProductSlice.actions;
 
-export const setProducts = (products: Product[]): AppThunk => dispatch => {
-  setTimeout(() => {
-    dispatch(get(products));
-  }, 500);
+export const loadLandingPageProducts = (): AppThunk => dispatch => {
+  dispatch(loadingProducts());
+  getLandingPageProducts()
+    .then(response => dispatch(loadProductsSuccess(response.data)))
+    .catch(() => dispatch(loadProductsFailed()));
 };
 
-export const selectProducts = (state: RootState) => state.landingProducts.products;
+export const selectLandingPageProducts = (state: RootState) => state.landingProducts.products;
 
 export default landingProductSlice.reducer;

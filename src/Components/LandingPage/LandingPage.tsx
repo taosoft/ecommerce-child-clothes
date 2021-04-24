@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
@@ -7,45 +7,8 @@ import Footer from './Footer';
 import Header from './Header';
 import Stepper from './Stepper';
 import { makeStyles } from '@material-ui/core/styles';
-
-const featuredPosts = [
-  {
-    id: "1",
-    title: 'Featured post',
-    date: 'Nov 12',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-  {
-    id: "2",
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-  {
-    id: "3",
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  },
-  {
-    id: "4",
-    title: 'Post title',
-    date: 'Nov 11',
-    description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
-    image: 'https://source.unsplash.com/random',
-    imageText: 'Image Text',
-  }
-];
+import { loadLandingPageProducts, selectLandingPageProducts } from '../../app/stores/landingProductSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -56,8 +19,13 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function LandingPage() {
-
+  const featuredPosts = useSelector(selectLandingPageProducts);
+  const dispatch = useDispatch();
   const classes = useStyles();
+
+  useEffect(() => {
+    dispatch(loadLandingPageProducts());
+  },[dispatch])
 
   return (
     <React.Fragment>
