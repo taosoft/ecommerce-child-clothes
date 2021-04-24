@@ -53,5 +53,5 @@ export async function getLandingPageProducts(): Promise<AxiosResponse<Product[]>
         request: null
     }
     return await Promise.resolve(axiosResponse);
-    //return await axios.get<Product[], AxiosResponse<Product[]>>(BASE_URL);
+    //return await axios.get<Product[], AxiosResponse<Product[]>>(BASE_URL); //cuando peguemos a api
 }
