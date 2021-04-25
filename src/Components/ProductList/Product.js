@@ -43,8 +43,8 @@ export default function Product( {price, description, title} ) {
                     {description}
                 </Typography>
             </CardContent>
-            <CardActions>
-                <IconButton aria-label="Agregar a carrito" onClick={handleAddShoppingCart}>
+            <CardActions>                
+                <IconButton  aria-label="Agregar a carrito" onClick={() => handleAddShoppingCart()}>
                     <AddShoppingCartIcon />
                 </IconButton>
             </CardActions>
