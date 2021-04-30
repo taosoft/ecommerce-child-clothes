@@ -18,6 +18,7 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import { Redirect, Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
+import HomeIcon from '@material-ui/icons/Home'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -186,8 +187,11 @@ export default function Header() {
             </IconButton>
             <div className={classes.title}>
               <Link to="/">
-                <Button>Ropa de niños</Button>
+                <Button startIcon={<HomeIcon />} />
               </Link>
+            </div>
+            <div className={classes.title}>
+              Ropa de niños
             </div>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
