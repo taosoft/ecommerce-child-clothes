@@ -77,7 +77,7 @@ export default function SearchAppBar() {
             <HomeIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Ecommerce - Ropa para chicos
+            Ecommerce - Small World
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>

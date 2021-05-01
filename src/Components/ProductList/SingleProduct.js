@@ -39,7 +39,7 @@ function SingleProduct(props) {
     return (
       <React.Fragment>
       <CssBaseline />
-      <Header title="Ropa de niños"/>
+      <Header title="Small World"/>
       <Container maxWidth="lg" className={classes.container}>
       <main>
         <Grid item xs={6}>

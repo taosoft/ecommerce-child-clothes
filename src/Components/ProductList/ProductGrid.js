@@ -20,7 +20,7 @@ export default function ProductGrid(){
         return (
             <React.Fragment>
                 <CssBaseline />
-                <Header title="Ropa de niños"/>
+                <Header title="Small World"/>
                 <Container maxWidth="lg">
                 <main>
                     <Grid container spacing={4}>

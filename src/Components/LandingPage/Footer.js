@@ -16,7 +16,7 @@ export default function Footer() {
   return (
       <footer className={classes.footer}>
           <Typography variant="body2" color="textSecondary" align="center">
-              Copyright © Ecommerce - Ropa para chicos {new Date().getFullYear()}
+              Copyright © Ecommerce - Small World {new Date().getFullYear()}
           </Typography>
       </footer>
   )

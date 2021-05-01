@@ -18,7 +18,9 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import { Redirect, Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
-import HomeIcon from '@material-ui/icons/Home'
+import HomeIcon from '@material-ui/icons/Home';
+import { useSelector } from 'react-redux';
+import { selectIsLogged } from './../../app/stores/authSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,6 +84,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
+  const isLoggedIn = useSelector(selectIsLogged);
   
   const [redirect, setRedirect] = useState(null)
   const [state, setState] = useState({
@@ -137,9 +140,9 @@ export default function Header() {
       </List>
       <Divider />
       <List>
-        {[{text: 'Sign In', show: true, component: VpnKeyIcon, path: "/login"}, 
-          {text: 'Sign Up', show: true, component: VpnKeyIcon, path: "/singup"}, 
-          {text: 'Log Out', show: true, component: ExitToAppIcon, path: "/"}].filter((data) => data.show === true).map((data, index) => {
+        {[{text: 'Sign In', show: !isLoggedIn, component: VpnKeyIcon, path: "/login"}, 
+          {text: 'Sign Up', show: !isLoggedIn, component: VpnKeyIcon, path: "/singup"}, 
+          {text: 'Log Out', show: isLoggedIn, component: ExitToAppIcon, path: "/"}].filter((data) => data.show === true).map((data, index) => {
             const SpecificIcon = data.component;
             if(redirect !== null) {
               return <Redirect push to={redirect} />
@@ -191,7 +194,7 @@ export default function Header() {
               </Link>
             </div>
             <div className={classes.title}>
-              Ropa de niños
+              Small World
             </div>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
