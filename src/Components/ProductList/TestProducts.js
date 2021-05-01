@@ -6,11 +6,11 @@ function TestProducts(props) {
     const [persons, setPersons] = useState([])
     
     useEffect(() => 
-        { 
-            getProducts()
-                .then(res => setPersons(res.data))
-                .catch((err) => console.log(err))
-        }, [persons])
+    {
+        getProducts()
+            .then(res => setPersons(res.data))
+            .catch((err) => console.log(err))
+    }, [persons])
 
     return (
         persons.map( person =>
