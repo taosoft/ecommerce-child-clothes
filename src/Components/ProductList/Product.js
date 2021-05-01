@@ -24,7 +24,9 @@ const useStyles = makeStyles(() => ({
 export default function Product( {price, description, title} ) {
     const classes = useStyles();
     
-    const handleAddShoppingCart = () => {
+    const handleAddShoppingCart = (event) => {
+        event.stopPropagation();
+        event.preventDefault();
         alert('Added to Cart')
     }
 
@@ -44,7 +46,7 @@ export default function Product( {price, description, title} ) {
                 </Typography>
             </CardContent>
             <CardActions>                
-                <IconButton  aria-label="Agregar a carrito" onClick={() => handleAddShoppingCart()}>
+                <IconButton  aria-label="Agregar a carrito" onClick={(event) => handleAddShoppingCart(event)} onMouseDown={event => event.stopPropagation()}>
                     <AddShoppingCartIcon />
                 </IconButton>
             </CardActions>
