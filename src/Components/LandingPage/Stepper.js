@@ -65,7 +65,6 @@ function Stepper() {
 
   return (
     <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}></Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
