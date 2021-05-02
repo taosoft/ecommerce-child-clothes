@@ -9,6 +9,12 @@ import Footer from '../LandingPage/Footer';
 import Header from '../LandingPage/Header';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
+import RemoveIcon from '@material-ui/icons/Remove';
+import { increment, decrement, selectCount } from '../../app/stores/counterSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
   root: {
@@ -32,6 +38,8 @@ const useStyles = makeStyles({
 function SingleProduct(props) {
     const [person, setPerson] = useState({})
     const classes = useStyles();
+    const count = useSelector(selectCount)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const { id } = props.match.params;
@@ -56,6 +64,18 @@ function SingleProduct(props) {
                       description={person.email}
                       title={person.name}
                   />
+                </Typography>
+                <Typography>
+                  <div>
+                    Cantidad
+                    <Button onClick={() => dispatch(decrement())} >
+                    <Icon color="primary" fontSize="small" >remove_circle</Icon>
+                    </Button>
+                    <span>{count}</span>
+                    <Button onClick={() => dispatch(increment())}>
+                      <Icon color="primary" fontSize="small" >add_circle</Icon>
+                    </Button>
+                  </div>
                 </Typography>
               </div>
             </Card>
