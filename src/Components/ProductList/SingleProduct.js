@@ -10,9 +10,7 @@ import Header from '../LandingPage/Header';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
-import RemoveIcon from '@material-ui/icons/Remove';
 import { increment, decrement, selectCount } from '../../app/stores/counterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -68,8 +66,8 @@ function SingleProduct(props) {
                 <Typography>
                   <div>
                     Cantidad
-                    <Button onClick={() => dispatch(decrement())} >
-                    <Icon color="primary" fontSize="small" >remove_circle</Icon>
+                    <Button onClick={() => { if(count > 1) dispatch(decrement())}} >
+                      <Icon color="primary" fontSize="small" >remove_circle</Icon>
                     </Button>
                     <span>{count}</span>
                     <Button onClick={() => dispatch(increment())}>
