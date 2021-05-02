@@ -5,6 +5,7 @@ import SingleProduct from './components/ProductList/SingleProduct';
 import Dashboard from './components/Dashboard/Dashboard';
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
+import AddProduct from './components/Dashboard/AddProduct'
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/login" component={Login}/>
             <Route path="/singup" component={SignUp}/>
+            <Route path="/addproduct" component={AddProduct}/>
             <Route path="/" exact component={LandingPage}/>
         </Switch>
       </BrowserRouter>
