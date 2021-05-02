@@ -61,19 +61,17 @@ export default function Checkout() {
                 <Typography component="h1" variant="h4" align="center">
                     Alta de producto
                 </Typography>
-                <React.Fragment>
-                    <AddressForm/>
-                    <div className={classes.buttons}>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={darDeAlta}
-                            className={classes.button}
-                        >
-                        Dar de alta
-                        </Button>
-                    </div>
-                </React.Fragment>
+                <AddressForm/>
+                <div className={classes.buttons}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={darDeAlta}
+                        className={classes.button}
+                    >
+                    Dar de alta
+                    </Button>
+                </div>
             </Paper>
         </main>
         <Footer/>
