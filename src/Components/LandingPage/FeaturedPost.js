@@ -41,7 +41,7 @@ export default function FeaturedPost({post}) {
                   {post.title}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
-                  {post.date}
+                  {post.price}
                 </Typography>
                 <Typography variant="subtitle1" paragraph>
                   {post.description}

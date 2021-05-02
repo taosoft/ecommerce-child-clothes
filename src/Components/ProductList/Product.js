@@ -19,11 +19,16 @@ const useStyles = makeStyles(() => ({
     cardContent: {
       flexGrow: 1,
     },
+    button: {
+        width: '100%',
+        height: 400,
+        maxWidth: 300,
+    }, 
 }));
   
-export default function Product( {price, description, title} ) {
+export default function Product( {price, description, title, quantity} ) {
     const classes = useStyles();
-    
+
     const handleAddShoppingCart = (event) => {
         event.stopPropagation();
         event.preventDefault();

@@ -45,14 +45,14 @@ function SingleProduct(props) {
         <CssBaseline />
         <Header title="Small World"/>
         <Container maxWidth="lg" className={classes.container}>
-        <main>
+        <div style={{ display:'flex', justifyContent:'center' }}>
           <Grid item xs={6}>
             <Card className={classes.card}>
               <div className={classes.cardDetails}>
                 <Typography component="h2" variant="h5">
                   <Product
                       key={person.id}
-                      price={"1000"}
+                      price={person.name}
                       description={person.email}
                       title={person.name}
                   />
@@ -60,7 +60,7 @@ function SingleProduct(props) {
               </div>
             </Card>
           </Grid>
-        </main>
+        </div>
         </Container>
         <Footer/>
       </div>

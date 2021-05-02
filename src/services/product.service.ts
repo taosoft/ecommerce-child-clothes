@@ -7,7 +7,7 @@ const featuredPosts: Product[] = [
     {
       id: "1",
       title: 'Featured post',
-      date: 'Nov 12',
+      price: 1000,
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
       image: 'https://source.unsplash.com/featured/?clothes,kids',
@@ -16,7 +16,7 @@ const featuredPosts: Product[] = [
     {
       id: "2",
       title: 'Post title',
-      date: 'Nov 11',
+      price: 2000,
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
       image: 'https://source.unsplash.com/featured/?clothes,kids',
@@ -25,7 +25,7 @@ const featuredPosts: Product[] = [
     {
       id: "3",
       title: 'Post title',
-      date: 'Nov 11',
+      price: 1400,
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
       image: 'https://source.unsplash.com/featured/?clothes,kids',
@@ -34,7 +34,7 @@ const featuredPosts: Product[] = [
     {
       id: "4",
       title: 'Post title',
-      date: 'Nov 11',
+      price: 2300,
       description:
         'This is a wider card with supporting text below as a natural lead-in to additional content.',
       image: 'https://source.unsplash.com/featured/?clothes,kids',
