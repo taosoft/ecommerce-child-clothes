@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 });
 
 function SingleProduct(props) {
-    const [person, setPerson] = useState({})
+    const [product, setProduct] = useState({})
     const classes = useStyles();
     const count = useSelector(selectCount)
     //const stock = useSelector(selectStock)
@@ -45,7 +45,7 @@ function SingleProduct(props) {
     useEffect(() => {
         const { id } = props.match.params;
         getProduct(id)
-            .then(res => setPerson(res.data[0]))
+            .then(res => setProduct(res.data[0]))
             .catch((err) => console.log(err))
     },[props.match.params])
 
@@ -60,10 +60,10 @@ function SingleProduct(props) {
               <div className={classes.cardDetails}>
                 <Typography component="h2" variant="h5">
                   <Product
-                      key={person.id}
-                      price={person.name}
-                      description={person.email}
-                      title={person.name}
+                      key={product.id}
+                      price={product.name}
+                      description={product.email}
+                      title={product.name}
                   />
                 </Typography>
                 <Typography>
