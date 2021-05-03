@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
-interface stockState {
+interface StockState {
   value: number;
 }
 
-const initialState: stockState = {
+const initialState: StockState = {
   value: 10,
 };
 
