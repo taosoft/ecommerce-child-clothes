@@ -3,15 +3,23 @@ import Container from '@material-ui/core/Container';
 import Product from './Product';
 import Header from './../LandingPage/Header';
 import Footer from './Footer';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { Redirect } from 'react-router-dom'
+import { getProducts } from '../../api'
 
 export default function ProductGrid(){
-    const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
     const [redirect, setRedirect] = useState(null)
+    const [persons, setPersons] = useState([])
+    
+    useEffect(() => 
+    {
+        getProducts()
+            .then(res => setPersons(res.data))
+            .catch((err) => console.log(err))
+    }, [persons])
+    
 
     if(redirect !== null) {
         return <Redirect push to={redirect} />
@@ -24,14 +32,14 @@ export default function ProductGrid(){
                 <Container maxWidth="lg">
                 <main>
                     <Grid container spacing={4}>
-                        {cards.map((card) => (
-                            <Grid item key={card} xs={12} sm={6} md={4} >
-                                <CardActionArea component="a" onClick={() => setRedirect(`/product/${card}`)}>
+                        {persons.map((person) => (
+                            <Grid item key={person.id} xs={12} sm={6} md={4} >
+                                <CardActionArea component="a" onClick={() => setRedirect(`/product/${person.id}`)}>
                                     <Product 
-                                        key={card}
-                                        price={"Precio"}
-                                        description={"Descripcion"}
-                                        title={"titulo"}
+                                        key={person.id}
+                                        price={person.phone}
+                                        description={person.email}
+                                        title={person.name}
                                     />
                                 </CardActionArea>
                             </Grid>

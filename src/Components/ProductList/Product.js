@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
     }, 
 }));
   
-export default function Product( {price, description, title, quantity} ) {
+export default function Product( {price, description, title} ) {
     const classes = useStyles();
 
     const handleAddShoppingCart = (event) => {
