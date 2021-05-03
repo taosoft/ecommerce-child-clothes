@@ -43,14 +43,17 @@ export default function Product( {price, description, title} ) {
                 title={title}
             />
             <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {price}
+                <Typography gutterBottom variant="h4">
+                    {title}
                 </Typography>
-                <Typography>
+                <Typography gutterBottom variant="h5">
                     {description}
                 </Typography>
+                <Typography variant="body1">
+                    ${price}
+                </Typography>
             </CardContent>
-            <CardActions>                
+            <CardActions>         
                 <IconButton  aria-label="Agregar a carrito" onClick={(event) => handleAddShoppingCart(event)} onMouseDown={event => event.stopPropagation()}>
                     <AddShoppingCartIcon />
                 </IconButton>

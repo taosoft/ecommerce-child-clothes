@@ -61,7 +61,7 @@ function SingleProduct(props) {
                 <Typography component="h2" variant="h5">
                   <Product
                       key={product.id}
-                      price={product.name}
+                      price={product.phone}
                       description={product.email}
                       title={product.name}
                   />
