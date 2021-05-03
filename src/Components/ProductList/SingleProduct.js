@@ -12,6 +12,7 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import { increment, decrement, selectCount } from '../../app/stores/counterSlice';
+import { selectStock } from '../../app/stores/stockSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles({
@@ -37,10 +38,8 @@ function SingleProduct(props) {
     const [product, setProduct] = useState({})
     const classes = useStyles();
     const count = useSelector(selectCount)
-    //const stock = useSelector(selectStock)
+    const stock = useSelector(selectStock)
     const dispatch = useDispatch()
-
-    const stock = 5
 
     useEffect(() => {
         const { id } = props.match.params;
