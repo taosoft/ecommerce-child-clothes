@@ -37,7 +37,10 @@ function SingleProduct(props) {
     const [person, setPerson] = useState({})
     const classes = useStyles();
     const count = useSelector(selectCount)
+    //const stock = useSelector(selectStock)
     const dispatch = useDispatch()
+
+    const stock = 5
 
     useEffect(() => {
         const { id } = props.match.params;
@@ -66,13 +69,15 @@ function SingleProduct(props) {
                 <Typography>
                   <div>
                     Cantidad
-                    <Button onClick={() => { if(count > 1) dispatch(decrement())}} >
+                    <Button onClick={() => count > 1 ? dispatch(decrement()) : count} >
                       <Icon color="primary" fontSize="small" >remove_circle</Icon>
                     </Button>
                     <span>{count}</span>
-                    <Button onClick={() => dispatch(increment())}>
+                    <Button onClick={() => count < stock ? dispatch(increment()) : stock }>
                       <Icon color="primary" fontSize="small" >add_circle</Icon>
                     </Button>
+                    Stock Disponible
+                    <span>{stock}</span>
                   </div>
                 </Typography>
               </div>
