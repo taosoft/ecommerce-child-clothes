@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -45,11 +45,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function Checkout() {
   const classes = useStyles();
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [price, setPrice] = useState(0)
+  const [stock, setStock] = useState(0)
+  const [image, setImage] = useState('')
 
   const darDeAlta = () => {
-    alert('lo diste de alta')
+    // Se cargan el producto al store
+
+    // console.log(title)
+    // console.log(description)
+    // console.log(price)
+    // console.log(stock)
+    // console.log(image)
+
+    if(title !== '' && description !== '' && price !== 0 && stock !== 0 && image !== '') {
+      alert('Se cargó todo')
+    }
+    else {
+      alert('Debe completar todos los campos')
+    }
   };
 
   return (
@@ -57,22 +76,28 @@ export default function Checkout() {
         <CssBaseline />
         <Header/>
         <main className={classes.layout}>
-            <Paper className={classes.paper}>
-                <Typography component="h1" variant="h4" align="center">
-                    Alta de producto
-                </Typography>
-                <AddressForm/>
-                <div className={classes.buttons}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={darDeAlta}
-                        className={classes.button}
-                    >
-                    Dar de alta
-                    </Button>
-                </div>
-            </Paper>
+          <Paper className={classes.paper}>
+            <Typography component="h1" variant="h4" align="center">
+            Alta de producto
+            </Typography>
+            <AddressForm
+              title={setTitle}
+              description={setDescription}
+              price={setPrice}
+              stock={setStock}
+              image={setImage}
+            />
+            <div className={classes.buttons}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={darDeAlta}
+                className={classes.button}
+              >
+              Dar de alta
+              </Button>
+          </div>
+          </Paper>
         </main>
         <Footer/>
     </div>

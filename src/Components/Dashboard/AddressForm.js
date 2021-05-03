@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 
-export default function AddressForm() {
+export default function AddressForm(props) {  
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -19,6 +19,7 @@ export default function AddressForm() {
             type="string"
             name="title"
             label="Titulo"
+            onChange={(e)=>props.title(e.target.value)}
             fullWidth
             autoComplete="given-name"
           />
@@ -30,6 +31,7 @@ export default function AddressForm() {
             type="string"
             name="description"
             label="Descripción"
+            onChange={(e)=>props.description(e.target.value)}
             fullWidth
             autoComplete="description"
           />
@@ -41,6 +43,7 @@ export default function AddressForm() {
             type="number"
             name="price"
             label="Precio"
+            onChange={(e)=>props.price(e.target.value)}
             InputProps={{
                 startAdornment: (
                     <InputAdornment position="start">
@@ -58,7 +61,7 @@ export default function AddressForm() {
             type="number"
             name="stock"
             label="Stock"
-            onChange={(e)=>console.log(e.target.value)}
+            onChange={(e)=>props.stock(e.target.value)}
             fullWidth
           />
         </Grid>
@@ -68,7 +71,7 @@ export default function AddressForm() {
             id="file"
             inputProps={{type:'file',accept:'.png, .jpg'}}
             name="file"
-            onChange={() => alert('uploaded')}
+            onChange={(e)=>props.image(e.target.value)}
             fullWidth
           />
         </Grid>
