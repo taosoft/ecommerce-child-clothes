@@ -1,7 +1,7 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Footer from './components/ProductList/Footer';
-import SearchAppBar from './components/ProductList/SearchAppBar';
+import Footer from './Components/ProductList/Footer';
+import SearchAppBar from './Components/ProductList/SearchAppBar';
 import Router from './Router';
 
 export default function App() {

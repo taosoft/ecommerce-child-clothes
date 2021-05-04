@@ -1,11 +1,11 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import LandingPage from "./components/LandingPage/LandingPage";
-import ProductGrid from "./components/ProductList/ProductGrid";
-import SingleProduct from './components/ProductList/SingleProduct';
-import Dashboard from './components/Dashboard/Dashboard';
-import Login from "./components/Login/Login";
-import SignUp from "./components/SignUp/SignUp";
-import AddProduct from './components/Dashboard/AddProduct'
+import LandingPage from "./Components/LandingPage/LandingPage";
+import ProductGrid from "./Components/ProductList/ProductGrid";
+import SingleProduct from './Components/ProductList/SingleProduct';
+import Dashboard from './Components/Dashboard/Dashboard';
+import Login from "./Components/Login/Login";
+import SignUp from "./Components/SignUp/SignUp";
+import AddProduct from './Components/Dashboard/AddProduct'
 
 function Router() {
   return (
