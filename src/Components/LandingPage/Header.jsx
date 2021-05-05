@@ -20,7 +20,7 @@ import { Redirect, Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
 import { useSelector } from 'react-redux';
-import { selectIsLogged } from './../../app/stores/authSlice';
+import { selectIsLogged } from '../../app/stores/authSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {

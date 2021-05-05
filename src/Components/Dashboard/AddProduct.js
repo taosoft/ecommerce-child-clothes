@@ -46,24 +46,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Checkout() {
+export default function AddProduct() {
   const classes = useStyles();
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
   const [stock, setStock] = useState(0)
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState(null)
 
-  const darDeAlta = () => {
+  
+  const darDeAlta = (e) => {
     // Se cargan el producto al store
+    console.log(image)
 
-    // console.log(title)
-    // console.log(description)
-    // console.log(price)
-    // console.log(stock)
-    // console.log(image)
-
-    if(title !== '' && description !== '' && price !== 0 && stock !== 0 && image !== '') {
+    if(title !== '' && description !== '' && price !== 0 && stock !== 0 && image !== null) {
       alert('Se cargó todo')
     }
     else {

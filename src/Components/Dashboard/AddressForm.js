@@ -4,8 +4,34 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
+export default function AddressForm(props) {
+  const getBase64 = file => {
+    return new Promise(resolve => {
+      let baseURL = "";
+      // Make new FileReader
+      let reader = new FileReader();
+      // Convert the file to base64 text
+      reader.readAsDataURL(file);
+      // on reader load somthing...
+      reader.onload = () => {
+        // Make a fileInfo Object
+        baseURL = reader.result;
+        resolve(baseURL);
+      };
+    });
+  };
 
-export default function AddressForm(props) {  
+  const handleImage = e => {  
+    e.preventDefault();
+    getBase64(e.target.files[0])
+      .then(res => {
+        props.image(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -71,7 +97,7 @@ export default function AddressForm(props) {
             id="file"
             inputProps={{type:'file',accept:'.png, .jpg'}}
             name="file"
-            onChange={(e)=>props.image(e.target.value)}
+            onChange={(e) => handleImage(e)}
             fullWidth
           />
         </Grid>
