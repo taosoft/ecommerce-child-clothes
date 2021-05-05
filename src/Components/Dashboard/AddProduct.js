@@ -56,8 +56,7 @@ export default function AddProduct() {
 
   
   const darDeAlta = (e) => {
-    // Se cargan el producto al store
-    console.log(image)
+    // Se carga el producto al store
 
     if(title !== '' && description !== '' && price !== 0 && stock !== 0 && image !== null) {
       alert('Se cargó todo')
