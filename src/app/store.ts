@@ -4,6 +4,7 @@ import stockReducer from './stores/stockSlice';
 import landingProductReducer from './stores/landingProductSlice';
 import authReducer from './stores/authSlice';
 import cartReducer from './stores/cartSlice';
+import salesReducer from './stores/salesSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     stock: stockReducer,
     landingProducts: landingProductReducer,
     auth: authReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    sales: salesReducer,
   },
 });
 
