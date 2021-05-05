@@ -121,11 +121,7 @@ export default function Header() {
           {text: 'Dashboard', show: true, component: DashboardIcon, path: "/dashboard"}]
           .filter((data) => data.show === true)
           .map((data, index) => {
-            const SpecificIcon = data.component;
-            if(redirect !== null) {
-              return <Redirect push to={redirect} />
-            }
-            else {
+              const SpecificIcon = data.component;
               return (
                 <ListItem button key={index} onClick={() => setRedirect(data.path)}>
                   <ListItemIcon>
@@ -134,7 +130,6 @@ export default function Header() {
                   <ListItemText primary={data.text} />
                 </ListItem>
               );
-            }
           }
         )}
       </List>
@@ -143,11 +138,7 @@ export default function Header() {
         {[{text: 'Sign In', show: !isLoggedIn, component: VpnKeyIcon, path: "/login"}, 
           {text: 'Sign Up', show: !isLoggedIn, component: VpnKeyIcon, path: "/singup"}, 
           {text: 'Log Out', show: isLoggedIn, component: ExitToAppIcon, path: "/"}].filter((data) => data.show === true).map((data, index) => {
-            const SpecificIcon = data.component;
-            if(redirect !== null) {
-              return <Redirect push to={redirect} />
-            }
-            else {
+              const SpecificIcon = data.component;
               return (
                 <ListItem button key={index} onClick={() => setRedirect(data.path)}>
                   <ListItemIcon>
@@ -157,7 +148,6 @@ export default function Header() {
                 </ListItem>
               );
             }
-          }
         )}
       </List>
     </div>
