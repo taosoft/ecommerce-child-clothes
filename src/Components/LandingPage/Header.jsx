@@ -122,7 +122,7 @@ export default function Header() {
           .filter((data) => data.show === true)
           .map((data, index) => {
             const SpecificIcon = data.component;
-            if(redirect) {
+            if(redirect !== null) {
               return <Redirect push to={redirect} />
             }
             else {

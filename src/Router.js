@@ -14,10 +14,10 @@ function Router() {
         <Switch>
             <Route path="/products" component={ProductGrid}/>
             <Route path="/product/:id" component={SingleProduct}/>
+            <Route path="/dashboard/add-product" component={AddProduct}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/login" component={Login}/>
             <Route path="/singup" component={SignUp}/>
-            <Route path="/addproduct" component={AddProduct}/>
             <Route path="/" exact component={LandingPage}/>
         </Switch>
       </BrowserRouter>
