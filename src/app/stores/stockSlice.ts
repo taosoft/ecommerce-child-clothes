@@ -13,7 +13,7 @@ export const stockSlice = createSlice({
   name: 'stock',
   initialState,
   reducers: {
-    setStock: (state, action) => {
+    setStock: (state, action:PayloadAction<number>) => {
         state.value = action.payload;
     },
     increment: state => {
