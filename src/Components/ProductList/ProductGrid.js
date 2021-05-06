@@ -35,7 +35,7 @@ export default function ProductGrid(){
                 <CssBaseline />
                 <Header title="Small World"/>
                 <Container maxWidth="lg">
-                <ControlledOpenSelect state={setEstado} />
+                <ControlledOpenSelect state={estado} setState={setEstado} />
                 <main>
                     <Grid container spacing={4}>
                         {products.map((product) => (

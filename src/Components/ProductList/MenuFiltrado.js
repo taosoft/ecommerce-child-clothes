@@ -16,12 +16,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ControlledOpenSelect({state}) {
+export default function ControlledOpenSelect({state, setState}) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
   const handleChange = (e) => {
-    state(e.target.value);
+    setState(e.target.value);
   };
 
   const handleClose = () => {
@@ -41,7 +41,7 @@ export default function ControlledOpenSelect({state}) {
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
             displayEmpty
-            value={2}
+            value={state}
             open={open}
             onClose={handleClose}
             onOpen={handleOpen}
