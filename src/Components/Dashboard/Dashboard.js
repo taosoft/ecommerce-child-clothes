@@ -23,10 +23,13 @@ import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home'
 
 function Copyright() {
+  const classes = useStyles();
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {`Copyright © Your Website ${new Date().getFullYear()}.`}
-    </Typography>
+    <footer className={classes.footer}>
+      <Typography variant="body2" color="textSecondary" align="center">
+        {`Copyright © Your Website ${new Date().getFullYear()}.`}
+      </Typography>
+    </footer>
   );
 }
 
@@ -109,6 +112,12 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  footer: {
+    padding: theme.spacing(1, 1),
+    marginTop: 'auto',
+    backgroundColor:
+      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+  },
 }));
 
 export default function Dashboard() {
@@ -184,10 +193,8 @@ export default function Dashboard() {
               </Paper>
             </Grid>
           </Grid>
-          <Box pt={4}>
-            <Copyright />
-          </Box>
         </Container>
+        <Copyright />
       </main>
     </div>
   );

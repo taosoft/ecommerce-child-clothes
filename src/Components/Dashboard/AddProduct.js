@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import Footer from '../LandingPage/Footer'
-import Header from '../LandingPage/Header';
+import Header from './Header';
 
 
 const useStyles = makeStyles((theme) => ({
