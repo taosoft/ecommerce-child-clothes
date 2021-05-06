@@ -1,10 +1,8 @@
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { useState } from 'react';
 import List from '@material-ui/core/List';
@@ -91,12 +89,6 @@ export default function Header() {
     left: false,
     name: 'left'
   });
-
-  const handleSearch = (event) => {
-    if(event.key === 'Enter') {
-      alert(event.target.value)
-    }
-  }
 
   const toggleDrawer = (open) => (event) => {
     if (
