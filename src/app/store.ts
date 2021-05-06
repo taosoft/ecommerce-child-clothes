@@ -13,7 +13,7 @@ export const store = configureStore({
     landingProducts: landingProductReducer,
     auth: authReducer,
     cart: cartReducer,
-    sales: salesReducer,
+    sale: salesReducer,
   },
 });
 
