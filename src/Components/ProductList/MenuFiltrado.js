@@ -40,6 +40,8 @@ export default function ControlledOpenSelect({state}) {
             defaultValue="Precio: Mayor a Menor"
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
+            displayEmpty
+            value={2}
             open={open}
             onClose={handleClose}
             onOpen={handleOpen}
