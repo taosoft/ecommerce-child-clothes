@@ -13,7 +13,7 @@ import ControlledOpenSelect from './MenuFiltrado';
 export default function ProductGrid(){
     const [redirect, setRedirect] = useState(null)
     const [products, setProducts] = useState([])
-    const [estado, setEstado] = useState(20); // default: < to >
+    const [estado, setEstado] = useState(2); // default: < to >
 
     useEffect(() => 
     {
@@ -27,11 +27,9 @@ export default function ProductGrid(){
         return <Redirect push to={redirect} />
     }
     else {
-        if(estado === 20) {
-            products.sort((a, b) => a - b) // < to >
-        } else {
-            products.sort((a, b) => b - a) // > to <
-        }
+        if(estado === 2) products.sort((a, b) => a - b) // < to >
+        else products.sort((a, b) => b - a) // > to <
+        
         return (
             <React.Fragment>
                 <CssBaseline />

@@ -45,8 +45,8 @@ export default function ControlledOpenSelect({state}) {
             onOpen={handleOpen}
             onChange={handleChange}
         >
-            <MenuItem value={10}>Precio: Mayor a Menor</MenuItem>
-            <MenuItem value={20}>Precio: Menor a Mayor</MenuItem>
+            <MenuItem value={1}>Precio: Mayor a Menor</MenuItem>
+            <MenuItem value={2}>Precio: Menor a Mayor</MenuItem>
         </Select>
       </FormControl>
     </div>
