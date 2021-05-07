@@ -30,16 +30,17 @@ export default function Review() {
       </Typography>
       <List disablePadding>
         {products.map((product) => (
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+          <ListItem className={classes.listItem} key={product.product.id}>
+            <ListItemText primary={product.product.title} secondary={product.product.description} />
+            <Typography variant="body2">${product.product.price}</Typography>
           </ListItem>
         ))}
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
-            {console.log(products.map( product => product.price))}
-            ${products.map( product => product.product.price).reduce((a,b) => a + b).toFixed(2)}
+            ${products.length > 0 ? 
+            products.map( product => product.product.price)?.reduce((a,b) => a + b).toFixed(2) :
+            0}
           </Typography>
         </ListItem>
       </List>
