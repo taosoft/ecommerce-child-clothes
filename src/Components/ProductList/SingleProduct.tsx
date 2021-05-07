@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Product from './Product';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,7 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { selectStock } from '../../app/stores/stockSlice';
+import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
 import { addCartProduct } from '../../app/stores/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import CartProduct from '../../models/cartProduct';
@@ -42,6 +42,10 @@ function SingleProduct(props: any) {
     const stock = product?.quantity;
 
     const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(loadStockProducts());
+    },[dispatch])
 
     const addProductToCart = () => {
       const newCartProduct: CartProduct = {

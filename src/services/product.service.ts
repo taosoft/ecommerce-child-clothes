@@ -1,9 +1,10 @@
 //import axios, { AxiosResponse } from 'axios';
 import { AxiosResponse } from 'axios';
 import Product from '../models/product';
+import { StockProduct } from '../models/stockProduct';
 //const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
 
-const featuredPosts: Product[] = [
+const products: Product[] = [
     {
       id: "1",
       title: 'Featured post',
@@ -43,9 +44,26 @@ const featuredPosts: Product[] = [
   ];
 
 
+  const stockProducts: StockProduct[] = [
+    {
+      product: 
+      {
+        id: "1",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
+    }
+  ];
+
+
 export async function getLandingPageProducts(): Promise<AxiosResponse<Product[]>> {
     let axiosResponse: AxiosResponse<Product[]> = {
-        data: featuredPosts,
+        data: products,
         status: 200,
         config: {},
         headers: null,
@@ -54,4 +72,17 @@ export async function getLandingPageProducts(): Promise<AxiosResponse<Product[]>
     }
     return await Promise.resolve(axiosResponse);
     //return await axios.get<Product[], AxiosResponse<Product[]>>(BASE_URL); //cuando peguemos a api
+}
+
+export async function getStockProducts(): Promise<AxiosResponse<StockProduct[]>> {
+  let axiosResponse: AxiosResponse<StockProduct[]> = {
+      data: stockProducts,
+      status: 200,
+      config: {},
+      headers: null,
+      statusText: '',
+      request: null
+  }
+  return await Promise.resolve(axiosResponse);
+  //return await axios.get<Product[], AxiosResponse<Product[]>>(BASE_URL); //cuando peguemos a api
 }

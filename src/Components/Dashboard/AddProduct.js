@@ -8,7 +8,7 @@ import AddressForm from './AddressForm';
 import Footer from '../LandingPage/Footer'
 import Header from './Header';
 import { useDispatch } from 'react-redux';
-import { addProduct } from '../../app/stores/stockSlice';
+import { addProductSuccess } from '../../app/stores/stockSlice';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -69,7 +69,7 @@ export default function AddProduct() {
         },
         quantity: Math.floor(Math.random() * 100)
       }
-      dispatch(addProduct(newProduct));
+      dispatch(addProductSuccess(newProduct));
       //redirect para lista de productos de admin (dashboard)
     }
     else {
