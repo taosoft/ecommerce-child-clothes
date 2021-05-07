@@ -11,12 +11,12 @@ import { useDispatch } from 'react-redux';
 import { addProductSuccess } from '../../app/stores/stockSlice';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-    },
-    layout: {
+  root: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+  },
+  layout: {
     width: 'auto',
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
@@ -84,7 +84,7 @@ export default function AddProduct() {
         <main className={classes.layout}>
           <Paper className={classes.paper}>
             <Typography component="h1" variant="h4" align="center">
-            Alta de producto
+              Alta de producto
             </Typography>
             <AddressForm
               title={setTitle}

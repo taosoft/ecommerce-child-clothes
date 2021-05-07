@@ -7,21 +7,20 @@ import React, { useState, useEffect } from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { Redirect } from 'react-router-dom';
-import { getProducts } from '../../api';
 import ControlledOpenSelect from './MenuFiltrado';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
 
 export default function ProductGrid(){
     const [redirect, setRedirect] = useState(null)
-    const [products, setProducts] = useState([])
+    const products = useSelector(selectStock);
     const [estado, setEstado] = useState(2); // default: < to >
 
-    useEffect(() => 
-    {
-        getProducts()
-            .then(res => setProducts(res.data))
-            .catch((err) => console.log(err))
-    }, [products])
-    
+    const dispatch = useDispatch();  
+
+    useEffect(() => {
+      dispatch(loadStockProducts());
+    },[dispatch])
 
     if(redirect !== null) {
         return <Redirect push to={redirect} />
