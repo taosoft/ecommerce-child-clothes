@@ -39,7 +39,7 @@ export default function LandingPage() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Header/>
+      <Header showSearchBar={false}/>
       <Container component="main" maxWidth="lg" className={classes.container}>
         <main>
           <Stepper />
