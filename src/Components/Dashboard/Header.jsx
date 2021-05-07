@@ -18,7 +18,7 @@ import { Redirect, Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
 import { useSelector } from 'react-redux';
-import { selectIsLogged } from '../../app/stores/authSlice';
+import { selectIsLogged, selectLoggedUser } from '../../app/stores/authSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
   const isLoggedIn = useSelector(selectIsLogged);
+  const loggedUser = useSelector(selectLoggedUser);
   
   const [redirect, setRedirect] = useState(null)
   const [state, setState] = useState({
@@ -110,7 +111,7 @@ export default function Header() {
     >
       <List>
         {[{text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products"}, 
-          {text: 'Dashboard', show: true, component: DashboardIcon, path: "/dashboard"}]
+          {text: 'Dashboard', show: loggedUser.isAdmin, component: DashboardIcon, path: "/dashboard"}]
           .filter((data) => data.show === true)
           .map((data, index) => {
               const SpecificIcon = data.component;

@@ -8,7 +8,8 @@ const users: User[] = [
       email: "ejemplo@ejemplo.com",
       firstName: "Ejemplo",
       lastName: "Ejemplo2",
-      password: "admin"
+      password: "admin",
+      isAdmin: true
     }
   ];
 

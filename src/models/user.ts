@@ -5,4 +5,5 @@ export default interface User {
   age: number;
   password: string;
   email: string;
+  isAdmin: boolean;
 }
