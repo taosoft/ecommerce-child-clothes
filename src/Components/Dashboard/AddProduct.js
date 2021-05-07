@@ -9,6 +9,7 @@ import Footer from '../LandingPage/Footer'
 import Header from './Header';
 import { useDispatch } from 'react-redux';
 import { addProductSuccess } from '../../app/stores/stockSlice';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,6 +54,7 @@ export default function AddProduct() {
   const [price, setPrice] = useState(0)
   const [stock, setStock] = useState(0)
   const [image, setImage] = useState(null)
+  const [redirect, setRedirect] = useState(null)
 
   const dispatch = useDispatch();
 
@@ -70,42 +72,47 @@ export default function AddProduct() {
         quantity: Math.floor(Math.random() * 100)
       }
       dispatch(addProductSuccess(newProduct));
-      //redirect para lista de productos de admin (dashboard)
+      setRedirect('dashboard/products')
     }
     else {
       alert('Debe completar todos los campos')
     }
   };
 
-  return (
-    <div className={classes.root}>
-        <CssBaseline />
-        <Header/>
-        <main className={classes.layout}>
-          <Paper className={classes.paper}>
-            <Typography component="h1" variant="h4" align="center">
+  if(redirect !== null) {
+    return <Redirect push to={redirect} />
+  }
+  else {
+    return (
+      <div className={classes.root}>
+          <CssBaseline />
+          <Header/>
+          <main className={classes.layout}>
+            <Paper className={classes.paper}>
+              <Typography component="h1" variant="h4" align="center">
               Alta de producto
-            </Typography>
-            <AddressForm
-              title={setTitle}
-              description={setDescription}
-              price={setPrice}
-              stock={setStock}
-              image={setImage}
-            />
-            <div className={classes.buttons}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={darDeAlta}
-                className={classes.button}
-              >
-              Dar de alta
-              </Button>
-          </div>
-          </Paper>
-        </main>
-        <Footer/>
-    </div>
-  );
+              </Typography>
+              <AddressForm
+                title={setTitle}
+                description={setDescription}
+                price={setPrice}
+                stock={setStock}
+                image={setImage}
+              />
+              <div className={classes.buttons}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={darDeAlta}
+                  className={classes.button}
+                >
+                Dar de alta
+                </Button>
+            </div>
+            </Paper>
+          </main>
+          <Footer/>
+      </div>
+    );
+  }
 }

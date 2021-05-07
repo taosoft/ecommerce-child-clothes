@@ -8,6 +8,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import AddProduct from './Components/Dashboard/AddProduct'
 import Checkout from "./Components/Cart/Checkout";
 
+
 function Router() {
   return (
     <div>
