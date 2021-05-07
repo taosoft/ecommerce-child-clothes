@@ -52,9 +52,6 @@ export default function ProductGrid(){
         if(search !== null) {
             products = [...products.filter(product => product.product.title.includes(search))]
         }
-        else {
-            products = [...products]
-        }
         
         return (
             <React.Fragment>
