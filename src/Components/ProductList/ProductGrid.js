@@ -10,10 +10,11 @@ import { Redirect } from 'react-router-dom';
 import ControlledOpenSelect from './MenuFiltrado';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
+import { addCartProduct } from '../../app/stores/cartSlice';
 
 export default function ProductGrid(){
     const [redirect, setRedirect] = useState(null)
-    const products = useSelector(selectStock);
+    const products = [...useSelector(selectStock)];
     const [estado, setEstado] = useState(2); // default: < to >
 
     const dispatch = useDispatch();  
@@ -21,6 +22,14 @@ export default function ProductGrid(){
     useEffect(() => {
       dispatch(loadStockProducts());
     },[dispatch])
+
+    const addProductToCart = (product) => {
+        const newCartProduct = {
+          product: product.product,
+          quantity: 1
+        };
+        dispatch(addCartProduct(newCartProduct));
+    }
 
     if(redirect !== null) {
         return <Redirect push to={redirect} />
@@ -41,10 +50,11 @@ export default function ProductGrid(){
                             <Grid item key={product.id} xs={12} sm={6} md={4} >
                                 <CardActionArea component="a" onClick={() => setRedirect(`/product/${product.id}`)}>
                                     <Product 
-                                        key={product.id}
-                                        price={product.phone}
-                                        description={product.email}
-                                        title={product.name}
+                                        key={product.product.id}
+                                        price={product.product.price}
+                                        description={product.product.description}
+                                        title={product.product.title}
+                                        addToCart={() => addProductToCart(product)}
                                     />
                                 </CardActionArea>
                             </Grid>
