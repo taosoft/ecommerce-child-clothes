@@ -15,7 +15,7 @@ import Zapatilla from '../Images/zapatilla'
 const products: Product[] = [
     {
       id: "1",
-      title: 'Conjunto para niño',
+      title: 'Jean y camisa',
       price: 1000,
       description: 'Pantalón de jean y camisa azul',
       image: ConjuntoNino,
@@ -23,7 +23,7 @@ const products: Product[] = [
     },
     {
       id: "2",
-      title: 'Post title',
+      title: 'Medias',
       price: 2000,
       description: 'Medias para niños',
       image: Medias,
@@ -31,15 +31,15 @@ const products: Product[] = [
     },
     {
       id: "3",
-      title: 'Post title',
+      title: 'Pantalón',
       price: 1400,
-      description: 'Pantalon para niño',
+      description: 'Pantalón para niño',
       image: PantalonNino,
       imageText: 'Image Text',
     },
     {
       id: "4",
-      title: 'Post title',
+      title: 'Vestido',
       price: 2300,
       description: 'Vestido para niña',
       image: Vestido,
@@ -53,7 +53,7 @@ const products: Product[] = [
       product: 
       {
         id: "1",
-        title: 'Featured post',
+        title: 'Jean y camisa',
         price: 1000,
         description: 'Pantalón de jean y camisa azul',
         image: ConjuntoNino,
