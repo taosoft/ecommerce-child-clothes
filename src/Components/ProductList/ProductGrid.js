@@ -14,10 +14,11 @@ import { addCartProduct, selectCartProducts, updateCartProductSuccess } from '..
 
 export default function ProductGrid(){
     const [redirect, setRedirect] = useState(null)
-    const products = [...useSelector(selectStock)];
+    const copia = [...useSelector(selectStock)];
     const cartProducts = useSelector(selectCartProducts);
     const [estado, setEstado] = useState(2); // default: < to >
-
+    const [search, setSearch] = useState(null)
+    let products = [];
     const dispatch = useDispatch();  
 
     useEffect(() => {
@@ -48,10 +49,17 @@ export default function ProductGrid(){
     else {
         if(estado === 2) products.sort((a, b) => a.product.price - b.product.price) // < to >
         else products.sort((a, b) => b.product.price - a.product.price) // > to <
+        if(search !== null) {
+            products = [...copia.map(product => {if(product.product.title.contains(search)) return product.product })]
+        }
+        else {
+            products = [...copia]
+        }
+        
         return (
             <React.Fragment>
                 <CssBaseline />
-                <Header title="Small World"/>
+                <Header title="Small World" searchText={setSearch}/>
                 <Container maxWidth="lg">
                 <ControlledOpenSelect state={estado} setState={setEstado} />
                 <main>
