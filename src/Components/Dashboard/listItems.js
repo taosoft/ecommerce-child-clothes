@@ -25,12 +25,6 @@ export default function MainListItems () {
           </ListItemIcon>
           <ListItemText primary="Orders" />
         </ListItem>
-        <ListItem button onClick={() => setRedirect('/dashboard/products')}>
-          <ListItemIcon>
-            <PeopleIcon />
-          </ListItemIcon>
-          <ListItemText primary="Productos" />
-        </ListItem>
         <ListItem button onClick={() => setRedirect('/dashboard/add-product')}>
           <ListItemIcon>
             <AddBoxIcon />
@@ -42,34 +36,3 @@ export default function MainListItems () {
     );
   }
 }
-
-// Asi estaba en material-ui
-// export const mainListItems = (
-
-//   <div>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <DashboardIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Dashboard" />
-//     </ListItem>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <ShoppingCartIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Orders" />
-//     </ListItem>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <PeopleIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Customers" />
-//     </ListItem>
-//     <ListItem button onClick={handleAddProduct}>
-//       <ListItemIcon>
-//         <AddBoxIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Alta producto" />
-//     </ListItem>
-//   </div>
-// );

@@ -18,7 +18,6 @@ function Router() {
             <Route path="/product/:id" component={SingleProduct}/>
             <Route path="/cart" component={Checkout}/>
             <Route path="/dashboard/add-product" component={AddProduct}/>
-            <Route path="/dashboard/products" component={Products}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/login" component={Login}/>
             <Route path="/singup" component={SignUp}/>
