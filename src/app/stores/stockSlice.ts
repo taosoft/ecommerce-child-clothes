@@ -1,35 +1,46 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import CartProduct from '../../models/cartProduct';
+import { StockProduct } from '../../models/StockProduct';
 import { RootState } from '../store';
 
 interface StockState {
-  value: number;
+  products: StockProduct[]
 }
 
 const initialState: StockState = {
-  value: 10,
+  products: [],
 };
 
 export const stockSlice = createSlice({
   name: 'stock',
   initialState,
   reducers: {
-    setStock: (state, action:PayloadAction<number>) => {
-        state.value = action.payload;
+    addProduct: (state, action:PayloadAction<StockProduct>) => {
+        state.products = [...state.products, action.payload];
     },
-    increment: state => {
-        state.value += 1
+    updateProductStock: (state, action:PayloadAction<CartProduct>) => {
+        let stockProduct = state.products.find(product => product.product.id === action.payload.product?.id);
+        stockProduct!.quantity = stockProduct!.quantity - action.payload.quantity;
+        //Revisar
     },
-    decrement: (state, action) => {
-        state.value -= action.payload;
+    loadProducts: (state, action:PayloadAction<StockProduct[]>) => {
+        state.products = action.payload;
     }
   },
 });
 
-export const { setStock, decrement } = stockSlice.actions;
+export const { 
+  loadProducts, 
+  addProduct,
+  updateProductStock, 
+  // loadProductsSuccess, 
+  // loadProductsFailed, 
+  // addProductSuccess, 
+  // addProductFailed, 
+  // updateProductStockSuccess, 
+  // updateProductStockFailed 
+} = stockSlice.actions;
 
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectStock = (state: RootState) => state.stock.value;
+export const selectStock = (state: RootState) => state.stock.products;
 
 export default stockSlice.reducer;

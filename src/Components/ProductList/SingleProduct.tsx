@@ -1,5 +1,4 @@
-import { getProduct } from '../../api';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Product from './Product';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,9 +10,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { increment, decrement, selectCount } from '../../app/stores/counterSlice';
 import { selectStock } from '../../app/stores/stockSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { addCartProduct } from '../../app/stores/cartSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import CartProduct from '../../models/cartProduct';
 
 const useStyles = makeStyles({
   root: {
@@ -34,24 +34,27 @@ const useStyles = makeStyles({
   },
 });
 
-function SingleProduct(props) {
-    const [product, setProduct] = useState({})
+function SingleProduct(props: any) {
     const classes = useStyles();
-    const count = useSelector(selectCount)
-    const stock = useSelector(selectStock)
-    const dispatch = useDispatch()
+    const [count, setCount] = useState(1);
+    const stockProducts = useSelector(selectStock);
+    const product = stockProducts.find(product => product.product.id === props.match.params.id);
+    const stock = product?.quantity;
 
-    useEffect(() => {
-        const { id } = props.match.params;
-        getProduct(id)
-            .then(res => setProduct(res.data[0]))
-            .catch((err) => console.log(err))
-    },[props.match.params])
+    const dispatch = useDispatch();
+
+    const addProductToCart = () => {
+      const newCartProduct: CartProduct = {
+        product: product?.product,
+        quantity: count
+      };
+      dispatch(addCartProduct(newCartProduct));
+    }
 
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <Header title="Small World"/>
+        <Header/>
         <Container maxWidth="lg" className={classes.container}>
         <div style={{ display:'flex', justifyContent:'center' }}>
           <Grid item xs={6}>
@@ -59,20 +62,21 @@ function SingleProduct(props) {
               <div className={classes.cardDetails}>
                 <Typography component="h2" variant="h5">
                   <Product
-                      key={product.id}
-                      price={product.phone}
-                      description={product.email}
-                      title={product.name}
+                      key={product?.product.id}
+                      price={product?.product.price}
+                      description={product?.product.description}
+                      title={product?.product.title}
+                      addToCart={addProductToCart}
                   />
                 </Typography>
                 <Typography>
                   <div>
                     Cantidad
-                    <Button onClick={() => count > 1 ? dispatch(decrement()) : count} >
+                    <Button onClick={() => count > 1 ? setCount(count - 1) : count} >
                       <Icon color="primary" fontSize="small" >remove_circle</Icon>
                     </Button>
                     <span>{count}</span>
-                    <Button onClick={() => count < stock ? dispatch(increment()) : stock }>
+                    <Button onClick={() => stock && count < stock ? setCount(count + 1) : stock }>
                       <Icon color="primary" fontSize="small" >add_circle</Icon>
                     </Button>
                     Stock Disponible

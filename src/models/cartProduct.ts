@@ -1,6 +1,6 @@
 import Product from './product';
 
 export default interface CartProduct {
-  product: Product,
+  product?: Product,
   quantity: number
 }

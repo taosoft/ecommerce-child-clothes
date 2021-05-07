@@ -26,13 +26,13 @@ const useStyles = makeStyles(() => ({
     }, 
 }));
   
-export default function Product( {price, description, title} ) {
+export default function Product(props) {
     const classes = useStyles();
 
     const handleAddShoppingCart = (event) => {
         event.stopPropagation();
         event.preventDefault();
-        alert('Added to Cart')
+        props.addToCart();
     }
 
     return (
@@ -40,17 +40,17 @@ export default function Product( {price, description, title} ) {
             <CardMedia
                 className={classes.cardMedia}
                 image="https://source.unsplash.com/featured/?clothes,kids"
-                title={title}
+                title={props.title}
             />
             <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h4">
-                    {title}
+                    {props.title}
                 </Typography>
                 <Typography gutterBottom variant="h5">
-                    {description}
+                    {props.description}
                 </Typography>
                 <Typography variant="body1">
-                    ${price}
+                    ${props.price}
                 </Typography>
             </CardContent>
             <CardActions>         

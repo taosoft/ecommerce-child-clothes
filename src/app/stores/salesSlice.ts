@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import SalesProduct from '../../models/salesProduct';
+import Sale from '../../models/sale';
 
 interface SaleState {
-  sales: SalesProduct[];
+  sales: Sale[];
 }
 
 const initialState: SaleState = {
@@ -14,7 +14,7 @@ export const saleSlice = createSlice({
   name: 'sale',
   initialState,
   reducers: {
-    addSoldProduct: (state, action: PayloadAction<SalesProduct>) => {
+    addSoldProduct: (state, action: PayloadAction<Sale>) => {
         state.sales = [...state.sales, action.payload];
       }
   },

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -7,7 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import Footer from '../LandingPage/Footer'
 import Header from './Header';
-
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../app/stores/stockSlice';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function AddProduct() {
   const classes = useStyles();
   const [title, setTitle] = useState('')
@@ -54,12 +54,23 @@ export default function AddProduct() {
   const [stock, setStock] = useState(0)
   const [image, setImage] = useState(null)
 
-  
-  const darDeAlta = (e) => {
-    // Se carga el producto al store
+  const dispatch = useDispatch();
 
+  const darDeAlta = () => {
     if(title !== '' && description !== '' && price !== 0 && stock !== 0 && image !== null) {
-      alert('Se cargó todo')
+      // Se carga el producto al store
+      let newProduct = {
+        product: {
+          title: title,
+          price: price,
+          description: description,
+          image: image,
+          imageText: "Texto de imagen"
+        },
+        quantity: Math.floor(Math.random() * 100)
+      }
+      dispatch(addProduct(newProduct));
+      //redirect para lista de productos de admin (dashboard)
     }
     else {
       alert('Debe completar todos los campos')
