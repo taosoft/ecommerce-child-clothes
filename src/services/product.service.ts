@@ -8,6 +8,9 @@ import PantalonNino from '../Images/pantalon_nino';
 import Vestido from '../Images/vestido';
 import ConjuntoBebe from '../Images/bebe_conjunto'
 import ConjuntoNino2 from '../Images/conjunto_nino_2'
+import Boxer from '../Images/boxer'
+import Traje from '../Images/traje'
+import Zapatilla from '../Images/zapatilla'
 
 const products: Product[] = [
     {
@@ -128,7 +131,7 @@ const products: Product[] = [
         price: 1000,
         description:
           'This is a wider card.',
-        image: ConjuntoNino2,
+        image: Boxer,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -141,7 +144,7 @@ const products: Product[] = [
         price: 1000,
         description:
           'This is a wider card.',
-        image: ConjuntoNino2,
+        image: Traje,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -153,7 +156,7 @@ const products: Product[] = [
         title: 'Featured post',
         price: 1000,
         description: 'This is a wider card.',
-        image: ConjuntoNino2,
+        image: Zapatilla,
         imageText: 'Image Text',
       },
       quantity: 10
