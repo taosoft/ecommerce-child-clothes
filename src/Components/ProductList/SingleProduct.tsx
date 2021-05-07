@@ -68,7 +68,7 @@ function SingleProduct(props: any) {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        <Header/>
+        <Header showSearchBar={false}/>
         <Container maxWidth="lg" className={classes.container}>
         <div style={{ display:'flex', justifyContent:'center' }}>
           <Grid item xs={6}>
