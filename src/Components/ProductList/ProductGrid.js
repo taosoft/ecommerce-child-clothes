@@ -13,7 +13,7 @@ import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
 
 export default function ProductGrid(){
     const [redirect, setRedirect] = useState(null)
-    const products = useSelector(selectStock);
+    const products = [...useSelector(selectStock)];
     const [estado, setEstado] = useState(2); // default: < to >
 
     const dispatch = useDispatch();  
@@ -26,9 +26,8 @@ export default function ProductGrid(){
         return <Redirect push to={redirect} />
     }
     else {
-        if(estado === 2) products.sort((a, b) => a - b) // < to >
-        else products.sort((a, b) => b - a) // > to <
-        
+        if(estado === 2) products.sort((a, b) => a.product.price - b.product.price) // < to >
+        else products.sort((a, b) => b.product.price - a.product.price) // > to <
         return (
             <React.Fragment>
                 <CssBaseline />
@@ -41,10 +40,10 @@ export default function ProductGrid(){
                             <Grid item key={product.id} xs={12} sm={6} md={4} >
                                 <CardActionArea component="a" onClick={() => setRedirect(`/product/${product.id}`)}>
                                     <Product 
-                                        key={product.id}
-                                        price={product.phone}
-                                        description={product.email}
-                                        title={product.name}
+                                        key={product.product.id}
+                                        price={product.product.price}
+                                        description={product.product.description}
+                                        title={product.product.title}
                                     />
                                 </CardActionArea>
                             </Grid>

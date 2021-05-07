@@ -49,7 +49,7 @@ const products: Product[] = [
       product: 
       {
         id: "1",
-        title: 'Featured post',
+        title: 'Medias',
         price: 1000,
         description:
           'This is a wider card with supporting text below as a natural lead-in to additional content.',
@@ -62,8 +62,8 @@ const products: Product[] = [
       product: 
       {
         id: "2",
-        title: 'Featured post',
-        price: 1000,
+        title: 'Bufanda',
+        price: 500,
         description:
           'This is a wider card with supporting text below as a natural lead-in to additional content.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
@@ -75,8 +75,8 @@ const products: Product[] = [
       product: 
       {
         id: "3",
-        title: 'Featured post',
-        price: 1000,
+        title: 'Zapatillas',
+        price: 4000,
         description:
           'This is a wider card with supporting text below as a natural lead-in to additional content.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
@@ -88,8 +88,8 @@ const products: Product[] = [
       product: 
       {
         id: "4",
-        title: 'Featured post',
-        price: 1000,
+        title: 'Remera',
+        price: 1500,
         description:
           'This is a wider card with supporting text below as a natural lead-in to additional content.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
@@ -101,8 +101,8 @@ const products: Product[] = [
       product: 
       {
         id: "5",
-        title: 'Featured post',
-        price: 1000,
+        title: 'Conjunto',
+        price: 7000,
         description:
           'This is a wider card with supporting text below as a natural lead-in to additional content.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
@@ -114,8 +114,8 @@ const products: Product[] = [
       product: 
       {
         id: "6",
-        title: 'Featured post',
-        price: 1000,
+        title: 'Gorrito',
+        price: 2200,
         description:
           'This is a wider card with supporting text below as a natural lead-in to additional content.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
