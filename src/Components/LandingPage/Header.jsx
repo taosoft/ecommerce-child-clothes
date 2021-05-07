@@ -23,7 +23,6 @@ import { useSelector } from 'react-redux';
 import { selectIsLogged } from '../../app/stores/authSlice';
 import CardBadge from '../ProductList/CardBadge';
 import { selectCartCount } from '../../app/stores/cartSlice';
-import { TrendingUpTwoTone } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
