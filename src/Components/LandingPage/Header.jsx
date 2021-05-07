@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ showSearchBar = true, showCartBadge = true }) {
+export default function Header({ showSearchBar = true, showCartBadge = true , searchText = null}) {
   const classes = useStyles();
   const isLoggedIn = useSelector(selectIsLogged);
   const cartCount = useSelector(selectCartCount);
@@ -101,7 +101,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true }) {
 
   const handleSearch = (event) => {
     if(event.key === 'Enter') {
-      alert(event.target.value)
+      searchText(event.target.value)
     }
   }
 
