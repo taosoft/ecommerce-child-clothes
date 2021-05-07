@@ -18,11 +18,11 @@ export default function MainListItems () {
     return (
       <React.Fragment>
       <List>
-        <ListItem button>
+        <ListItem button onClick={() => setRedirect('/dashboard')}>
           <ListItemIcon>
             <ShoppingCartIcon />
           </ListItemIcon>
-          <ListItemText primary="Orders" />
+          <ListItemText primary="Dashborad" />
         </ListItem>
         <ListItem button onClick={() => setRedirect('/dashboard/add-product')}>
           <ListItemIcon>

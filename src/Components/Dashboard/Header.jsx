@@ -19,6 +19,7 @@ import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
 import { useSelector } from 'react-redux';
 import { selectIsLogged, selectLoggedUser } from '../../app/stores/authSlice';
+import AddProduct from './AddProduct';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,7 +103,7 @@ export default function Header() {
 
     setState({ ...state, left: open });
   };
-
+  
   const list = (anchor) => (
     <div
       role="presentation"
@@ -110,7 +111,7 @@ export default function Header() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {[{text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products"}, 
+        {[{text: 'Productos', show: true, component: AddProduct, path: "/add-products"}, 
           {text: 'Dashboard', show: loggedUser.isAdmin, component: DashboardIcon, path: "/dashboard"}]
           .filter((data) => data.show === true)
           .map((data, index) => {
