@@ -22,7 +22,7 @@ export default function MainListItems () {
           <ListItemIcon>
             <ShoppingCartIcon />
           </ListItemIcon>
-          <ListItemText primary="Dashborad" />
+          <ListItemText primary="Dashboard" />
         </ListItem>
         <ListItem button onClick={() => setRedirect('/dashboard/add-product')}>
           <ListItemIcon>
