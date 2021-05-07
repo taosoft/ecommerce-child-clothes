@@ -21,8 +21,10 @@ export default function ProductGrid(){
     const dispatch = useDispatch();  
 
     useEffect(() => {
-      dispatch(loadStockProducts());
-    },[dispatch])
+        if(products.length === 0){
+            dispatch(loadStockProducts());
+        }
+    },[dispatch, products.length])
 
     const addProductToCart = (product) => {
         let cartProduct = cartProducts.find(cartProduct => cartProduct.product?.id === product?.product.id);
@@ -62,6 +64,7 @@ export default function ProductGrid(){
                                         price={product.product.price}
                                         description={product.product.description}
                                         title={product.product.title}
+                                        image={product.product.image}
                                         addToCart={() => addProductToCart(product)}
                                     />
                                 </CardActionArea>

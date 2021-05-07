@@ -39,8 +39,9 @@ export default function Product(props) {
         <Card className={classes.card}>
             <CardMedia
                 className={classes.cardMedia}
-                image="https://source.unsplash.com/featured/?clothes,kids"
+                src={props.image}
                 title={props.title}
+                component='img'
             />
             <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h4">
