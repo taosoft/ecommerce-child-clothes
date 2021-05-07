@@ -50,7 +50,7 @@ export default function ProductGrid(){
         if(estado === 2) products.sort((a, b) => a.product.price - b.product.price) // < to >
         else products.sort((a, b) => b.product.price - a.product.price) // > to <
         if(search !== null) {
-            products = [...copia.map(product => {if(product.product.title.contains(search)) return product.product })]
+            products = [...copia.filter(product => product.product.title.contains(search))]
         }
         else {
             products = [...copia]
