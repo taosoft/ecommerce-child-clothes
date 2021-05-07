@@ -10,8 +10,6 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import AddressForm from './AddressForm';
-import PaymentForm from './PaymentForm';
 import Review from './Review';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateProductStockSuccess } from '../../app/stores/stockSlice';
@@ -69,15 +67,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Revisión de orden'];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <AddressForm />;
-    case 1:
-      return <PaymentForm />;
-    case 2:
       return <Review />;
     default:
       throw new Error('Unknown step');
@@ -93,8 +87,7 @@ export default function Checkout() {
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
-    console.log(activeStep);
-    if(activeStep === 2){
+    if(activeStep === 0){
         let newSale = {
             products: cartProducts,
             user: user,
@@ -115,7 +108,7 @@ export default function Checkout() {
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Company name
+            Small World
           </Typography>
         </Toolbar>
       </AppBar>
@@ -124,13 +117,6 @@ export default function Checkout() {
           <Typography component="h1" variant="h4" align="center">
             Checkout
           </Typography>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
