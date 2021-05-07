@@ -35,9 +35,8 @@ export default function ProductGrid(){
         return <Redirect push to={redirect} />
     }
     else {
-        if(estado === 2) products.sort((a, b) => a - b) // < to >
-        else products.sort((a, b) => b - a) // > to <
-        
+        if(estado === 2) products.sort((a, b) => a.product.price - b.product.price) // < to >
+        else products.sort((a, b) => b.product.price - a.product.price) // > to <
         return (
             <React.Fragment>
                 <CssBaseline />
