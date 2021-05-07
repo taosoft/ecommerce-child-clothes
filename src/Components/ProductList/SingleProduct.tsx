@@ -43,10 +43,12 @@ function SingleProduct(props: any) {
     const cartProducts = useSelector(selectCartProducts);
 
     const dispatch = useDispatch();
-  
+
     useEffect(() => {
-      dispatch(loadStockProducts());
-    },[dispatch])
+      if(stockProducts.length === 0){
+          dispatch(loadStockProducts());
+      }
+    },[dispatch, stockProducts.length])
 
     const addProductToCart = () => {
       let cartProduct = cartProducts.find(cartProduct => cartProduct.product?.id === product?.product.id);
@@ -78,6 +80,7 @@ function SingleProduct(props: any) {
                       price={product?.product.price}
                       description={product?.product.description}
                       title={product?.product.title}
+                      image={product?.product.image}
                       addToCart={addProductToCart}
                   />
                 </Typography>
