@@ -13,6 +13,11 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateProductStockSuccess } from '../../app/stores/stockSlice';
+import { selectCartProducts } from '../../app/stores/cartSlice';
+import { addSale } from '../../app/stores/salesSlice';
+import { selectLoggedUser } from '../../app/stores/authSlice';
 
 function Copyright() {
   return (
@@ -82,9 +87,22 @@ function getStepContent(step) {
 export default function Checkout() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const dispatch = useDispatch();
+  const cartProducts = useSelector(selectCartProducts);
+  const user = useSelector(selectLoggedUser);
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    console.log(activeStep);
+    if(activeStep === 2){
+        let newSale = {
+            products: cartProducts,
+            user: user,
+            date: new Date()
+        }
+        dispatch(addSale(newSale));
+        cartProducts.forEach(cartProduct => dispatch(updateProductStockSuccess(cartProduct)));
+    }
   };
 
   const handleBack = () => {

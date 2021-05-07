@@ -14,13 +14,16 @@ export const saleSlice = createSlice({
   name: 'sale',
   initialState,
   reducers: {
-    addSoldProduct: (state, action: PayloadAction<Sale>) => {
-        state.sales = [...state.sales, action.payload];
-      }
+    addSale: (state, action: PayloadAction<Sale>) => {
+      state.sales = [...state.sales, action.payload];
+    },
+    loadSales: (state, action: PayloadAction<Sale[]>) => {
+      state.sales = action.payload;
+    }
   },
 });
 
-export const { addSoldProduct } = saleSlice.actions;
+export const { addSale, loadSales } = saleSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
