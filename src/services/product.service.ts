@@ -57,6 +57,110 @@ const products: Product[] = [
         imageText: 'Image Text',
       },
       quantity: 10
+    },
+    {
+      product: 
+      {
+        id: "2",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
+    },
+    {
+      product: 
+      {
+        id: "3",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
+    },
+    {
+      product: 
+      {
+        id: "4",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
+    },
+    { 
+      product: 
+      {
+        id: "5",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
+    },
+    { 
+      product: 
+      {
+        id: "6",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
+    },
+    { 
+      product: 
+      {
+        id: "7",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
+    },
+    { 
+      product: 
+      {
+        id: "8",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
+    },
+    {
+      product: 
+      {
+        id: "9",
+        title: 'Featured post',
+        price: 1000,
+        description:
+          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        imageText: 'Image Text',
+      },
+      quantity: 10
     }
   ];
 

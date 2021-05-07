@@ -20,15 +20,9 @@ const rows = [
   createData(4, '15 Mar, 2019', 'Sleveless Shirt', 'Bruce Springsteen', 212.79),
 ];
 
-const useStyles = makeStyles((theme) => ({
-  seeMore: {
-    marginTop: theme.spacing(3),
-  },
-}));
 
-export default function Orders() {
-  const classes = useStyles();
-  
+
+export default function Orders() {  
     return (
       <React.Fragment>
         <Title>Ordenes</Title>
