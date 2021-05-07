@@ -18,7 +18,7 @@ export default function ProductGrid(){
     const cartProducts = useSelector(selectCartProducts);
     const [estado, setEstado] = useState(2); // default: < to >
     const [search, setSearch] = useState(null)
-    let products = [];
+    let products = [...copia];
     const dispatch = useDispatch();  
 
     useEffect(() => {
@@ -50,10 +50,10 @@ export default function ProductGrid(){
         if(estado === 2) products.sort((a, b) => a.product.price - b.product.price) // < to >
         else products.sort((a, b) => b.product.price - a.product.price) // > to <
         if(search !== null) {
-            products = [...copia.filter(product => product.product.title.includes(search))]
+            products = [...products.filter(product => product.product.title.includes(search))]
         }
         else {
-            products = [...copia]
+            products = [...products]
         }
         
         return (
