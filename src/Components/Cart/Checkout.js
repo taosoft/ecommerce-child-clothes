@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Review from './Review';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,19 +12,7 @@ import { updateProductStockSuccess } from '../../app/stores/stockSlice';
 import { selectCartProducts } from '../../app/stores/cartSlice';
 import { addSale } from '../../app/stores/salesSlice';
 import { selectLoggedUser } from '../../app/stores/authSlice';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import Footer from '../LandingPage/Footer';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -138,6 +125,7 @@ export default function Checkout() {
                     color="primary"
                     onClick={handleNext}
                     className={classes.button}
+                    disabled={cartProducts.length === 0}
                   >
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                   </Button>
@@ -146,7 +134,7 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
-        <Copyright />
+        <Footer />
       </main>
     </React.Fragment>
   );

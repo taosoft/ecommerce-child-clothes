@@ -19,11 +19,16 @@ export const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.products = [];
-    }
+    },
+    updateCartProductSuccess: (state, action:PayloadAction<CartProduct>) => {
+      let cartProduct = state.products.find(product => product.product?.id === action.payload.product?.id);
+      cartProduct!.quantity = action.payload.quantity;
+      //Revisar
+    },
   },
 });
 
-export const { addCartProduct } = cartSlice.actions;
+export const { addCartProduct, clearCart, updateCartProductSuccess } = cartSlice.actions;
 
 export const selectCartCount = (state: RootState) => state.cart.products.length;
 export const selectCartProducts = (state: RootState) => state.cart.products;

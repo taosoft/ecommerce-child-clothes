@@ -11,7 +11,7 @@ import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
-import { addCartProduct } from '../../app/stores/cartSlice';
+import { addCartProduct, selectCartProducts, updateCartProductSuccess } from '../../app/stores/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import CartProduct from '../../models/cartProduct';
 
@@ -40,6 +40,7 @@ function SingleProduct(props: any) {
     const stockProducts = useSelector(selectStock);
     const product = stockProducts.find(product => product.product.id === props.match.params.id);
     const stock = product?.quantity;
+    const cartProducts = useSelector(selectCartProducts);
 
     const dispatch = useDispatch();
   
@@ -48,11 +49,18 @@ function SingleProduct(props: any) {
     },[dispatch])
 
     const addProductToCart = () => {
+      let cartProduct = cartProducts.find(cartProduct => cartProduct.product?.id === product?.product.id);
       const newCartProduct: CartProduct = {
         product: product?.product,
         quantity: count
       };
-      dispatch(addCartProduct(newCartProduct));
+      if(cartProduct === undefined) {
+        dispatch(addCartProduct(newCartProduct))
+      }
+      else {
+        newCartProduct.quantity = product && (newCartProduct.quantity + cartProduct.quantity) >  product?.quantity ? product?.quantity : newCartProduct.quantity + cartProduct.quantity
+        dispatch(updateCartProductSuccess(newCartProduct));
+      }
     }
 
     return (
@@ -83,8 +91,7 @@ function SingleProduct(props: any) {
                     <Button onClick={() => stock && count < stock ? setCount(count + 1) : stock }>
                       <Icon color="primary" fontSize="small" >add_circle</Icon>
                     </Button>
-                    Stock Disponible
-                    <span>{stock}</span>
+                    Stock Disponible {stock}
                   </div>
                 </Typography>
               </div>

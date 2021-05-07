@@ -86,7 +86,7 @@ export default function AddProduct() {
     return (
       <div className={classes.root}>
           <CssBaseline />
-          <Header showSearchBar={false}/>
+          <Header showSearchBar={false} showCartBadge={false}/>
           <main className={classes.layout}>
             <Paper className={classes.paper}>
               <Typography component="h1" variant="h4" align="center">

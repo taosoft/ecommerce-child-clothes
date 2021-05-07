@@ -10,11 +10,12 @@ import { Redirect } from 'react-router-dom';
 import ControlledOpenSelect from './MenuFiltrado';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
-import { addCartProduct } from '../../app/stores/cartSlice';
+import { addCartProduct, selectCartProducts, updateCartProductSuccess } from '../../app/stores/cartSlice';
 
 export default function ProductGrid(){
     const [redirect, setRedirect] = useState(null)
     const products = [...useSelector(selectStock)];
+    const cartProducts = useSelector(selectCartProducts);
     const [estado, setEstado] = useState(2); // default: < to >
 
     const dispatch = useDispatch();  
@@ -24,11 +25,19 @@ export default function ProductGrid(){
     },[dispatch])
 
     const addProductToCart = (product) => {
+        let cartProduct = cartProducts.find(cartProduct => cartProduct.product?.id === product?.product.id);
         const newCartProduct = {
-          product: product.product,
+          product: product?.product,
           quantity: 1
         };
-        dispatch(addCartProduct(newCartProduct));
+        if(cartProduct === undefined) {
+          dispatch(addCartProduct(newCartProduct))
+        }
+        else {
+          newCartProduct.quantity = product && (newCartProduct.quantity + cartProduct.quantity) >  product?.quantity ? 
+            product?.quantity : newCartProduct.quantity + cartProduct.quantity
+          dispatch(updateCartProductSuccess(newCartProduct));
+        }
     }
 
     if(redirect !== null) {

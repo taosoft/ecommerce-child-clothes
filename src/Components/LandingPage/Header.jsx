@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ showSearchBar = true }) {
+export default function Header({ showSearchBar = true, showCartBadge = true }) {
   const classes = useStyles();
   const isLoggedIn = useSelector(selectIsLogged);
   const cartCount = useSelector(selectCartCount);
@@ -193,7 +193,7 @@ export default function Header({ showSearchBar = true }) {
             <div className={classes.title}>
               Small World
             </div>
-            <CardBadge badgeContent={cartCount} redirectToCart={redirectToCart}/>
+            {showCartBadge && (<CardBadge badgeContent={cartCount} redirectToCart={redirectToCart}/>)}
             {
               showSearchBar && (
                 <div className={classes.search}>

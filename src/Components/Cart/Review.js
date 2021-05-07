@@ -32,14 +32,14 @@ export default function Review() {
         {products.map((product) => (
           <ListItem className={classes.listItem} key={product.product.id}>
             <ListItemText primary={product.product.title} secondary={product.product.description} />
-            <Typography variant="body2">${product.product.price}</Typography>
+            <Typography variant="body2">{product.quantity} x ${product.product.price} = ${product.product.price}</Typography>
           </ListItem>
         ))}
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
             ${products.length > 0 ? 
-            products.map( product => product.product.price)?.reduce((a,b) => a + b).toFixed(2) :
+            products.map( product => product.product.price * product.quantity)?.reduce((a,b) => a + b).toFixed(2) :
             0}
           </Typography>
         </ListItem>
