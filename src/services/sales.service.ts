@@ -25,6 +25,7 @@ const sales: Sale[] = [
         lastName: "Perez",
         age: 25,
         password: "123",
+        isAdmin: true,
         email: "admin@google.com",
       },
       date: new Date(),
