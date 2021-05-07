@@ -10,10 +10,10 @@ import React, { useState } from 'react';
 
 
 export default function MainListItems () {
-  const [addProductPath, setAddProductPath] = useState(null)
+  const [redirect, setRedirect] = useState(null)
 
-  if(addProductPath !== null) {
-    return <Redirect push to={addProductPath} />
+  if(redirect !== null) {
+    return <Redirect push to={redirect} />
   }
   else {
     return (
@@ -25,13 +25,13 @@ export default function MainListItems () {
           </ListItemIcon>
           <ListItemText primary="Orders" />
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={() => setRedirect('/dashboard/products')}>
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary="Customers" />
+          <ListItemText primary="Productos" />
         </ListItem>
-        <ListItem button onClick={() => setAddProductPath('/dashboard/add-product')}>
+        <ListItem button onClick={() => setRedirect('/dashboard/add-product')}>
           <ListItemIcon>
             <AddBoxIcon />
           </ListItemIcon>
