@@ -12,12 +12,12 @@ import { addProductSuccess } from '../../app/stores/stockSlice';
 import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-    },
-    layout: {
+  root: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
+  },
+  layout: {
     width: 'auto',
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),

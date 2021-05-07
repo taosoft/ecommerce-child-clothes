@@ -14,7 +14,7 @@ const StyledBadge = withStyles((theme) => ({
 
 export default function CardBadge(props) {
   return (
-    <IconButton aria-label="cart">
+    <IconButton aria-label="cart" onClick={props.redirectToCart}>
       <StyledBadge badgeContent={props.badgeContent} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>

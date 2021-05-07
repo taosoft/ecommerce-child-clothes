@@ -21,6 +21,8 @@ import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
 import { useSelector } from 'react-redux';
 import { selectIsLogged } from '../../app/stores/authSlice';
+import CardBadge from '../ProductList/CardBadge';
+import { selectCartCount } from '../../app/stores/cartSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,12 +87,17 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
   const isLoggedIn = useSelector(selectIsLogged);
+  const cartCount = useSelector(selectCartCount);
   
   const [redirect, setRedirect] = useState(null)
   const [state, setState] = useState({
     left: false,
     name: 'left'
   });
+
+  const redirectToCart = () => {
+    setRedirect('/cart');
+  }
 
   const handleSearch = (event) => {
     if(event.key === 'Enter') {
@@ -186,6 +193,7 @@ export default function Header() {
             <div className={classes.title}>
               Small World
             </div>
+            <CardBadge badgeContent={cartCount} redirectToCart={redirectToCart}/>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />

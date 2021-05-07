@@ -6,7 +6,8 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
 import AddProduct from './Components/Dashboard/AddProduct'
-import Products from './Components/Dashboard/Products'
+import Checkout from "./Components/Cart/Checkout";
+
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
         <Switch>
             <Route path="/products" component={ProductGrid}/>
             <Route path="/product/:id" component={SingleProduct}/>
+            <Route path="/cart" component={Checkout}/>
             <Route path="/dashboard/add-product" component={AddProduct}/>
             <Route path="/dashboard/products" component={Products}/>
             <Route path="/dashboard" component={Dashboard}/>
