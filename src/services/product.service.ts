@@ -2,43 +2,44 @@
 import { AxiosResponse } from 'axios';
 import Product from '../models/product';
 import { StockProduct } from '../models/stockProduct';
-//const BASE_URL = 'https://jsonplaceholder.typicode.com/users';
+import ConjuntoNino from '../Images/conjunto_nino';
+import Medias from '../Images/medias';
+import PantalonNino from '../Images/pantalon_nino';
+import Vestido from '../Images/vestido';
+import ConjuntoBebe from '../Images/bebe_conjunto'
+import ConjuntoNino2 from '../Images/conjunto_nino_2'
 
 const products: Product[] = [
     {
       id: "1",
-      title: 'Featured post',
+      title: 'Conjunto para niño',
       price: 1000,
-      description:
-        'This is a wider card.',
-      image: 'https://source.unsplash.com/featured/?clothes,kids',
+      description: 'Pantalón de jean y camisa azul',
+      image: ConjuntoNino,
       imageText: 'Image Text',
     },
     {
       id: "2",
       title: 'Post title',
       price: 2000,
-      description:
-        'This is a wider card.',
-      image: 'https://source.unsplash.com/featured/?clothes,kids',
+      description: 'This is a wider card.',
+      image: Medias,
       imageText: 'Image Text',
     },
     {
       id: "3",
       title: 'Post title',
       price: 1400,
-      description:
-        'This is a wider card.',
-      image: 'https://source.unsplash.com/featured/?clothes,kids',
+      description: 'This is a wider card.',
+      image: PantalonNino,
       imageText: 'Image Text',
     },
     {
       id: "4",
       title: 'Post title',
       price: 2300,
-      description:
-        'This is a wider card.',
-      image: 'https://source.unsplash.com/featured/?clothes,kids',
+      description: 'This is a wider card.',
+      image: Vestido,
       imageText: 'Image Text',
     }
   ];
@@ -49,11 +50,10 @@ const products: Product[] = [
       product: 
       {
         id: "1",
-        title: 'Medias',
+        title: 'Featured post',
         price: 1000,
-        description:
-          'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        description: 'This is a wider card.',
+        image: ConjuntoNino,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -62,11 +62,10 @@ const products: Product[] = [
       product: 
       {
         id: "2",
-        title: 'Bufanda',
-        price: 500,
-        description:
-          'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        title: 'Post title',
+        price: 2000,
+        description: 'This is a wider card.',
+        image: Medias,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -75,11 +74,10 @@ const products: Product[] = [
       product: 
       {
         id: "3",
-        title: 'Zapatillas',
-        price: 4000,
-        description:
-          'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        title: 'Post title',
+        price: 1400,
+        description: 'This is a wider card.',
+        image: PantalonNino,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -88,11 +86,10 @@ const products: Product[] = [
       product: 
       {
         id: "4",
-        title: 'Remera',
-        price: 1500,
-        description:
-          'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        title: 'Post title',
+        price: 2300,
+        description: 'This is a wider card.',
+        image: Vestido,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -105,7 +102,7 @@ const products: Product[] = [
         price: 7000,
         description:
           'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        image: ConjuntoBebe,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -118,7 +115,7 @@ const products: Product[] = [
         price: 2200,
         description:
           'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        image: ConjuntoNino2,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -131,7 +128,7 @@ const products: Product[] = [
         price: 1000,
         description:
           'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        image: ConjuntoNino2,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -144,7 +141,7 @@ const products: Product[] = [
         price: 1000,
         description:
           'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        image: ConjuntoNino2,
         imageText: 'Image Text',
       },
       quantity: 10
@@ -155,9 +152,8 @@ const products: Product[] = [
         id: "9",
         title: 'Featured post',
         price: 1000,
-        description:
-          'This is a wider card.',
-        image: 'https://source.unsplash.com/featured/?clothes,kids',
+        description: 'This is a wider card.',
+        image: ConjuntoNino2,
         imageText: 'Image Text',
       },
       quantity: 10
