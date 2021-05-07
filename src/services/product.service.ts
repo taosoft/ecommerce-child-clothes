@@ -10,7 +10,7 @@ const products: Product[] = [
       title: 'Featured post',
       price: 1000,
       description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        'This is a wider card.',
       image: 'https://source.unsplash.com/featured/?clothes,kids',
       imageText: 'Image Text',
     },
@@ -19,7 +19,7 @@ const products: Product[] = [
       title: 'Post title',
       price: 2000,
       description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        'This is a wider card.',
       image: 'https://source.unsplash.com/featured/?clothes,kids',
       imageText: 'Image Text',
     },
@@ -28,7 +28,7 @@ const products: Product[] = [
       title: 'Post title',
       price: 1400,
       description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        'This is a wider card.',
       image: 'https://source.unsplash.com/featured/?clothes,kids',
       imageText: 'Image Text',
     },
@@ -37,7 +37,7 @@ const products: Product[] = [
       title: 'Post title',
       price: 2300,
       description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        'This is a wider card.',
       image: 'https://source.unsplash.com/featured/?clothes,kids',
       imageText: 'Image Text',
     }
@@ -52,7 +52,7 @@ const products: Product[] = [
         title: 'Medias',
         price: 1000,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },
@@ -65,7 +65,7 @@ const products: Product[] = [
         title: 'Bufanda',
         price: 500,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },
@@ -78,7 +78,7 @@ const products: Product[] = [
         title: 'Zapatillas',
         price: 4000,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },
@@ -91,7 +91,7 @@ const products: Product[] = [
         title: 'Remera',
         price: 1500,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },
@@ -104,7 +104,7 @@ const products: Product[] = [
         title: 'Conjunto',
         price: 7000,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },
@@ -117,7 +117,7 @@ const products: Product[] = [
         title: 'Gorrito',
         price: 2200,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },
@@ -130,7 +130,7 @@ const products: Product[] = [
         title: 'Featured post',
         price: 1000,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },
@@ -143,7 +143,7 @@ const products: Product[] = [
         title: 'Featured post',
         price: 1000,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },
@@ -156,7 +156,7 @@ const products: Product[] = [
         title: 'Featured post',
         price: 1000,
         description:
-          'This is a wider card with supporting text below as a natural lead-in to additional content.',
+          'This is a wider card.',
         image: 'https://source.unsplash.com/featured/?clothes,kids',
         imageText: 'Image Text',
       },

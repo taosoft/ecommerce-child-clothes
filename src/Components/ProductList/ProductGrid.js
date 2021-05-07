@@ -46,8 +46,8 @@ export default function ProductGrid(){
                 <main>
                     <Grid container spacing={4}>
                         {products.map((product) => (
-                            <Grid item key={product.id} xs={12} sm={6} md={4} >
-                                <CardActionArea component="a" onClick={() => setRedirect(`/product/${product.id}`)}>
+                            <Grid item key={product.product.id} xs={12} sm={6} md={4} >
+                                <CardActionArea component="a" onClick={() => setRedirect(`/product/${product.product.id}`)}>
                                     <Product 
                                         key={product.product.id}
                                         price={product.product.price}
