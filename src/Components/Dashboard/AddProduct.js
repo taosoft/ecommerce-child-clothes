@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import Footer from '../LandingPage/Footer'
-import Header from './Header';
+import Header from '../LandingPage/Header';
 import { useDispatch } from 'react-redux';
 import { addProductSuccess } from '../../app/stores/stockSlice';
 import { Redirect } from 'react-router-dom';
@@ -86,7 +86,7 @@ export default function AddProduct() {
     return (
       <div className={classes.root}>
           <CssBaseline />
-          <Header/>
+          <Header showSearchBar={false}/>
           <main className={classes.layout}>
             <Paper className={classes.paper}>
               <Typography component="h1" variant="h4" align="center">

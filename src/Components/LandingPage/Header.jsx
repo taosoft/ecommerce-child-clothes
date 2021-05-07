@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header({ showSearchBar = true }) {
   const classes = useStyles();
   const isLoggedIn = useSelector(selectIsLogged);
   const cartCount = useSelector(selectCartCount);
@@ -194,20 +194,24 @@ export default function Header() {
               Small World
             </div>
             <CardBadge badgeContent={cartCount} redirectToCart={redirectToCart}/>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Buscar…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-                onKeyUp={handleSearch}
-              />
-            </div>
+            {
+              showSearchBar && (
+                <div className={classes.search}>
+                  <div className={classes.searchIcon}>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    placeholder="Buscar…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{ 'aria-label': 'search' }}
+                    onKeyUp={handleSearch}
+                  />
+                </div>
+              )
+            }
           </Toolbar>
         </AppBar>
       </div>
