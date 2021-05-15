@@ -15,7 +15,7 @@ import Zapatilla from '../Images/zapatilla'
 const products: Product[] = [
     {
       id: "1",
-      title: 'Conjunto para niño',
+      title: 'Jean y camisa',
       price: 1000,
       description: 'Pantalón de jean y camisa azul',
       image: ConjuntoNino,
@@ -23,25 +23,25 @@ const products: Product[] = [
     },
     {
       id: "2",
-      title: 'Post title',
+      title: 'Medias',
       price: 2000,
-      description: 'This is a wider card.',
+      description: 'Medias para niños',
       image: Medias,
       imageText: 'Image Text',
     },
     {
       id: "3",
-      title: 'Post title',
+      title: 'Pantalón',
       price: 1400,
-      description: 'This is a wider card.',
+      description: 'Pantalón para niño',
       image: PantalonNino,
       imageText: 'Image Text',
     },
     {
       id: "4",
-      title: 'Post title',
+      title: 'Vestido',
       price: 2300,
-      description: 'This is a wider card.',
+      description: 'Vestido para niña',
       image: Vestido,
       imageText: 'Image Text',
     }
@@ -53,9 +53,9 @@ const products: Product[] = [
       product: 
       {
         id: "1",
-        title: 'Featured post',
+        title: 'Jean y camisa',
         price: 1000,
-        description: 'This is a wider card.',
+        description: 'Pantalón de jean y camisa azul',
         image: ConjuntoNino,
         imageText: 'Image Text',
       },
@@ -65,9 +65,9 @@ const products: Product[] = [
       product: 
       {
         id: "2",
-        title: 'Post title',
+        title: 'Medias',
         price: 2000,
-        description: 'This is a wider card.',
+        description: 'Medias para niños',
         image: Medias,
         imageText: 'Image Text',
       },
@@ -77,9 +77,9 @@ const products: Product[] = [
       product: 
       {
         id: "3",
-        title: 'Post title',
+        title: 'Pantalón',
         price: 1400,
-        description: 'This is a wider card.',
+        description: 'Pantalón para niño',
         image: PantalonNino,
         imageText: 'Image Text',
       },
@@ -89,9 +89,9 @@ const products: Product[] = [
       product: 
       {
         id: "4",
-        title: 'Post title',
+        title: 'Vestido',
         price: 2300,
-        description: 'This is a wider card.',
+        description: 'Vestido para niña',
         image: Vestido,
         imageText: 'Image Text',
       },
@@ -101,10 +101,9 @@ const products: Product[] = [
       product: 
       {
         id: "5",
-        title: 'Conjunto',
+        title: 'Ropa bebé',
         price: 7000,
-        description:
-          'This is a wider card.',
+        description: 'Conjunto para bebé',
         image: ConjuntoBebe,
         imageText: 'Image Text',
       },
@@ -114,10 +113,9 @@ const products: Product[] = [
       product: 
       {
         id: "6",
-        title: 'Gorrito',
+        title: 'Conjunto de ropa',
         price: 2200,
-        description:
-          'This is a wider card.',
+        description: 'Conjunto para niño',
         image: ConjuntoNino2,
         imageText: 'Image Text',
       },
@@ -127,10 +125,9 @@ const products: Product[] = [
       product: 
       {
         id: "7",
-        title: 'Featured post',
+        title: 'Ropa interior',
         price: 1000,
-        description:
-          'This is a wider card.',
+        description: 'Ropa interior de niño',
         image: Boxer,
         imageText: 'Image Text',
       },
@@ -140,10 +137,9 @@ const products: Product[] = [
       product: 
       {
         id: "8",
-        title: 'Featured post',
+        title: 'Traje gris',
         price: 1000,
-        description:
-          'This is a wider card.',
+        description: 'Traje para niño',
         image: Traje,
         imageText: 'Image Text',
       },
@@ -153,9 +149,9 @@ const products: Product[] = [
       product: 
       {
         id: "9",
-        title: 'Featured post',
+        title: 'Zapatilla',
         price: 1000,
-        description: 'This is a wider card.',
+        description: 'Zapatillas con estrellas',
         image: Zapatilla,
         imageText: 'Image Text',
       },

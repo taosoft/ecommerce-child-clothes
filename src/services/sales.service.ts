@@ -3,6 +3,7 @@ import Sale from "../models/sale";
 
 const sales: Sale[] = [
     {
+      id: 1,
       products:
       [
           {
@@ -32,7 +33,7 @@ const sales: Sale[] = [
     }
 ]
 
-export async function getStockProducts(): Promise<AxiosResponse<Sale[]>> {
+export async function getSales(): Promise<AxiosResponse<Sale[]>> {
     let axiosResponse: AxiosResponse<Sale[]> = {
         data: sales,
         status: 200,

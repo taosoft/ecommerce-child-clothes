@@ -41,18 +41,18 @@ export default function FeaturedPost({post}) {
                   {post.title}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
-                  {post.price}
+                  ${post.price}
                 </Typography>
                 <Typography variant="subtitle1" paragraph>
                   {post.description}
                 </Typography>
                 <Typography variant="subtitle1" color="primary">
-                  Continue reading...
+                  Continuar leyendo...
                 </Typography>
               </CardContent>
             </div>
             <Hidden xsDown>
-              <CardMedia className={classes.cardMedia} src={post.image} title={post.imageTitle} />
+              <CardMedia className={classes.cardMedia} src={post.image} title={post.imageTitle} component='img'/>
             </Hidden>
           </Card>
         </CardActionArea>

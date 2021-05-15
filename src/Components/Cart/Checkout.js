@@ -13,6 +13,7 @@ import { selectCartProducts } from '../../app/stores/cartSlice';
 import { addSale } from '../../app/stores/salesSlice';
 import { selectLoggedUser } from '../../app/stores/authSlice';
 import Footer from '../LandingPage/Footer';
+import Header from '../LandingPage/Header';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -89,13 +90,7 @@ export default function Checkout() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Small World
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Header/>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
