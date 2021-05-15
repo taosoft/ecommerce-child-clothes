@@ -22,7 +22,7 @@ exports.getUsers = async function (req, res, next) {
 exports.getUser = async function (req, res, next) {
 
     try {
-        const Users = await UserService.getUsers({}, page, limit)
+        const Users = await UserService.getUser(req.params.id)
         // Return the Users list with the appropriate HTTP password Code and Message.
         return res.status(200).json({status: 200, data: Users, message: "Succesfully Users Recieved"});
     } catch (e) {

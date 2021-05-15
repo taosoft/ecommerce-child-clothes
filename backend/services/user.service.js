@@ -28,12 +28,14 @@ exports.getUsers = async (query, page, limit) => {
     }
 }
 
-exports.getUser = async () => {
+exports.getUser = async (userId) => {
     try {
-
+        const user = await User.findById(userId);
+        return user;
     }
-    catch {
-        
+    catch(e) {
+        console.log("error services", e)
+        throw Error('Error while searching Users');
     }
 };
 
@@ -54,7 +56,7 @@ exports.createUser = async (user) => {
         const token = jwt.sign({
             id: savedUser._id
         }, process.env.SECRET, {
-            expiresIn: 86400 // expires in 24 hours
+            expiresIn: '7d' // expires in 24 hours
         });
         return token;
     } catch (e) {
