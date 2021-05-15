@@ -23,4 +23,7 @@ const UserSchema = new mongoose.Schema({
 UserSchema.plugin(mongoosePaginate);
 const User = mongoose.model('User', UserSchema);
 
-module.exports = User;
+module.exports = {
+    UserSchema,
+    User
+};

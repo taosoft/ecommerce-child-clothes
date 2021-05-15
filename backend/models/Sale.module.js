@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
-const ProductModel = require('../models/Product.model')
+const { ProductSchema } = require('../models/Product.model')
+const { UserSchema } = require('./User.model')
 
 const SaleSchema = new mongoose.Schema({
     product: {
-        type: [ProductModel.ProductSchema],
+        type: [ProductSchema],
         required: true
     },
     user: {
-        type: User,
+        type: UserSchema,
         required: true
     },
     creationDate: {
