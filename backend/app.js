@@ -5,22 +5,18 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose')
+const bluebird = require('bluebird')
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -43,11 +39,10 @@ app.use(function(err, req, res, next) {
 
 // Connection to MongoDB
 mongoose.Promise = bluebird;
-const url = `${process.env.DATABASE1}${process.env.DATABASE2}=${process.env.DATABASE3}=${process.env.DATABASE4}`
-console.log("BD",url);
+const url = process.env.DB_CONNECTION;
 const opts = {
   useNewUrlParser : true, 
-  connectTimeoutMS:20000, 
+  connectTimeoutMS: 20000, 
   useUnifiedTopology: true
   };
 

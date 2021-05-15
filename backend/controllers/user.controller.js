@@ -19,14 +19,10 @@ exports.getUsers = async function (req, res, next) {
     }
 }
 
-exports.getUsersByMail = async function (req, res, next) {
+exports.getUser = async function (req, res, next) {
 
-    // Check the existence of the query parameters, If doesn't exists assign a default value
-    var page = req.query.page ? req.query.page : 1
-    var limit = req.query.limit ? req.query.limit : 10;
-    let filtro= {email: req.body.email}
     try {
-        var Users = await UserService.getUsers(filtro, page, limit)
+        const Users = await UserService.getUsers({}, page, limit)
         // Return the Users list with the appropriate HTTP password Code and Message.
         return res.status(200).json({status: 200, data: Users, message: "Succesfully Users Recieved"});
     } catch (e) {
@@ -34,6 +30,7 @@ exports.getUsersByMail = async function (req, res, next) {
         return res.status(400).json({status: 400, message: e.message});
     }
 }
+
 
 exports.createUser = async function (req, res, next) {
     // Req.Body contains the form submit values.
@@ -53,39 +50,6 @@ exports.createUser = async function (req, res, next) {
         return res.status(400).json({status: 400, message: "User Creation was Unsuccesfull"})
     }
 }
-
-exports.updateUser = async function (req, res, next) {
-
-    // Id is necessary for the update
-    if (!req.body.name) {
-        return res.status(400).json({status: 400., message: "Name be present"})
-    }
-
-    var User = {
-       
-        name: req.body.name ? req.body.name : null,
-        email: req.body.email ? req.body.email : null,
-        password: req.body.password ? req.body.password : null
-    }
-    try {
-        var updatedUser = await UserService.updateUser(User)
-        return res.status(200).json({status: 200, data: updatedUser, message: "Succesfully Updated User"})
-    } catch (e) {
-        return res.status(400).json({status: 400., message: e.message})
-    }
-}
-
-exports.removeUser = async function (req, res, next) {
-
-    var id = req.params.id;
-    try {
-        var deleted = await UserService.deleteUser(id);
-        res.status(200).send("Succesfully Deleted... ");
-    } catch (e) {
-        return res.status(400).json({status: 400, message: e.message})
-    }
-}
-
 
 exports.loginUser = async function (req, res, next) {
     // Req.Body contains the form submit values.
