@@ -4,7 +4,7 @@ const UserService = require('../services/user.service');
 _this = this;
 
 // Async Controller function to get the To do List
-exports.getUsers = async function (req, res, next) {
+exports.getUsers = async (req, res, next) => {
 
     // Check the existence of the query parameters, If doesn't exists assign a default value
     const page = req.query.page ? req.query.page : 1
@@ -19,7 +19,7 @@ exports.getUsers = async function (req, res, next) {
     }
 }
 
-exports.getUser = async function (req, res, next) {
+exports.getUser = async (req, res, next) => {
 
     try {
         const Users = await UserService.getUser(req.params.id)
@@ -32,7 +32,7 @@ exports.getUser = async function (req, res, next) {
 }
 
 
-exports.createUser = async function (req, res, next) {
+exports.createUser = async (req, res, next) => {
     // Req.Body contains the form submit values.
     console.log("llegue al controller",req.body)
     var User = {
@@ -51,7 +51,7 @@ exports.createUser = async function (req, res, next) {
     }
 }
 
-exports.loginUser = async function (req, res, next) {
+exports.loginUser = async (req, res, next) => {
     // Req.Body contains the form submit values.
     console.log("body",req.body)
     var User = {
