@@ -18,12 +18,8 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-})
+});
 
 UserSchema.plugin(mongoosePaginate);
-const User = mongoose.model('User', UserSchema);
 
-module.exports = {
-    UserSchema,
-    User
-};
+module.exports = mongoose.model('User', UserSchema);
