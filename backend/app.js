@@ -57,10 +57,10 @@ mongoose.connect(url,opts)
   })
 
 // Setup server port
-var port = process.env.PORT || 8080;
-// Escuchar en el puerto
-app.listen(port,()=>{
-    console.log(`Listening on port: ${port}`);
-});
+// var port = process.env.PORT || 5000;
+// // Escuchar en el puerto
+// app.listen(port,()=>{
+//     console.log(`Listening on port: ${port}`);
+// });
 
 module.exports = app;

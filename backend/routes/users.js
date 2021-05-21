@@ -1,11 +1,12 @@
-var express = require('express')
-var router = express.Router()
-var UserController = require('../controllers/users.controller');
+const express = require('express');
+const router = express.Router();
+const UserController = require('../controllers/users.controller');
+const authorization = require('../auth/authorization');
 
 // Authorize each API with middleware and map to the Controller Functions
 /* GET users listing. */
 router.post('/registration', UserController.createUser);
-router.post('/login/', UserController.loginUser);
+router.post('/login', UserController.loginUser);
 router.get('/:id', UserController.getUser);
 router.get('/', UserController.getUsers);
 

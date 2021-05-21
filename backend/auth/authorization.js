@@ -1,5 +1,5 @@
  const jwt = require('jsonwebtoken');
- require('../config').config();
+ const config = require('../config').config();
  
  const authorization = (req, res, next) => {
  
@@ -7,7 +7,7 @@
     const msg = {auth: false, message: 'No token provided.'};
     
     if (!token) res.status(500).send(msg);
- 
+
     if(token.startsWith('Bearer ')) {
         token = token.slice(7, token.length);
         const key_word = process.env.SECRET;

@@ -1,5 +1,5 @@
 // Gettign the Newly created Mongoose Model we just created 
-const { User } = require('../models/User.model');
+const User = require('../models/User.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -7,17 +7,11 @@ const jwt = require('jsonwebtoken');
 _this = this
 
 // Async function to get the User List
-exports.getUsers = async (query, page, limit) => {
+exports.getUsers = async () => {
 
-    // Options setup for the mongoose paginate
-    const options = {
-        page,
-        limit
-    }
     // Try Catch the awaited promise to handle the error 
     try {
-        console.log("Query", query)
-        const Users = await User.paginate(query, options)
+        const Users = await User.find({})
         // Return the Userd list that was retured by the mongoose promise
         return Users;
 
@@ -56,8 +50,9 @@ exports.createUser = async (user) => {
         const token = jwt.sign({
             id: savedUser._id
         }, process.env.SECRET, {
-            expiresIn: '7d' // expires in 24 hours
+            expiresIn: '7d'
         });
+        
         return token;
     } catch (e) {
         // return a Error message describing the reason 
@@ -71,7 +66,7 @@ exports.loginUser = async (user) => {
     // Creating a new Mongoose Object by using the new keyword
     try {
         // Find the User 
-        console.log("login:",user)
+        console.log("login:", user)
         const _details = await User.findOne({
             email: user.email
         });
