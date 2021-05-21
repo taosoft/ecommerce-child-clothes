@@ -35,14 +35,14 @@ exports.getUser = async (req, res, next) => {
 exports.createUser = async (req, res, next) => {
     // Req.Body contains the form submit values.
     console.log("llegue al controller",req.body)
-    var User = {
+    const User = {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
     }
     try {
         // Calling the Service function with the new object from the Request Body
-        var createdUser = await UserService.createUser(User)
+        const createdUser = await UserService.createUser(User)
         return res.status(201).json({createdUser, message: "Succesfully Created User"})
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
@@ -54,13 +54,13 @@ exports.createUser = async (req, res, next) => {
 exports.loginUser = async (req, res, next) => {
     // Req.Body contains the form submit values.
     console.log("body",req.body)
-    var User = {
+    const User = {
         email: req.body.email,
         password: req.body.password
     }
     try {
         // Calling the Service function with the new object from the Request Body
-        var loginUser = await UserService.loginUser(User);
+        const loginUser = await UserService.loginUser(User);
         return res.status(201).json({loginUser, message: "Succesfully login"})
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.

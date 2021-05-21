@@ -6,8 +6,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose')
 const bluebird = require('bluebird')
+require('dotenv/config');
 
-const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const salesRouter = require('./routes/sales');
 
@@ -19,7 +19,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 app.use(cookieParser());
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sales', salesRouter);
 
