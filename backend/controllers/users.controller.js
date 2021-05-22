@@ -8,13 +8,11 @@ exports.getUsers = async (req, res, next) => {
     try {
         const Users = await UserService.getUsers();
         // Return the Users list with the appropriate HTTP password Code and Message.
-        return res
-            .status(200)
-            .json({
-                status: 200,
-                data: Users,
-                message: "Succesfully Users Recieved",
-            });
+        return res.status(200).json({
+            status: 200,
+            data: Users,
+            message: "Succesfully Users Recieved",
+        });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         return res.status(400).json({ status: 400, message: e.message });
@@ -25,13 +23,11 @@ exports.getUser = async (req, res, next) => {
     try {
         const Users = await UserService.getUser(req.params.id);
         // Return the Users list with the appropriate HTTP password Code and Message.
-        return res
-            .status(200)
-            .json({
-                status: 200,
-                data: Users,
-                message: "Succesfully User Recieved",
-            });
+        return res.status(200).json({
+            status: 200,
+            data: Users,
+            message: "Succesfully User Recieved",
+        });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         return res.status(400).json({ status: 400, message: e.message });
