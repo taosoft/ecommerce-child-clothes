@@ -3,7 +3,7 @@
  
  const authorization = (req, res, next) => {
  
-    const token = req.headers['x-access-token'] || req.headers['authorization'];
+    let token = req.headers['x-access-token'] || req.headers['authorization'];
     const msg = {auth: false, message: 'No token provided.'};
     
     if (!token) res.status(500).send(msg);
