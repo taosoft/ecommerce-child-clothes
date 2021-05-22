@@ -1,28 +1,28 @@
-const mongoose = require('mongoose');
-const mongoosePaginate = require('mongoose-paginate');
+const mongoose = require("mongoose");
+const mongoosePaginate = require("mongoose-paginate");
 
 const SaleSchema = new mongoose.Schema({
     product: {
         type: mongoose.Schema.ObjectId,
         ref: "Product",
-        required: true
+        required: true,
     },
     user: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
-        required: true
+        required: true,
     },
     creationDate: {
         type: Date,
-        default: new Date()
+        default: new Date(),
     },
     quantity: {
         type: Number,
-        required: true
-    }
+        required: true,
+    },
 });
 
 SaleSchema.plugin(mongoosePaginate);
-const Sale = mongoose.model('Sale', SaleSchema);
+const Sale = mongoose.model("Sale", SaleSchema);
 
 module.exports = Sale;
