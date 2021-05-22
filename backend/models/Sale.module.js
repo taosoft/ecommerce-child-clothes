@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
-const Product  = require('../models/Product.model')
-const User = require('./User.model')
 
 const SaleSchema = new mongoose.Schema({
     product: {
