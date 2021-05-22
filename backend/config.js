@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
+
 function log (message /*: string */) {
   console.log(`[dotenv][DEBUG] ${message}`)
 }
