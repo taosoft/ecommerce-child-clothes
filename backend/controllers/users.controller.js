@@ -44,10 +44,11 @@ exports.createUser = async (req, res, next) => {
     };
     try {
         // Calling the Service function with the new object from the Request Body
-        const createdUser = await UserService.createUser(User);
+        const newUser = await UserService.createUser(User);
+        newUser.createdUser.enviarEmailVerificacion();
         return res
             .status(201)
-            .json({ createdUser, message: "Succesfully Created User" });
+            .json({ newUser, message: "Succesfully Created User" });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         console.log(e);
@@ -75,5 +76,24 @@ exports.loginUser = async (req, res, next) => {
         return res
             .status(400)
             .json({ status: 400, message: "Invalid username or password" });
+    }
+};
+
+exports.confirmationGet = async (req, res, next) => {
+    try {
+        const user = await UserService.getUser(req.params.id);
+        if (!user)
+            return res.status(400).send({
+                message: "No se encontro el usuario especificado",
+            });
+        if (user.verificado)
+            return res.status(201).json({
+                message: "El usuario ya fue verificado",
+            });
+        user.verificado = true;
+        user.save();
+    } catch (e) {
+        //Return an Error Response Message with Code and the Error Message.
+        return res.status(400).json({ status: 400, message: e.message });
     }
 };

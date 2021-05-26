@@ -54,7 +54,7 @@ exports.createUser = async (user) => {
             }
         );
 
-        return token;
+        return { createdUser: savedUser, token: token };
     } catch (e) {
         // return a Error message describing the reason
         console.log(e);
