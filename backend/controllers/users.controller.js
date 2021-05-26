@@ -45,10 +45,11 @@ exports.createUser = async (req, res, next) => {
     try {
         // Calling the Service function with the new object from the Request Body
         const newUser = await UserService.createUser(User);
+        const token = newUser.token;
         newUser.createdUser.enviarEmailVerificacion();
         return res
             .status(201)
-            .json({ newUser, message: "Succesfully Created User" });
+            .json({ token, message: "Succesfully Created User" });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         console.log(e);
@@ -92,6 +93,7 @@ exports.confirmationGet = async (req, res, next) => {
             });
         user.verificado = true;
         user.save();
+        return res.status(200).json({ message: "El usuario fue verificado" });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         return res.status(400).json({ status: 400, message: e.message });
