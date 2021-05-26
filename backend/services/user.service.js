@@ -75,6 +75,7 @@ exports.loginUser = async (user) => {
             _details.password
         );
         if (!passwordIsValid) throw Error("Invalid username/password");
+        if (!_details.verificado) throw Error("La cuenta no ha sido validada");
 
         const token = jwt.sign(
             {
