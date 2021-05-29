@@ -11,18 +11,20 @@ require("dotenv/config");
 const usersRouter = require("./routes/users");
 const salesRouter = require("./routes/sales");
 const productRouter = require("./routes/products");
+const stockRouter = require("./routes/stock");
 
 const app = express();
 
 app.use(logger("dev"));
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({ extended: false, limit: '50mb' }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: false, limit: "50mb" }));
 app.use(cors());
 app.use(cookieParser());
 
 app.use("/api/users", usersRouter);
 app.use("/api/sales", salesRouter);
 app.use("/api/products", productRouter);
+app.use("/api/stock", stockRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
