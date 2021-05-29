@@ -2,15 +2,15 @@ const Stock = require("../models/Stock.model");
 
 _this = this;
 
-exports.getStocks = async () => {
+exports.getStocks = async (cb) => {
     try {
         return await Stock.find()
             .populate("product")
             .exec((error, result) => {
                 if (error) {
-                    throw Error(error);
+                    throw Error("No se puedo obtener los productos");
                 }
-                return result;
+                cb(result);
             });
     } catch (e) {
         console.log("error services", e);
