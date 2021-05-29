@@ -21,7 +21,7 @@ exports.getUsers = async (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
     try {
-        const Users = await UserService.getUser(req.params.id);
+        const Users = await UserService.getUser(req.params._id);
         // Return the Users list with the appropriate HTTP password Code and Message.
         return res.status(200).json({
             status: 200,
@@ -80,7 +80,7 @@ exports.loginUser = async (req, res, next) => {
 
 exports.confirmationGet = async (req, res, next) => {
     try {
-        const user = await UserService.getUser(req.params.id);
+        const user = await UserService.getUser(req.params._id);
         if (!user)
             return res.status(400).send({
                 message: "No se encontro el usuario especificado",
