@@ -45,7 +45,10 @@ exports.createProduct = async (req, res, next) => {
         console.log(e);
         return res
             .status(500)
-            .json({ status: 500, message: "Product Creation was Unsuccessfull" });
+            .json({
+                status: 500,
+                message: "Product Creation was Unsuccessfull",
+            });
     }
 };
 
@@ -94,6 +97,9 @@ exports.deleteProduct = async (req, res, next) => {
         console.log(e);
         return res
             .status(500)
-            .json({ status: 500, message: "Product deletion was Unsuccessfull" });
+            .json({
+                status: 500,
+                message: "Product deletion was Unsuccessfull",
+            });
     }
 };
