@@ -40,7 +40,7 @@ exports.createStock = async (productId, quantity) => {
             product: productId,
             quantity: quantity,
         });
-        await newStock.save();
+        return await newStock.save();
     } catch (e) {
         console.log(e);
         throw Error("Error while Creating Stock");

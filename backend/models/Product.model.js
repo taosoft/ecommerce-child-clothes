@@ -19,7 +19,8 @@ const ProductSchema = new mongoose.Schema({
         required: true,
     },
     imageText: {
-        type: String
+        type: String,
+        default: "Image Description",
     },
 });
 
@@ -27,5 +28,5 @@ ProductSchema.plugin(mongoosePaginate);
 
 module.exports = {
     ProductModel: mongoose.model("Product", ProductSchema),
-    ProductSchema: ProductSchema
+    ProductSchema: ProductSchema,
 };
