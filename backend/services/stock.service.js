@@ -2,16 +2,16 @@ const Stock = require("../models/Stock.model");
 
 _this = this;
 
-exports.getStocks = () => {
+exports.getStocks = async () => {
     try {
-        return Stock.find({});
-        // .populate("product")
-        //     .exec((error, result) => {
-        //         if (error) {
-        //             throw Error(error);
-        //         }
-        //         return result;
-        //     });
+        return await Stock.find()
+            .populate("product")
+            .exec((error, result) => {
+                if (error) {
+                    throw Error(error);
+                }
+                return result;
+            });
     } catch (e) {
         console.log("error services", e);
         throw Error("Error while Paginating Stocks");
