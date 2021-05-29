@@ -4,12 +4,14 @@ _this = this;
 
 exports.getStocks = () => {
     try {
-        return Stock.find().populate("product").exec((error, result) => {
-            if(error){
-                throw Error(error);
-            }
-            return result;
-        });
+        return Stock.find({});
+        // .populate("product")
+        //     .exec((error, result) => {
+        //         if (error) {
+        //             throw Error(error);
+        //         }
+        //         return result;
+        //     });
     } catch (e) {
         console.log("error services", e);
         throw Error("Error while Paginating Stocks");
@@ -18,12 +20,14 @@ exports.getStocks = () => {
 
 exports.getStock = (productId) => {
     try {
-        return Stock.find({ product: productId }).populate("Product").exec((error, result) => {
-            if (error) {
-                throw Error(error);
-            }
-            return result;
-        });
+        return Stock.find({ product: productId })
+            .populate("Product")
+            .exec((error, result) => {
+                if (error) {
+                    throw Error(error);
+                }
+                return result;
+            });
     } catch (e) {
         console.log("error services", e);
         throw Error("Error while searching Stock");

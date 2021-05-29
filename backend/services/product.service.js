@@ -1,10 +1,10 @@
-const Product = require("../models/Product.model");
+const { ProductModel } = require("../models/Product.model");
 
 _this = this;
 
 exports.getProducts = async () => {
     try {
-        const products = await Product.find({});
+        const products = await ProductModel.find({});
         return products;
     } catch (e) {
         console.log("error services", e);
@@ -14,7 +14,7 @@ exports.getProducts = async () => {
 
 exports.getProduct = async (productId) => {
     try {
-        const product = await Product.findById(productId);
+        const product = await ProductModel.findById(productId);
         return product;
     } catch (e) {
         console.log("error services", e);
@@ -23,16 +23,16 @@ exports.getProduct = async (productId) => {
 };
 
 exports.createProduct = async (product) => {
-    const newProduct = new Product({
+    const newProduct = new ProductModel({
         title: product.title,
         description: product.description,
         price: product.price,
         image: product.image,
-        imageText: productImageText
+        imageText: product.ImageText,
     });
 
     try {
-        await newProduct.save();
+        return await newProduct.save();
     } catch (e) {
         console.log(e);
         throw Error("Error while Creating Product");
@@ -41,7 +41,7 @@ exports.createProduct = async (product) => {
 
 exports.patchProduct = async (product) => {
     try {
-        await Product.findByIdAndUpdate(product._id, product);
+        await ProductModel.findByIdAndUpdate(product._id, product);
     } catch (e) {
         console.log(e);
         throw Error("Error while updating Product");
@@ -50,7 +50,7 @@ exports.patchProduct = async (product) => {
 
 exports.updateProduct = async (product) => {
     try {
-        await Product.findByIdAndUpdate(product._id, product);
+        await ProductModel.findByIdAndUpdate(product._id, product);
     } catch (e) {
         console.log(e);
         throw Error("Error while updating Product");
@@ -59,7 +59,7 @@ exports.updateProduct = async (product) => {
 
 exports.deleteProduct = async (productId) => {
     try {
-        await Product.deleteOne({ _id: productId });
+        await ProductModel.deleteOne({ _id: productId });
     } catch (e) {
         console.log(e);
         throw Error("Error while deleting Product");

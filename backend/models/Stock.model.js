@@ -3,7 +3,7 @@ const mongoosePaginate = require("mongoose-paginate");
 
 const StockSchema = new mongoose.Schema({
     product: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: "Product",
         required: true,
     },

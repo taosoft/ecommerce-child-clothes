@@ -1,14 +1,15 @@
 const ProductService = require("../services/product.service");
+const StockService = require("../services/stock.service");
 
 _this = this;
 
-exports.getStocks = async (req, res, next) => {
+exports.getStocks = (req, res, next) => {
     try {
-        const products = await ProductService.getProducts();
+        const stocks = StockService.getStocks();
         return res.status(200).json({
             status: 200,
-            data: products,
-            message: "Successfully Products Received",
+            data: stocks,
+            message: "Successfully Stocks Received",
         });
     } catch (e) {
         return res.status(500).json({ status: 500, message: e.message });
@@ -25,15 +26,19 @@ exports.createStock = async (req, res, next) => {
     };
     try {
         const createdProduct = await ProductService.createProduct(product);
-        const createdStock = await StockService.createStock(createdProduct._id, req.body.quantity);
+        const createdStock = await StockService.createStock(
+            createdProduct._id,
+            req.body.quantity
+        );
         return res
             .status(201)
             .json({ createdStock, message: "Successfully created Product" });
     } catch (e) {
         console.log(e);
-        return res
-            .status(500)
-            .json({ status: 500, message: "Product Creation was Unsuccessfull" });
+        return res.status(500).json({
+            status: 500,
+            message: "Product Creation was Unsuccessfull",
+        });
     }
 };
 
@@ -80,8 +85,9 @@ exports.deleteProduct = async (req, res, next) => {
             .json({ createdProduct, message: "Successfully deleted Product" });
     } catch (e) {
         console.log(e);
-        return res
-            .status(500)
-            .json({ status: 500, message: "Product deletion was Unsuccessfull" });
+        return res.status(500).json({
+            status: 500,
+            message: "Product deletion was Unsuccessfull",
+        });
     }
 };
