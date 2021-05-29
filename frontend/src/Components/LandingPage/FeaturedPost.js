@@ -33,7 +33,7 @@ export default function FeaturedPost({post}) {
   else {
     return (
       <Grid item xs={12} md={6}>
-        <CardActionArea component="a" onClick={() => setRedirect(`/product/${post.id}`)}>
+        <CardActionArea component="a" onClick={() => setRedirect(`/product/${post._id}`)}>
           <Card className={classes.card}>
             <div className={classes.cardDetails}>
               <CardContent>

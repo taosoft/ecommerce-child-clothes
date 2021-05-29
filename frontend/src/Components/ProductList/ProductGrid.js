@@ -28,7 +28,7 @@ export default function ProductGrid(){
     },[dispatch, products.length])
 
     const addProductToCart = (product) => {
-        let cartProduct = cartProducts.find(cartProduct => cartProduct.product?.id === product?.product.id);
+        let cartProduct = cartProducts.find(cartProduct => cartProduct.product?._id === product?.product._id);
         const newCartProduct = {
           product: product?.product,
           quantity: 1
@@ -62,10 +62,10 @@ export default function ProductGrid(){
                 <main>
                     <Grid container spacing={4}>
                         {products.map((product) => (
-                            <Grid item key={product.product.id} xs={12} sm={6} md={4} >
-                                <CardActionArea component="a" onClick={() => setRedirect(`/product/${product.product.id}`)}>
+                            <Grid item key={product.product._id} xs={12} sm={6} md={4} >
+                                <CardActionArea component="a" onClick={() => setRedirect(`/product/${product.product._id}`)}>
                                     <Product 
-                                        key={product.product.id}
+                                        key={product.product._id}
                                         price={product.product.price}
                                         description={product.product.description}
                                         title={product.product.title}

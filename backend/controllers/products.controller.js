@@ -17,7 +17,7 @@ exports.getProducts = async (req, res, next) => {
 
 exports.getProduct = async (req, res, next) => {
     try {
-        const product = await ProductService.getProduct(req.params.id);
+        const product = await ProductService.getProduct(req.params._id);
         return res.status(200).json({
             status: 200,
             data: product,
@@ -86,7 +86,7 @@ exports.updateProduct = async (req, res, next) => {
 
 exports.deleteProduct = async (req, res, next) => {
     try {
-        await ProductService.deleteProduct(req.body.id);
+        await ProductService.deleteProduct(req.body._id);
         return res
             .status(200)
             .json({ createdProduct, message: "Successfully deleted Product" });

@@ -30,7 +30,7 @@ export default function Review() {
       </Typography>
       <List disablePadding>
         {products.map((product) => (
-          <ListItem className={classes.listItem} key={product.product.id}>
+          <ListItem className={classes.listItem} key={product.product._id}>
             <ListItemText primary={product.product.title} secondary={product.product.description} />
             <Typography variant="body2">{product.quantity} x ${product.product.price} = ${product.product.price}</Typography>
           </ListItem>

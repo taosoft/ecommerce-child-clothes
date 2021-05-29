@@ -20,7 +20,7 @@ export const stockSlice = createSlice({
         state.products = [...state.products, action.payload];
     },
     updateProductStockSuccess: (state, action:PayloadAction<CartProduct>) => {
-        let stockProduct = state.products.find(product => product.product.id === action.payload.product?.id);
+        let stockProduct = state.products.find(product => product.product._id === action.payload.product?._id);
         stockProduct!.quantity = stockProduct!.quantity - action.payload.quantity;
         //Revisar
     },
