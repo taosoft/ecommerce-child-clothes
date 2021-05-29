@@ -27,8 +27,8 @@ exports.createProduct = async (product) => {
         title: product.title,
         description: product.description,
         price: product.price,
-        quantity: product.quantity,
-        image: product.image
+        image: product.image,
+        imageText: productImageText
     });
 
     try {

@@ -38,7 +38,7 @@ exports.createSale = async (req, res, next) => {
     // Req.Body contains the form submit values.
     console.log("llegue al controller", req.body);
     const Sale = {
-        product: req.body.product,
+        cartProducts: req.body.cartProducts,
         user: req.body.user,
     };
     try {

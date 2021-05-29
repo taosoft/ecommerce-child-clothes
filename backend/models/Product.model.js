@@ -14,10 +14,6 @@ const ProductSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    quantity: {
-        type: Number,
-        required: true,
-    },
     image: {
         type: String,
         required: true,
@@ -29,4 +25,7 @@ const ProductSchema = new mongoose.Schema({
 
 ProductSchema.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("Product", ProductSchema);
+module.exports = {
+    ProductModel: mongoose.model("Product", ProductSchema),
+    ProductSchema: ProductSchema
+};

@@ -2,11 +2,19 @@ const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate");
 
 const SaleSchema = new mongoose.Schema({
-    product: {
-        type: mongoose.Schema.ObjectId,
-        ref: "Product",
-        required: true,
-    },
+    cartProducts:
+        [
+            {
+                product: {
+                    type: ProductSchema,
+                    required: true,
+                },
+                quantity: {
+                    type: Number,
+                    required: true,
+                }
+            }
+        ],
     user: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
@@ -15,11 +23,7 @@ const SaleSchema = new mongoose.Schema({
     creationDate: {
         type: Date,
         default: new Date(),
-    },
-    quantity: {
-        type: Number,
-        required: true,
-    },
+    }
 });
 
 SaleSchema.plugin(mongoosePaginate);
