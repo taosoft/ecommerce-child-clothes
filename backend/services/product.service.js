@@ -28,7 +28,8 @@ exports.createProduct = async (product) => {
         description: product.description,
         price: product.price,
         quantity: product.quantity,
-        image: product.image
+        image: product.image,
+        imageText: product.imageText,
     });
 
     try {
@@ -59,7 +60,7 @@ exports.updateProduct = async (product) => {
 
 exports.deleteProduct = async (productId) => {
     try {
-        await Product.deleteOne({_id: productId});
+        await Product.deleteOne({ _id: productId });
     } catch (e) {
         console.log(e);
         throw Error("Error while deleting Product");

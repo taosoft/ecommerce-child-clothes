@@ -35,6 +35,7 @@ exports.createProduct = async (req, res, next) => {
         price: req.body.price,
         quantity: req.body.quantity,
         image: req.body.image,
+        imageText: req.body.imageText,
     };
     try {
         const createdProduct = await ProductService.createProduct(product);
@@ -45,7 +46,10 @@ exports.createProduct = async (req, res, next) => {
         console.log(e);
         return res
             .status(500)
-            .json({ status: 500, message: "Product Creation was Unsuccessfull" });
+            .json({
+                status: 500,
+                message: "Product Creation was Unsuccessfull",
+            });
     }
 };
 
@@ -94,6 +98,9 @@ exports.deleteProduct = async (req, res, next) => {
         console.log(e);
         return res
             .status(500)
-            .json({ status: 500, message: "Product deletion was Unsuccessfull" });
+            .json({
+                status: 500,
+                message: "Product deletion was Unsuccessfull",
+            });
     }
 };
