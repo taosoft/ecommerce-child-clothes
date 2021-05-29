@@ -40,11 +40,10 @@ UserSchema.methods.enviarEmailVerificacion = function (cb) {
         from: "no-reply@ecommerce.com",
         to: email_destino,
         subject: "Verificación de cuenta",
-        text:
-            "Hola, \n\n" +
-            "Verifique su cuenta haciendo click en el siguiente link: " +
-            "http://localhost:4000/api/users/confirmation/" +
-            this._id,
+        html:
+            '<p>Haga click en el enlace <a href="http://localhost:4000/api/users/confirmation/' +
+            this._id +
+            '">here</a> para resetear su contraseña.</p>',
     };
 
     mailer.sendMail(mailOptions, (err) => {
