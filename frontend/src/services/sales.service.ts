@@ -9,7 +9,7 @@ const sales: Sale[] = [
           {
               product:
               {
-                id: "1",
+                _id: "1",
                 title: 'Featured post',
                 price: 1000,
                 description:

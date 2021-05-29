@@ -38,7 +38,7 @@ function SingleProduct(props: any) {
     const classes = useStyles();
     const [count, setCount] = useState(1);
     const stockProducts = useSelector(selectStock);
-    const product = stockProducts.find(product => product.product.id === props.match.params.id);
+    const product = stockProducts.find(product => product.product._id === props.match.params._id);
     const stock = product?.quantity;
     const cartProducts = useSelector(selectCartProducts);
 
@@ -51,7 +51,7 @@ function SingleProduct(props: any) {
     },[dispatch, stockProducts.length])
 
     const addProductToCart = () => {
-      let cartProduct = cartProducts.find(cartProduct => cartProduct.product?.id === product?.product.id);
+      let cartProduct = cartProducts.find(cartProduct => cartProduct.product?._id === product?.product._id);
       const newCartProduct: CartProduct = {
         product: product?.product,
         quantity: count
@@ -76,7 +76,7 @@ function SingleProduct(props: any) {
               <div className={classes.cardDetails}>
                 <Typography component="h2" variant="h5">
                   <Product
-                      key={product?.product.id}
+                      key={product?.product._id}
                       price={product?.product.price}
                       description={product?.product.description}
                       title={product?.product.title}

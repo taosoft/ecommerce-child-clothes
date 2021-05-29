@@ -21,7 +21,7 @@ exports.getSales = async (req, res, next) => {
 
 exports.getSale = async (req, res, next) => {
     try {
-        const Sale = await SaleService.getSale(req.params.id);
+        const Sale = await SaleService.getSale(req.params._id);
         // Return the Users list with the appropriate HTTP password Code and Message.
         return res.status(200).json({
             status: 200,

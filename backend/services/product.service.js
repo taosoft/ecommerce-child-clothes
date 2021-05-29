@@ -41,7 +41,7 @@ exports.createProduct = async (product) => {
 
 exports.patchProduct = async (product) => {
     try {
-        await Product.findByIdAndUpdate(product.id, product);
+        await Product.findByIdAndUpdate(product._id, product);
     } catch (e) {
         console.log(e);
         throw Error("Error while updating Product");
@@ -50,7 +50,7 @@ exports.patchProduct = async (product) => {
 
 exports.updateProduct = async (product) => {
     try {
-        await Product.findByIdAndUpdate(product.id, product);
+        await Product.findByIdAndUpdate(product._id, product);
     } catch (e) {
         console.log(e);
         throw Error("Error while updating Product");

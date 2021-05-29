@@ -21,7 +21,7 @@ export const cartSlice = createSlice({
       state.products = [];
     },
     updateCartProductSuccess: (state, action:PayloadAction<CartProduct>) => {
-      let cartProduct = state.products.find(product => product.product?.id === action.payload.product?.id);
+      let cartProduct = state.products.find(product => product.product?._id === action.payload.product?._id);
       cartProduct!.quantity = action.payload.quantity;
       //Revisar
     },

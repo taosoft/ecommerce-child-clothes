@@ -40,7 +40,10 @@ export const { loadProductsSuccess, loadProductsFailed, loadingProducts } = land
 export const loadLandingPageProducts = (): AppThunk => dispatch => {
   dispatch(loadingProducts());
   getLandingPageProducts()
-    .then(response => dispatch(loadProductsSuccess(response.data)))
+    .then(response => {
+      console.log(response.data.data);
+      dispatch(loadProductsSuccess(response.data.data))
+    })
     .catch(() => dispatch(loadProductsFailed()));
 };
 
