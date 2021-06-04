@@ -1,27 +1,7 @@
 const ProductService = require("../services/product.service");
 const StockService = require("../services/stock.service");
-const Stock = require("../models/Stock.model");
 
 _this = this;
-
-// exports.getStocks = async (req, res, next) => {
-//     try {
-//         return await Stock.find()
-//             .populate("product")
-//             .exec((error, result) => {
-//                 if (error) {
-//                     throw Error(error);
-//                 }
-//                 return res.status(200).json({
-//                     status: 200,
-//                     data: result,
-//                     message: "Successfully Stocks Received",
-//                 });
-//             });
-//     } catch (e) {
-//         return res.status(500).json({ status: 500, message: e.message });
-//     }
-// };
 
 exports.getStocks = async (req, res, next) => {
     try {

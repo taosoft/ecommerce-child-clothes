@@ -2,10 +2,10 @@ const { ProductModel } = require("../models/Product.model");
 
 _this = this;
 
-exports.getProducts = async () => {
+exports.getProducts = async (quantity) => {
     try {
-        const products = await ProductModel.find({});
-        return products;
+        quantity = quantity ?? 0;
+        return await ProductModel.find({}).sort({_id: -1}).limit(quantity);
     } catch (e) {
         console.log("error services", e);
         throw Error("Error while Paginating Products");

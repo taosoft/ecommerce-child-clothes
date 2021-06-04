@@ -4,7 +4,7 @@ _this = this;
 
 exports.getProducts = async (req, res, next) => {
     try {
-        const products = await ProductService.getProducts();
+        const products = await ProductService.getProducts(req.query.quantity);
         return res.status(200).json({
             status: 200,
             data: products,
