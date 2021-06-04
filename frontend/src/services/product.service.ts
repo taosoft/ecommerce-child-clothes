@@ -124,7 +124,7 @@ import Zapatilla from '../Images/zapatilla'
 
 
 export async function getLandingPageProducts(): Promise<any> {
-    return await axios.get<Product[]>("http://localhost:4000" + "/api/products");
+    return await axios.get<Product[]>(process.env.BASE_URL + "/api/products");
 }
 
 export async function getStockProducts(): Promise<AxiosResponse<StockProduct[]>> {
