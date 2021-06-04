@@ -4,8 +4,8 @@ _this = this;
 
 exports.getProducts = async (quantity) => {
     try {
-        quantity = quantity ?? 0;
-        return await ProductModel.find({}).sort({_id: -1}).limit(quantity);
+        quantity = quantity ? quantity : 0;
+        return await ProductModel.find({}).limit(Number(quantity));
     } catch (e) {
         console.log("error services", e);
         throw Error("Error while Paginating Products");
