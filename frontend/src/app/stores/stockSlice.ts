@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import CartProduct from '../../models/cartProduct';
 import { StockProduct } from '../../models/stockProduct';
-import { getStockProducts } from '../../services/product.service';
+import { getStockProducts, createStockProduct } from '../../services/product.service';
 import { AppThunk, RootState } from '../store';
 
 interface StockState {
@@ -47,7 +47,13 @@ export const {
 
 export const loadStockProducts = (): AppThunk => dispatch => {
   getStockProducts()
-    .then(response => dispatch(loadProducts(response.data)))
+    .then(response => dispatch(loadProducts(response.data.data)))
+    .catch(() => dispatch(loadProductsFailed()));
+};
+
+export const addStockProduct = (productDescription: any): AppThunk => dispatch => {
+  createStockProduct(productDescription)
+    .then(response => dispatch(addProductSuccess(response.data.data)))
     .catch(() => dispatch(loadProductsFailed()));
 };
 

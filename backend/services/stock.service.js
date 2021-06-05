@@ -18,15 +18,15 @@ exports.getStocks = async (cb) => {
     }
 };
 
-exports.getStock = (productId) => {
+exports.getStock = async (productId, cb) => {
     try {
-        return Stock.find({ product: productId })
-            .populate("Product")
+        return await Stock.findOne({ product: productId })
+            .populate("product")
             .exec((error, result) => {
                 if (error) {
                     throw Error(error);
                 }
-                return result;
+                cb(result);
             });
     } catch (e) {
         console.log("error services", e);

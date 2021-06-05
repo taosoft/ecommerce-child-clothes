@@ -9,3 +9,7 @@ export async function getLandingPageProducts(): Promise<any> {
 export async function getStockProducts(): Promise<any> {
   return await axios.get<StockProduct[]>("http://localhost:4000" + "/api/stock");
 }
+
+export async function createStockProduct(productDescription: any): Promise<any> {
+  return await axios.post<StockProduct[]>("http://localhost:4000" + "/api/stock", productDescription);
+}

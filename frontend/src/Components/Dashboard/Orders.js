@@ -41,8 +41,8 @@ function Row(props) {
           {new Intl.DateTimeFormat('es-ES', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(row.date)}
         </TableCell>
         <TableCell>{row.user.firstName} {row.user.lastName}</TableCell>
-        <TableCell align="right">{row.products.length}</TableCell>
-        <TableCell align="right">${row.products.map(product => product.product.price * product.quantity)?.reduce((a,b) => a + b).toFixed(2)}</TableCell>
+        <TableCell align="right">{row.cartProducts.length}</TableCell>
+        <TableCell align="right">${row.cartProducts.map(product => product.product.price * product.quantity)?.reduce((a,b) => a + b).toFixed(2)}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -62,7 +62,7 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.products.map((product) => (
+                  {row.cartProducts.map((product) => (
                     <TableRow key={product.product._id}>
                       <TableCell component="th" scope="row">
                         {product.product.title}

@@ -19,6 +19,7 @@ export const saleSlice = createSlice({
       state.sales = [...state.sales, action.payload];
     },
     loadSalesSuccess: (state, action: PayloadAction<Sale[]>) => {
+      console.log(action.payload);
       state.sales = action.payload;
     },
     loadSalesFailed: (state) => {
@@ -31,7 +32,7 @@ export const { addSale, loadSalesSuccess, loadSalesFailed } = saleSlice.actions;
 
 export const loadSales = (): AppThunk => dispatch => {
   getSales()
-    .then(response => dispatch(loadSalesSuccess(response.data)))
+    .then(response => dispatch(loadSalesSuccess(response.data.data)))
     .catch(() => dispatch(loadSalesFailed()));
 };
 

@@ -8,7 +8,7 @@ import AddressForm from './AddressForm';
 import Footer from '../LandingPage/Footer'
 import Header from '../LandingPage/Header';
 import { useDispatch } from 'react-redux';
-import { addProductSuccess } from '../../app/stores/stockSlice';
+import { addProductSuccess, addStockProduct } from '../../app/stores/stockSlice';
 import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -62,16 +62,14 @@ export default function AddProduct() {
     if(title !== '' && description !== '' && price !== 0 && stock !== 0 && image !== null) {
       // Se carga el producto al store
       let newProduct = {
-        product: {
-          title: title,
-          price: price,
-          description: description,
-          image: image,
-          imageText: "Texto de imagen"
-        },
+        title: title,
+        price: price,
+        description: description,
+        image: image,
+        imageText: title,
         quantity: Math.floor(Math.random() * 100)
       }
-      dispatch(addProductSuccess(newProduct));
+      dispatch(addStockProduct(newProduct));
       setRedirect('dashboard/products')
     }
     else {

@@ -16,6 +16,19 @@ exports.getStocks = async (req, res, next) => {
     }
 };
 
+exports.getStock = async (req, res, next) => {
+    try {
+        await StockService.getStock(req.params._id, (result) => {
+            return res.status(200).json({
+                data: result,
+                message: "Successfully Stocks Received",
+            });
+        });
+    } catch (e) {
+        return res.status(500).json({ message: e.message });
+    }
+};
+
 exports.createStock = async (req, res, next) => {
     const product = {
         title: req.body.title,
@@ -26,13 +39,16 @@ exports.createStock = async (req, res, next) => {
     };
     try {
         const createdProduct = await ProductService.createProduct(product);
-        const createdStock = await StockService.createStock(
+        await StockService.createStock(
             createdProduct._id,
             req.body.quantity
         );
-        return res
-            .status(201)
-            .json({ createdStock, message: "Successfully created Product" });
+        await StockService.getStock(createdProduct._id, (result) => {
+            return res.status(201).json({
+                data: result,
+                message: "Successfully created Product",
+            });
+        });
     } catch (e) {
         console.log(e);
         return res.status(500).json({
