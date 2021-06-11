@@ -15,10 +15,21 @@ const stockRouter = require("./routes/stock");
 
 const app = express();
 
+let corsOptions;
+if (process.env.ENV_NODE == "devolopment") {
+    corsOptions = {
+        origin: `http://localhost:${process.env.PORT}`,
+    };
+} else {
+    corsOptions = {
+        origin: "nuestra url",
+    };
+}
+
 app.use(logger("dev"));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: false, limit: "50mb" }));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(cookieParser());
 
 app.use("/api/users", usersRouter);
