@@ -16,7 +16,7 @@ const stockRouter = require("./routes/stock");
 const app = express();
 
 let corsOptions;
-if (process.env.ENV_NODE == "devolopment") {
+if (process.env.ENV_NODE == "development") {
     corsOptions = {
         origin: `http://localhost:${process.env.PORT}`,
     };
