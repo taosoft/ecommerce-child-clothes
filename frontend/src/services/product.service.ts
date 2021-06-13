@@ -2,7 +2,7 @@ import axios from 'axios';
 import Product from '../models/product';
 import { StockProduct } from '../models/stockProduct';
 
-const baseUrl = process.env.REACT_APP_BASE_URL || ""
+const baseUrl = 'http://localhost:4000' || ""
 
 export async function getLandingPageProducts(): Promise<any> {
   return await axios.get<Product[]>(baseUrl + "/api/products?quantity=4");
