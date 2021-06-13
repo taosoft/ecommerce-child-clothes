@@ -16,7 +16,7 @@ const app = express();
 
 if (process.env.ENV_NODE == "development") {
     let corsOptions = {
-        origin: `http://localhost:${process.env.PORT}`,
+        origin: `http://localhost:3000`,
     };
     app.use(cors(corsOptions));
 }
@@ -31,11 +31,13 @@ app.use("/api/sales", salesRouter);
 app.use("/api/products", productRouter);
 app.use("/api/stock", stockRouter);
 
-if(process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
     // set static folder
-    app.use(express.static('frontend/build'));
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    app.use(express.static("frontend/build"));
+    app.get("*", (req, res) => {
+        res.sendFile(
+            path.resolve(__dirname, "frontend", "build", "index.html")
+        );
     });
 }
 
@@ -52,7 +54,7 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render("error");
+    res.json({ error: "error" });
 });
 
 // Connection to MongoDB
