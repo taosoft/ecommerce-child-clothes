@@ -2,6 +2,7 @@ const createError = require("http-errors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const bluebird = require("bluebird");
 require("dotenv/config");
@@ -12,6 +13,13 @@ const productRouter = require("./routes/products");
 const stockRouter = require("./routes/stock");
 
 const app = express();
+
+if (process.env.ENV_NODE == "development") {
+    let corsOptions = {
+        origin: `http://localhost:${process.env.PORT}`,
+    };
+    app.use(cors(corsOptions));
+}
 
 app.use(logger("dev"));
 app.use(express.json({ limit: "50mb" }));

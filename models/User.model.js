@@ -41,7 +41,7 @@ UserSchema.methods.enviarEmailVerificacion = function (cb) {
         to: email_destino,
         subject: "Verificación de cuenta",
         html:
-            '<p>Haga click en el enlace <a href="http://localhost:4000/api/users/confirmation/' +
+            '<p>Haga click en el enlace <a href="https://small-world-ecommerce.herokuapp.com/api/users/confirmation/' +
             this._id +
             '">here</a> para resetear su contraseña.</p>',
     };
