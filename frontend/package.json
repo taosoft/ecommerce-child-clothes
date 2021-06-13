@@ -17,7 +17,7 @@
     "react-material-ui-carousel": "^2.2.4",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "react-swipeable-views": "^0.13.9",
     "react-window": "^1.8.6",
     "recharts": "^2.0.9",
