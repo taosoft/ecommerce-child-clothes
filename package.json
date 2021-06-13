@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "devstart": "nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "devstart": "node ./bin/www",
     "test": "jasmine",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
   },
