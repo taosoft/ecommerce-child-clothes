@@ -7,7 +7,7 @@ import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
 import AddProduct from './Components/Dashboard/AddProduct'
 import Checkout from "./Components/Cart/Checkout";
-
+import ProductList from './Components/Dashboard/ProductList';
 
 function Router() {
   return (
@@ -17,6 +17,7 @@ function Router() {
             <Route path="/products" component={ProductGrid}/>
             <Route path="/product/:id" component={SingleProduct}/>
             <Route path="/cart" component={Checkout}/>
+            <Route path="/dashboard/product-list" component={ProductList}/>
             <Route path="/dashboard/add-product" component={AddProduct}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/login" component={Login}/>
