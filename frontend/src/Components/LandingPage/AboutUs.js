@@ -3,21 +3,26 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Header from './Header';
-import FacebookIcon from '@material-ui/icons/Facebook';
+import MapIcon from '@material-ui/icons/Map';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 
-function Copyright() {
+function Footer() {
   return (
-    <Typography variant="body2" color="textSecondary">
+    <Typography>
         <Typography variant="body2" color="textSecondary">
-            <EmailIcon /> aboutus@smallworld.com
+            <Typography variant="body2" color="textSecondary">
+                <EmailIcon /> aboutus@smallworld.com
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+                <PhoneIcon /> 11 4878-8756
+            </Typography>
+            <Typography variant="body2" color="textSecondary">
+                <MapIcon /> Lima 775, Ciudad Autónoma de Buenos Aires
+            </Typography>
         </Typography>
-        <Typography variant="body2" color="textSecondary">
-            <PhoneIcon /> 11 4878-8756
-        </Typography>
-        <Typography variant="body2" color="textSecondary">
-            <FacebookIcon /> Small World
+        <Typography variant="body2" color="textSecondary" align="center">
+            Copyright © Ecommerce - Small World {new Date().getFullYear()}
         </Typography>
     </Typography>
   );
@@ -30,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100vh',
   },
   main: {
-    marginTop: theme.spacing(3),
-    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(0),
+    marginBottom: theme.spacing(1),
   },
   footer: {
     padding: theme.spacing(1, 1),
@@ -68,7 +73,7 @@ export default function StickyFooter() {
       </Container>
       <footer className={classes.footer}>
         <Container maxWidth="lg">
-          <Copyright />
+          <Footer />
         </Container>
       </footer>
     </div>
