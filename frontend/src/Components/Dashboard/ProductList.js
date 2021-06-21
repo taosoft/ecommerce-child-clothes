@@ -22,10 +22,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MainListItems from './listItems'
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import HomeIcon from '@material-ui/icons/Home'
 
 const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -140,6 +141,18 @@ const rows = [
 function ProductTable() {
     const classes = useStyles();
 
+    const deleteIcon = (
+        <IconButton onClick={console.log("delete")}>
+            <DeleteIcon color="secondary" />
+        </IconButton>
+    );
+
+    const editIcon = () => {
+        <IconButton onClick={console.log("edited")}>
+            <EditIcon color="primary" />
+        </IconButton>
+    };
+
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
@@ -148,18 +161,20 @@ function ProductTable() {
                         <TableCell>Titulo</TableCell>
                         <TableCell align="right">Descripcion</TableCell>
                         <TableCell align="right">Stock</TableCell>
-                        <TableCell align="right">Precio)</TableCell>
+                        <TableCell align="right">Precio</TableCell>
+                        <TableCell align="right">Editar</TableCell>
+                        <TableCell align="right">Eliminar</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {rows.map((row, index) => (
                         <TableRow key={row.name}>
-                            <TableCell component="th" scope="row">
-                                {row.name}
-                            </TableCell>
+                            <TableCell component="th" scope="row">{row.name}</TableCell>
                             <TableCell align="right">{row.calories}</TableCell>
                             <TableCell align="right">{row.fat}</TableCell>
                             <TableCell align="right">{row.carbs}</TableCell>
+                            <TableCell align="right">{editIcon(index)}</TableCell>
+                            <TableCell align="right">{deleteIcon}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
