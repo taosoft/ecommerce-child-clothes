@@ -8,7 +8,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import AddProduct from './Components/Dashboard/AddProduct'
 import Checkout from "./Components/Cart/Checkout";
 import ProductList from './Components/Dashboard/ProductList';
-import AboutUs from './Components/LandingPage/AboutUs';
+import AboutUs from './Components/LandingPage/AboutUs'
 
 function Router() {
   return (
