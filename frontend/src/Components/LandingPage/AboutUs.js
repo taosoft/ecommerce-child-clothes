@@ -58,7 +58,13 @@ export default function StickyFooter() {
           Acerca de Small World
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
-            Somos una empresa en pleno crecimiento y con grandes expectativas. Nuestro propósito es ser la empresa más grande de ropa de niños en América Latina, otorgando calidad y precios accesibles.
+            Somos una empresa en pleno crecimiento y con grandes expectativas. 
+        </Typography>
+        <Typography variant="h5" component="h2" gutterBottom>
+            Nuestro propósito es ser la empresa más grande de ropa de niños en América Latina, otorgando calidad y precios accesibles.
+        </Typography>
+        <Typography variant="h5" component="h2" gutterBottom>
+            Nuestro propósito es ser la empresa más grande de ropa de niños en América Latina, otorgando calidad y precios accesibles.
         </Typography>
       </Container>
       <Container maxWidth="lg">
