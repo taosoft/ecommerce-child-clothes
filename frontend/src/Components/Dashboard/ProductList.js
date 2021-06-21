@@ -16,7 +16,7 @@ import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home'
 import MaterialTable from "@material-table/core";
 import { useDispatch, useSelector } from 'react-redux';
-import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
+import { loadStockProducts, selectStock, updateProductStock, deleteProductStock } from '../../app/stores/stockSlice';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -118,7 +118,15 @@ function Copyright() {
     );
   }
 
-const ProductTable = ({ data }) => {
+const ProductTable = () => {
+
+  const products = [...useSelector(selectStock)];
+  const dispatch = useDispatch();  
+  useEffect(() => {
+    if(products.length === 0){
+        dispatch(loadStockProducts());
+    }
+  },[dispatch, products.length])
 
   const columns = [
     {title: "Titulo", field: "product.title"},
@@ -129,32 +137,21 @@ const ProductTable = ({ data }) => {
   return (
         <MaterialTable
           columns={columns}
-          data={data}
-          actions={[
-            {
-              icon: 'edit',
-              tooltip: 'Editar',
-              onClick: (event, rowData) => {
-                console.log(rowData)
-              }
-            },
-            {
-              icon: 'delete',
-              tooltip: 'Eliminar',
-              onClick: (event, rowData) => {
-                alert(rowData)
-              }
-            }
-          ]}
+          data={products}
+          editable={{
+            onRowUpdate: (newData, oldData) => {
+              dispatch(updateProductStock(newData));
+          },
+          onRowDelete: data =>  {
+            dispatch(deleteProductStock(data._id));
+          }
+        }}
         />
   )
 }
 
 export default function ProductList() {
   const classes = useStyles();
-  const products = [...useSelector(selectStock)];
-  const dispatch = useDispatch();  
-
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -162,12 +159,6 @@ export default function ProductList() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  useEffect(() => {
-    if(products.length === 0){
-        dispatch(loadStockProducts());
-    }
-  },[dispatch, products.length])
 
   return (
     <div className={classes.root}>
@@ -207,7 +198,7 @@ export default function ProductList() {
           <MainListItems />
         </Drawer>
         <main className={classes.content}>
-          <ProductTable data={products} />
+          <ProductTable />
           <div className={classes.appBarSpacer} />
             <Copyright />
         </main>
