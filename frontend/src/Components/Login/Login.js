@@ -2,8 +2,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -28,7 +26,11 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-  },
+    backgroundColor: '#b53f3fb8',
+    '&:hover': {
+      backgroundColor: '#b53f3f'
+    }
+  }
 }));
 
 export default function Login() {
@@ -51,7 +53,7 @@ export default function Login() {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Email"
             name="email"
             autoComplete="email"
             autoFocus
@@ -62,7 +64,7 @@ export default function Login() {
             required
             fullWidth
             name="password"
-            label="Password"
+            label="Contraseña"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -73,13 +75,14 @@ export default function Login() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            // onClick={}
           >
-            Sign In
+            Ingresar
           </Button>
           <Grid container>
             <Grid item>
               <Link to="/singup" variant="body2">
-                {"Don't have an account? Sign Up"}
+                {"Todavía no tiene cuenta? Regístrese"}
               </Link>
             </Grid>
           </Grid>

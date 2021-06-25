@@ -120,7 +120,7 @@ export default function Checkout() {
                     className={classes.button}
                     disabled={cartProducts.length === 0}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Comprar' : 'Siguiente'}
                   </Button>
                 </div>
               </React.Fragment>

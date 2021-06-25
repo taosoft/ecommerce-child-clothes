@@ -20,9 +20,10 @@ import { Redirect, Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
 import { useSelector } from 'react-redux';
-import { selectIsLogged } from '../../app/stores/authSlice';
+import { selectIsLogged, selectLoggedUser } from '../../app/stores/authSlice';
 import CardBadge from '../ProductList/CardBadge';
 import { selectCartCount } from '../../app/stores/cartSlice';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,12 +83,20 @@ const useStyles = makeStyles((theme) => ({
   fullList: {
     width: 'auto',
   },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    flex: '1 0 auto',
+    margin: theme.spacing(1),
+  },
 }));
 
 export default function Header({ showSearchBar = true, showCartBadge = true , searchText = null}) {
   const classes = useStyles();
   const isLoggedIn = useSelector(selectIsLogged);
   const cartCount = useSelector(selectCartCount);
+  const loggedUser = useSelector(selectLoggedUser);
   
   const [redirect, setRedirect] = useState(null)
   const [state, setState] = useState({
@@ -96,7 +105,10 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
   });
 
   const redirectToCart = () => {
-    setRedirect('/cart');
+    if (isLoggedIn)
+      setRedirect('/cart');
+    else 
+      setRedirect('/login');
   }
 
   const handleSearch = (event) => {
@@ -125,6 +137,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
     >
       <List>
         {[{text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products"}, 
+          // {text: 'Dashboard', show: loggedUser?.isAdmin, component: DashboardIcon, path: "/dashboard"}]
           {text: 'Dashboard', show: true, component: DashboardIcon, path: "/dashboard"}]
           .filter((data) => data.show === true)
           .map((data, index) => {
@@ -156,6 +169,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
               );
             }
         )}
+        {isLoggedIn && (<Paper className={classes.paper}>{loggedUser.firstName + ' ' + loggedUser.lastName}</Paper>)}
       </List>
     </div>
   );

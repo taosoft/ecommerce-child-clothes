@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+    backgroundColor: '#b53f3fb8',
+    '&:hover': {
+      backgroundColor: '#b53f3f'
+    }
   },
 }));
 
@@ -52,7 +56,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Nombre"
                 autoFocus
               />
             </Grid>
@@ -62,7 +66,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="lastName"
-                label="Last Name"
+                label="Apellido"
                 name="lastName"
                 autoComplete="lname"
               />
@@ -73,7 +77,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Email"
                 name="email"
                 autoComplete="email"
               />
@@ -84,7 +88,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -98,12 +102,12 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            Registrar
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/login" variant="body2">
-                Already have an account? Sign in
+                Ya está registrado? Ingrese
               </Link>
             </Grid>
           </Grid>

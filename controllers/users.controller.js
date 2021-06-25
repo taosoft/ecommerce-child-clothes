@@ -11,7 +11,7 @@ exports.getUsers = async (req, res, next) => {
         return res.status(200).json({
             status: 200,
             data: Users,
-            message: "Succesfully Users Recieved",
+            message: "Successfully Users Received",
         });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
@@ -26,7 +26,7 @@ exports.getUser = async (req, res, next) => {
         return res.status(200).json({
             status: 200,
             data: Users,
-            message: "Succesfully User Recieved",
+            message: "Successfully Users Received",
         });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
@@ -49,7 +49,7 @@ exports.createUser = async (req, res, next) => {
         newUser.createdUser.enviarEmailVerificacion();
         return res
             .status(201)
-            .json({ token, message: "Succesfully Created User" });
+            .json({ token, message: "Successfully Created User" });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         console.log(e);
@@ -71,7 +71,7 @@ exports.loginUser = async (req, res, next) => {
         const loginUser = await UserService.loginUser(User);
         return res
             .status(201)
-            .json({ loginUser, message: "Succesfully login" });
+            .json({ loginUser, message: "Successfully login" });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         return res.status(400).json({ status: 400, message: e.message });
