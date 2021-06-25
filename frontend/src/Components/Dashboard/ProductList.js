@@ -16,7 +16,7 @@ import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home'
 import MaterialTable from "@material-table/core";
 import { useDispatch, useSelector } from 'react-redux';
-import { loadStockProducts, selectStock, updateProductStock, deleteProductStock } from '../../app/stores/stockSlice';
+import { loadStockProducts, selectStock, updateStockProduct, deleteProductStock } from '../../app/stores/stockSlice';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -140,11 +140,11 @@ const ProductTable = () => {
           data={products}
           editable={{
             onRowUpdate: (newData, oldData) => {
-              dispatch(updateProductStock(newData));
+              dispatch(updateStockProduct(newData));
           },
-          onRowDelete: data =>  {
-            dispatch(deleteProductStock(data._id));
-          }
+          // onRowDelete: data =>  {
+          //   dispatch(deleteProductStock(data._id));
+          // }
         }}
         />
   )
