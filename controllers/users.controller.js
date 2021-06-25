@@ -45,11 +45,10 @@ exports.createUser = async (req, res, next) => {
     try {
         // Calling the Service function with the new object from the Request Body
         const newUser = await UserService.createUser(User);
-        const token = newUser.token;
         newUser.createdUser.enviarEmailVerificacion();
         return res
             .status(201)
-            .json({ token, message: "Successfully Created User" });
+            .json({ newUser, message: "Successfully Created User" });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         console.log(e);

@@ -137,8 +137,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
     >
       <List>
         {[{text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products"}, 
-          // {text: 'Dashboard', show: loggedUser?.isAdmin, component: DashboardIcon, path: "/dashboard"}]
-          {text: 'Dashboard', show: true, component: DashboardIcon, path: "/dashboard"}]
+          {text: 'Dashboard', show: loggedUser?.user?.isAdmin, component: DashboardIcon, path: "/dashboard"}]
           .filter((data) => data.show === true)
           .map((data, index) => {
               const SpecificIcon = data.component;
@@ -169,7 +168,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
               );
             }
         )}
-        {isLoggedIn && (<Paper className={classes.paper}>{loggedUser.firstName + ' ' + loggedUser.lastName}</Paper>)}
+        {isLoggedIn && (<Paper className={classes.paper}>{loggedUser.user.name}</Paper>)}
       </List>
     </div>
   );

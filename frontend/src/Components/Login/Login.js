@@ -2,12 +2,17 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { loginUser, selectIsLoading } from '../../app/stores/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { useRef } from 'react'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,11 +35,25 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: '#b53f3f'
     }
-  }
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));
 
 export default function Login() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const isLogged = useSelector(selectIsLoading);
+
+  const emailRef = useRef('')
+  const passwordRef = useRef('') 
+
+  if(isLogged) {
+    return <Redirect push to={"/"} />
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -57,6 +76,7 @@ export default function Login() {
             name="email"
             autoComplete="email"
             autoFocus
+            inputRef={emailRef}
           />
           <TextField
             variant="outlined"
@@ -67,15 +87,15 @@ export default function Login() {
             label="Contraseña"
             type="password"
             id="password"
+            inputRef={passwordRef}
             autoComplete="current-password"
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            // onClick={}
+            onClick={() => dispatch(loginUser(emailRef.current.value, passwordRef.current.value))}
           >
             Ingresar
           </Button>
@@ -88,6 +108,9 @@ export default function Login() {
           </Grid>
         </form>
       </div>
+      <Backdrop className={classes.backdrop} open={isLoading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </Container>
   );
 }
