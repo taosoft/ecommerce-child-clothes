@@ -37,13 +37,12 @@ UserSchema.plugin(uniqueValidator);
 UserSchema.methods.enviarEmailVerificacion = function (cb) {
     const email_destino = this.email;
     const mailOptions = {
-        from: "no-reply@ecommerce.com",
+        from: "no-reply@smallworld.com",
         to: email_destino,
         subject: "Verificación de cuenta",
         html:
-            '<p>Haga click en el enlace <a href="https://small-world-ecommerce.herokuapp.com/api/users/confirmation/' +
-            this._id +
-            '">here</a> para resetear su contraseña.</p>',
+            '<p>Haga click en el enlace <a href="http://localhost:4000/api/users/confirmation/' +
+            this._id + '">acá</a> para confirmar su cuenta.</p>',
     };
 
     mailer.sendMail(mailOptions, (err) => {
