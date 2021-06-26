@@ -59,7 +59,7 @@ exports.updateProduct = async (product) => {
 
 exports.deleteProduct = async (productId) => {
     try {
-        await ProductModel.deleteOne({ _id: productId });
+        await ProductModel.findOneAndDelete({ _id: productId });
     } catch (e) {
         console.log(e);
         throw Error("Error while deleting Product");

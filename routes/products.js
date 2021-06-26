@@ -8,7 +8,7 @@ router.get("/:id", ProductController.getProduct);
 router.get("/", ProductController.getProducts);
 router.post("/", ProductController.createProduct);
 router.put("/", Authorization, ProductController.updateProduct);
-router.delete("/", Authorization, ProductController.deleteProduct);
+router.delete("/:id", ProductController.deleteProduct);
 router.patch("/", Authorization, ProductController.patchProduct);
 
 // Export the Router

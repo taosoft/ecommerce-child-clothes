@@ -17,5 +17,9 @@ export async function createStockProduct(productDescription: any): Promise<any> 
 }
 
 export async function updateProductStock(productDescription: any): Promise<any> {
-  return await axios.put<StockProduct[]>(baseUrl + "/api/stock", productDescription);
+  return await axios.put<StockProduct>(baseUrl + "/api/stock", productDescription);
+}
+
+export async function deleteStockProduct(productDescription: any): Promise<any> {
+  return await axios.delete<String>(baseUrl + "/api/products/" + productDescription._id);
 }

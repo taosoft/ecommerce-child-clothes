@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import CartProduct from '../../models/cartProduct';
 import { StockProduct } from '../../models/stockProduct';
-import { getStockProducts, createStockProduct, updateProductStock } from '../../services/product.service';
+import { getStockProducts, createStockProduct, updateProductStock, deleteStockProduct } from '../../services/product.service';
 import { AppThunk, RootState } from '../store';
+import { remove } from 'lodash';
 
 interface StockState {
   products: StockProduct[]
@@ -21,8 +22,14 @@ export const stockSlice = createSlice({
     },
     updateProductStockSuccess: (state, action: PayloadAction<CartProduct>) => {
       let stockProduct = state.products.find(product => product.product._id === action.payload.product?._id);
-      stockProduct!.quantity = stockProduct!.quantity - action.payload.quantity;
-      //Revisar
+      if (stockProduct) {
+        stockProduct.quantity = action.payload.quantity;
+        stockProduct.product = action.payload.product!;
+      }
+    },
+    deleteProductStockSuccess: (state, action: PayloadAction<String>) => {
+      let products = remove(state.products, (product: StockProduct) => product._id === action.payload);
+      state.products = products;
     },
     loadProducts: (state, action: PayloadAction<StockProduct[]>) => {
       state.products = action.payload;
@@ -42,6 +49,7 @@ export const {
   addProductSuccess,
   // addProductFailed, 
   updateProductStockSuccess,
+  deleteProductStockSuccess,
 } = stockSlice.actions;
 
 export const loadStockProducts = (): AppThunk => dispatch => {
@@ -58,7 +66,13 @@ export const addStockProduct = (productDescription: any): AppThunk => dispatch =
 
 export const updateStockProduct = (productDescription: any): AppThunk => dispatch => {
   updateProductStock(productDescription)
-    .then(response => dispatch(updateProductStockSuccess(response.data.data)))
+    .then(response => dispatch(updateProductStockSuccess(response.data.updatedStock)))
+    .catch((error) => console.log(error));
+};
+
+export const deleteProductStock = (productDescription: any): AppThunk => dispatch => {
+  deleteStockProduct(productDescription)
+    .then(response => dispatch(deleteProductStockSuccess(response.data.deletedStockId)))
     .catch((error) => console.log(error));
 };
 

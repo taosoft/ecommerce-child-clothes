@@ -74,36 +74,29 @@ exports.patchProduct = async (req, res, next) => {
 
 exports.updateProduct = async (req, res, next) => {
     const product = {
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
-        image: req.body.image,
-        imageText: req.body.imageText,
+        _id: req.body.product._id,
+        title: req.body.product.title,
+        description: req.body.product.description,
+        price: req.body.product.price,
+        image: req.body.product.image,
+        imageText: req.body.product.imageText,
+    };
+    const stock = {
+        _id: req.body._id,
+        quantity: req.body.quantity,
     };
     try {
         await ProductService.updateProduct(product);
-        return res
-            .status(200)
-            .json({ createdProduct, message: "Successfully updated Product" });
+        await StockService.updateStock(stock);
+        await StockService.getStock(product._id , (stock) => {
+            return res
+                .status(200)
+                .json({ updatedStock: stock , message: "Successfully updated Product and Stock" }); 
+        });
     } catch (e) {
         console.log(e);
         return res
             .status(500)
             .json({ status: 500, message: "Product update was Unsuccessfull" });
-    }
-};
-
-exports.deleteProduct = async (req, res, next) => {
-    try {
-        await ProductService.deleteProduct(req.body._id);
-        return res
-            .status(200)
-            .json({ createdProduct, message: "Successfully deleted Product" });
-    } catch (e) {
-        console.log(e);
-        return res.status(500).json({
-            status: 500,
-            message: "Product deletion was Unsuccessfull",
-        });
     }
 };

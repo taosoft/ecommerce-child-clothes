@@ -46,3 +46,12 @@ exports.createStock = async (productId, quantity) => {
         throw Error("Error while Creating Stock");
     }
 };
+
+exports.updateStock = async (product) => {
+    try {
+        await Stock.findByIdAndUpdate(product._id, product);
+    } catch (e) {
+        console.log(e);
+        throw Error("Error while updating Product");
+    }
+};

@@ -19,7 +19,6 @@ export const saleSlice = createSlice({
       state.sales = [...state.sales, action.payload];
     },
     loadSalesSuccess: (state, action: PayloadAction<Sale[]>) => {
-      console.log(action.payload);
       state.sales = action.payload;
     },
     loadSalesFailed: (state) => {

@@ -89,10 +89,12 @@ exports.updateProduct = async (req, res, next) => {
 
 exports.deleteProduct = async (req, res, next) => {
     try {
-        await ProductService.deleteProduct(req.body._id);
+        console.log(req.params.id);
+        const productId = req.params.id;
+        await ProductService.deleteProduct(productId);
         return res
             .status(200)
-            .json({ createdProduct, message: "Successfully deleted Product" });
+            .json({ deletedStockId: productId , message: "Successfully deleted Product" });
     } catch (e) {
         console.log(e);
         return res
