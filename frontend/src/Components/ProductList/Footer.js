@@ -3,9 +3,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     footer: {
-      backgroundColor: theme.palette.background.paper,
-      padding: theme.spacing(1),
-    },
+        padding: theme.spacing(1, 1),
+        marginTop: 'auto',
+        backgroundColor:
+          theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+      },
+    // footer: {
+    //   backgroundColor: theme.palette.background.paper,
+    //   padding: theme.spacing(1),
+    // },
   }));
 
 export default function Footer() {
