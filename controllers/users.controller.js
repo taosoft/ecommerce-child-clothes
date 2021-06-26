@@ -82,7 +82,7 @@ exports.confirmationGet = async (req, res, next) => {
         const user = await UserService.getUser(req.params._id);
         if (!user)
             return res.status(400).send({
-                message: "No se encontro el usuario especificado",
+                message: "No se encontró el usuario específicado",
             });
         if (user.verificado)
             return res.status(201).json({
@@ -90,9 +90,9 @@ exports.confirmationGet = async (req, res, next) => {
             });
         user.verificado = true;
         user.save();
-        return res.status(200).json({ message: "El usuario fue verificado" });
+        return res.status(200).json({ message: "Confirmation succesfully done", confirmation: false });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
-        return res.status(400).json({ status: 400, message: e.message });
+        return res.status(400).json({ status: 400, message: e.message, confirmation: false });
     }
 };

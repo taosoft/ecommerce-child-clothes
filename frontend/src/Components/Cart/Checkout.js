@@ -14,6 +14,11 @@ import Footer from '../LandingPage/Footer';
 import Header from '../LandingPage/Header';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
   appBar: {
     position: 'relative',
   },
@@ -86,7 +91,7 @@ export default function Checkout() {
   };
 
   return (
-    <React.Fragment>
+    <div className={classes.root}>
       <CssBaseline />
       <Header/>
       <main className={classes.layout}>
@@ -127,8 +132,8 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
-        <Footer />
       </main>
-    </React.Fragment>
+      <Footer />
+    </div>
   );
 }

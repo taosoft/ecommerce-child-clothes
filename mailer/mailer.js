@@ -10,9 +10,9 @@ const nodemailer = require("nodemailer");
 // });
 
 module.exports = nodemailer.createTransport({
-    service: 'Gmail',
+    service: process.env.MAIL_SERVICE,
     auth: {
-        user: "small.world.clothes@gmail.com",
-        pass: "@!BEAdJXX7#GB?Fh",
+        user: process.env.USER_MAIL,
+        pass: process.env.USER_PASSWORD,
     },
 });

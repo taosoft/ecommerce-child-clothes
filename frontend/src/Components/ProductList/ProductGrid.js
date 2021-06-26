@@ -2,8 +2,9 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Product from './Product';
 import Header from '../LandingPage/Header';
-import Footer from './Footer';
-import React, { useState, useEffect } from 'react'
+import Footer from '../LandingPage/Footer';
+import { makeStyles } from '@material-ui/core/styles';
+import { useState, useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import { Redirect } from 'react-router-dom';
@@ -12,7 +13,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
 import { addCartProduct, selectCartProducts, updateCartProductSuccess } from '../../app/stores/cartSlice';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+    },
+    container: {
+        minHeight: '100%',
+        margin: '0 auto 10px',
+        height: '100%',
+      },
+}));
+
 export default function ProductGrid(){
+    const classes = useStyles();
     const [redirect, setRedirect] = useState(null)
     const copia = [...useSelector(selectStock)];
     const cartProducts = useSelector(selectCartProducts);
@@ -54,10 +69,10 @@ export default function ProductGrid(){
         }
         
         return (
-            <React.Fragment>
+            <div className={classes.root}>
                 <CssBaseline />
                 <Header title="Small World" searchText={setSearch}/>
-                <Container maxWidth="lg">
+                <Container maxWidth="lg" className={classes.container}>
                 <ControlledOpenSelect state={estado} setState={setEstado} />
                 <main>
                     <Grid container spacing={4}>
@@ -79,7 +94,7 @@ export default function ProductGrid(){
                 </main>
                 </Container>
                 <Footer/>
-            </React.Fragment>
+            </div>
         )
     }
 }
