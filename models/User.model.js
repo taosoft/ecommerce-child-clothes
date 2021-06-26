@@ -46,7 +46,7 @@ UserSchema.methods.enviarEmailVerificacion = function (cb) {
         to: email_destino,
         subject: "Verificación de cuenta",
         html:
-            '<p>Haga click en el enlace <a href="https://small-world-ecommerce.herokuapp.com/api/users/confirmation/' +
+            '<p>Haga click en el enlace <a href="https://small-world-ecommerce.herokuapp.com/?id=' +
             this._id + '">acá</a> para confirmar su cuenta.</p>',
     };
 
