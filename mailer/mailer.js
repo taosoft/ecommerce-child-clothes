@@ -10,9 +10,9 @@ const nodemailer = require("nodemailer");
 // });
 
 module.exports = nodemailer.createTransport({
-    service: procces.env.MAIL_SERVICE,
+    service: process.env.MAIL_SERVICE,
     auth: {
         user: process.env.USER_MAIL,
-        pass: USER_PASSWORD,
+        pass: process.env.USER_PASSWORD,
     },
 });
