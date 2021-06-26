@@ -1,6 +1,6 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Footer from './Components/ProductList/Footer';
+import Footer from './Components/LandingPage/Footer';
 import SearchAppBar from './Components/ProductList/SearchAppBar';
 import Router from './Router';
 
@@ -8,11 +8,11 @@ export default function App() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <SearchAppBar/>
+      <SearchAppBar />
       <main>
-        <Router/>
+        <Router />
       </main>
-      <Footer/>
+      <Footer />
     </React.Fragment>
   );
 }

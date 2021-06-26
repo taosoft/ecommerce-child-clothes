@@ -18,17 +18,7 @@ import MainListItems from './listItems'
 import Orders from './Orders';
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home'
-
-function Copyright() {
-  const classes = useStyles();
-  return (
-    <footer className={classes.footer}>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {`Copyright © Your Website ${new Date().getFullYear()}.`}
-      </Typography>
-    </footer>
-  );
-}
+import Footer from '../LandingPage/Footer';
 
 const drawerWidth = 240;
 
@@ -176,7 +166,7 @@ export default function Dashboard() {
             </Grid>
           </Grid>
         </Container>
-        <Copyright />
+        <Footer />
       </main>
     </div>
   );
