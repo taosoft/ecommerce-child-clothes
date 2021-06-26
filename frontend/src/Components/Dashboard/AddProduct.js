@@ -175,7 +175,7 @@ export default function ProductList() {
                 <Link to="/">
                     <Button startIcon={<HomeIcon />} /> 
                 </Link>
-                Add Product
+                Alta Producto
               </Typography>
             </Toolbar>
           </AppBar>
