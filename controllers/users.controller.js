@@ -90,7 +90,7 @@ exports.confirmationGet = async (req, res, next) => {
             });
         user.verificado = true;
         user.save();
-        return res.status(200).json({ message: "El usuario fue verificado" });
+        return res.status(304).redirect("https://small-world-ecommerce.herokuapp.com/login");
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
         return res.status(400).json({ status: 400, message: e.message });
