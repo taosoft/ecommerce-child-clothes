@@ -6,11 +6,13 @@ import { AppThunk, RootState } from '../store';
 import { remove } from 'lodash';
 
 interface StockState {
-  products: StockProduct[]
+  products: StockProduct[],
+  loading: boolean
 }
 
 const initialState: StockState = {
   products: [],
+  loading: false
 };
 
 export const stockSlice = createSlice({
@@ -33,26 +35,29 @@ export const stockSlice = createSlice({
     },
     loadProducts: (state, action: PayloadAction<StockProduct[]>) => {
       state.products = action.payload;
+      state.loading = false
     },
     loadProductsFailed: (state) => {
       state.products = []
+      state.loading = false
+    },
+    loadingProducts: (state) => {
+      state.loading = true
     },
   },
 });
 
 export const {
   loadProducts,
-  // addProduct,
-  // updateProductStock, 
-  // loadProductsSuccess, 
   loadProductsFailed,
   addProductSuccess,
-  // addProductFailed, 
   updateProductStockSuccess,
   deleteProductStockSuccess,
+  loadingProducts,
 } = stockSlice.actions;
 
 export const loadStockProducts = (): AppThunk => dispatch => {
+  dispatch(loadingProducts())
   getStockProducts()
     .then(response => dispatch(loadProducts(response.data.data)))
     .catch(() => dispatch(loadProductsFailed()));
@@ -77,5 +82,6 @@ export const deleteProductStock = (productDescription: any): AppThunk => dispatc
 };
 
 export const selectStock = (state: RootState) => state.stock.products;
+export const selectIsLoading = (state: RootState) => state.stock.loading;
 
 export default stockSlice.reducer;

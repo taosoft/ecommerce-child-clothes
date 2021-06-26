@@ -10,8 +10,10 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import { Redirect } from 'react-router-dom';
 import ControlledOpenSelect from './MenuFiltrado';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
+import { loadStockProducts, selectIsLoading, selectStock } from '../../app/stores/stockSlice';
 import { addCartProduct, selectCartProducts, updateCartProductSuccess } from '../../app/stores/cartSlice';
+import { Backdrop } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '100%',
         margin: '0 auto 10px',
         height: '100%',
-      },
+    },
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+    },
 }));
 
 export default function ProductGrid(){
@@ -31,6 +37,7 @@ export default function ProductGrid(){
     const [redirect, setRedirect] = useState(null)
     const copia = [...useSelector(selectStock)];
     const cartProducts = useSelector(selectCartProducts);
+    const isLoading = useSelector(selectIsLoading);
     const [estado, setEstado] = useState(2); // default: < to >
     const [search, setSearch] = useState(null)
     let products = [...copia];
@@ -94,6 +101,9 @@ export default function ProductGrid(){
                 </main>
                 </Container>
                 <Footer/>
+                <Backdrop className={classes.backdrop} open={isLoading}>
+                    <CircularProgress color="inherit" />
+                </Backdrop>
             </div>
         )
     }

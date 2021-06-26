@@ -36,6 +36,10 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#b53f3f'
     }
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));
 
 export default function SignUp() {

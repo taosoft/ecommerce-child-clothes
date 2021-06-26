@@ -10,12 +10,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { loadStockProducts, selectStock } from '../../app/stores/stockSlice';
+import { loadStockProducts, selectStock, selectIsLoading } from '../../app/stores/stockSlice';
 import { addCartProduct, selectCartProducts, updateCartProductSuccess } from '../../app/stores/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import CartProduct from '../../models/cartProduct';
+import { Backdrop } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: any) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -32,7 +34,11 @@ const useStyles = makeStyles({
   cardDetails: {
     flex: 1,
   },
-});
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+}));
 
 function SingleProduct(props: any) {
     const classes = useStyles();
@@ -42,6 +48,7 @@ function SingleProduct(props: any) {
     const product = stockProducts.find(product => product.product._id === props.match.params.id);
     const stock = product?.quantity;
     const cartProducts = useSelector(selectCartProducts);
+    const isLoading = useSelector(selectIsLoading);
 
     const dispatch = useDispatch();
 
@@ -104,6 +111,9 @@ function SingleProduct(props: any) {
         </div>
         </Container>
         <Footer/>
+        <Backdrop className={classes.backdrop} open={isLoading}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
       </div>
     )
 }
