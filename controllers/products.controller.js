@@ -1,4 +1,5 @@
 const ProductService = require("../services/product.service");
+const StockService = require("../services/stock.service");
 
 _this = this;
 
@@ -89,12 +90,15 @@ exports.updateProduct = async (req, res, next) => {
 
 exports.deleteProduct = async (req, res, next) => {
     try {
-        console.log(req.params.id);
-        const productId = req.params.id;
+        const productId = req.params._id;
         await ProductService.deleteProduct(productId);
-        return res
-            .status(200)
-            .json({ deletedStockId: productId , message: "Successfully deleted Product" });
+        await StockService.getStock(productId, result => {
+            StockService.deleteStock(result._id);
+            return res
+                .status(200)
+                .json({ deletedStockId: productId , message: "Successfully deleted Product" });
+        });
+        
     } catch (e) {
         console.log(e);
         return res

@@ -145,7 +145,7 @@ const ProductTable = () => {
               return Promise.resolve();
           },
           onRowDelete: data =>  {
-            dispatch(deleteProductStock(data.product));
+            dispatch(deleteProductStock(data));
             return Promise.resolve();
           }
         }}

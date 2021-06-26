@@ -55,3 +55,12 @@ exports.updateStock = async (product) => {
         throw Error("Error while updating Product");
     }
 };
+
+exports.deleteStock = async (stockId) => {
+    try {
+        await Stock.findOneAndDelete({ _id: stockId });
+    } catch (e) {
+        console.log(e);
+        throw Error("Error while deleting Stock");
+    }
+};

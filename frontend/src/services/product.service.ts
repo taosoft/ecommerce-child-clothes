@@ -21,5 +21,5 @@ export async function updateProductStock(productDescription: any): Promise<any> 
 }
 
 export async function deleteStockProduct(productDescription: any): Promise<any> {
-  return await axios.delete<String>(baseUrl + "/api/products/" + productDescription._id);
+  return await axios.delete<String>(baseUrl + "/api/products/" + productDescription.product._id);
 }
