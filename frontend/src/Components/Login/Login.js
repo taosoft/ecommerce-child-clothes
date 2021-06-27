@@ -2,7 +2,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useLocation } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
@@ -12,7 +12,11 @@ import { loginUser, selectIsLoading } from '../../app/stores/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
+import Alert from '@material-ui/lab/Alert';
+import IconButton from '@material-ui/core/IconButton';
+import Collapse from '@material-ui/core/Collapse';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,6 +51,17 @@ export default function Login() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const isLogged = useSelector(selectIsLoading);
+
+  const search = useLocation().search;
+  const confirmation = new URLSearchParams(search).get('confirmation');
+
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if(confirmation) {
+      setOpen(true)
+    }
+  }, [])
 
   const emailRef = useRef('')
   const passwordRef = useRef('') 
@@ -104,6 +119,28 @@ export default function Login() {
               <Link to="/singup" variant="body2">
                 {"Todavía no tiene cuenta? Regístrese"}
               </Link>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item>
+              <Collapse in={open}>
+                <Alert
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setOpen(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                >
+                  Su cuenta fue confirmada correctamente!
+                </Alert>
+              </Collapse>
             </Grid>
           </Grid>
         </form>

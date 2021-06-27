@@ -14,6 +14,8 @@ import axios from 'axios';
 import { Backdrop } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:4000";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -40,24 +42,25 @@ export default function LandingPage() {
   const featuredPosts = useSelector(selectLandingPageProducts);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
-  console.log(isLoading);
+
   const search = useLocation().search;
   const confirmationId = new URLSearchParams(search).get('id');
+
   const [firstRender, setFirstRender] = useState(true)
 
   if (firstRender && confirmationId) {
-    axios.get(`/api/users/confirmation/${confirmationId}`).then(() => setRedirect(true))
+    axios.get(`${baseUrl}/api/users/confirmation/${confirmationId}`).then(() => setRedirect(true))
+    setFirstRender(false)
   }
 
   useEffect(() => {
     dispatch(loadLandingPageProducts());
-    setFirstRender(false)
   }, [dispatch])
 
   const [redirect, setRedirect] = useState(false)
 
   if (redirect) {
-    return <Redirect push to={'/login'} />
+    return <Redirect push to={'/login/?confirmation=true'} />
   }
 
   return (
