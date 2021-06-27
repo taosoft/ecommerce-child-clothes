@@ -14,7 +14,7 @@ import axios from 'axios';
 import { Backdrop } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const baseUrl = process.env.REACT_APP_BASE_URL || "http://localhost:4000";
+const baseUrl = process.env.REACT_APP_BASE_URL || "";
 
 const useStyles = makeStyles((theme) => ({
   root: {
