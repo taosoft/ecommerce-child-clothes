@@ -15,11 +15,12 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MainListItems from './listItems'
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addStockProduct } from '../../app/stores/stockSlice';
 import { Redirect } from 'react-router-dom';
 import AddressForm from './AddressForm';
 import Footer from '../LandingPage/Footer';
+import { selectLoggedUser } from "../../app/stores/authSlice";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -131,6 +132,7 @@ export default function ProductList() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const user = useSelector(selectLoggedUser);
 
   const dispatch = useDispatch();
 
@@ -145,7 +147,7 @@ export default function ProductList() {
         imageText: title,
         quantity: Math.floor(Math.random() * 100)
       }
-      dispatch(addStockProduct(newProduct));
+      dispatch(addStockProduct(newProduct, user?.token));
       setRedirect('dashboard/products')
     }
     else {

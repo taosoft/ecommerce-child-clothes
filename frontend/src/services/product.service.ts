@@ -12,14 +12,26 @@ export async function getStockProducts(): Promise<any> {
   return await axios.get<StockProduct[]>(baseUrl + "/api/stock");
 }
 
-export async function createStockProduct(productDescription: any): Promise<any> {
-  return await axios.post<StockProduct[]>(baseUrl + "/api/stock", productDescription);
+export async function createStockProduct(productDescription: any, token: string): Promise<any> {
+  return await axios.post<StockProduct[]>(baseUrl + "/api/stock", productDescription, {
+    headers: {
+    'Authorization': `Basic ${token}` 
+    }
+  });
 }
 
-export async function updateProductStock(productDescription: any): Promise<any> {
-  return await axios.put<StockProduct>(baseUrl + "/api/stock", productDescription);
+export async function updateProductStock(productDescription: any, token: string): Promise<any> {
+  return await axios.put<StockProduct>(baseUrl + "/api/stock", productDescription, {
+    headers: {
+    'Authorization': `Basic ${token}` 
+    }
+  });
 }
 
-export async function deleteStockProduct(productDescription: any): Promise<any> {
-  return await axios.delete<String>(baseUrl + "/api/products/" + productDescription.product._id);
+export async function deleteStockProduct(productDescription: any, token: string): Promise<any> {
+  return await axios.delete<String>(baseUrl + "/api/products/" + productDescription.product._id, {
+    headers: {
+    'Authorization': `Basic ${token}` 
+    }
+  });
 }

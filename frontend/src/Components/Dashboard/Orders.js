@@ -15,6 +15,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import React, { useEffect, useState } from 'react';
 import { Paper, TableContainer } from '@material-ui/core';
+import { selectLoggedUser } from '../../app/stores/authSlice';
 
 const useRowStyles = makeStyles({
   root: {
@@ -87,10 +88,11 @@ function Row(props) {
 
 export default function Orders() {  
   const dispatch = useDispatch();
+  const user = useSelector(selectLoggedUser);
 
   useEffect(() => {
-    dispatch(loadSales());
-  },[dispatch])
+    dispatch(loadSales(user?.token));
+  },[dispatch, user?.token])
 
   const sales = useSelector(selectSales);
 

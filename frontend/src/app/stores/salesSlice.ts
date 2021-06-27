@@ -29,8 +29,8 @@ export const saleSlice = createSlice({
 
 export const { addSale, loadSalesSuccess, loadSalesFailed } = saleSlice.actions;
 
-export const loadSales = (): AppThunk => dispatch => {
-  getSales()
+export const loadSales = (token: string): AppThunk => dispatch => {
+  getSales(token)
     .then(response => dispatch(loadSalesSuccess(response.data.data)))
     .catch(() => dispatch(loadSalesFailed()));
 };

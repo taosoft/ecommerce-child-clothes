@@ -44,7 +44,6 @@ function SingleProduct(props: any) {
     const classes = useStyles();
     const [count, setCount] = useState(1);
     const stockProducts = useSelector(selectStock);
-    console.log(props.match.params.id)
     const product = stockProducts.find(product => product.product._id === props.match.params.id);
     const stock = product?.quantity;
     const cartProducts = useSelector(selectCartProducts);

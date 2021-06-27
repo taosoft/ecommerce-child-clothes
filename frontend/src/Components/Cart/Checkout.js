@@ -81,7 +81,7 @@ export default function Checkout() {
             user: user,
             date: new Date()
         }
-        dispatch(addSale(newSale));
+        dispatch(addSale(newSale, user?.token));
         cartProducts.forEach(cartProduct => dispatch(updateProductStockSuccess(cartProduct)));
     }
   };

@@ -16,11 +16,12 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import InfoIcon from '@material-ui/icons/Info';
 import { Redirect, Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home';
-import { useSelector } from 'react-redux';
-import { selectIsLogged, selectLoggedUser } from '../../app/stores/authSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectIsLogged, selectLoggedUser, logoutUser } from '../../app/stores/authSlice';
 import CardBadge from '../ProductList/CardBadge';
 import { selectCartCount } from '../../app/stores/cartSlice';
 import Paper from '@material-ui/core/Paper';
@@ -97,6 +98,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
   const isLoggedIn = useSelector(selectIsLogged);
   const cartCount = useSelector(selectCartCount);
   const loggedUser = useSelector(selectLoggedUser);
+  const dispatch = useDispatch()
   
   const [redirect, setRedirect] = useState(null)
   const [state, setState] = useState({
@@ -137,7 +139,8 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
     >
       <List>
         {[{text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products"}, 
-          {text: 'Dashboard', show: loggedUser?.user?.isAdmin, component: DashboardIcon, path: "/dashboard"}]
+          {text: 'Dashboard', show: loggedUser?.user?.isAdmin, component: DashboardIcon, path: "/dashboard"},
+          {text: 'Nosotros', show: true, component: InfoIcon, path: "/aboutus"}]
           .filter((data) => data.show === true)
           .map((data, index) => {
               const SpecificIcon = data.component;
@@ -155,8 +158,8 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
       <Divider />
       <List>
         {[{text: 'Sign In', show: !isLoggedIn, component: VpnKeyIcon, path: "/login"}, 
-          {text: 'Sign Up', show: !isLoggedIn, component: VpnKeyIcon, path: "/singup"}, 
-          {text: 'Log Out', show: isLoggedIn, component: ExitToAppIcon, path: "/"}].filter((data) => data.show === true).map((data, index) => {
+          {text: 'Sign Up', show: !isLoggedIn, component: VpnKeyIcon, path: "/singup"}]
+          .filter((data) => data.show === true).map((data, index) => {
               const SpecificIcon = data.component;
               return (
                 <ListItem button key={index} onClick={() => setRedirect(data.path)}>
@@ -168,12 +171,25 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
               );
             }
         )}
-        {isLoggedIn && (<Paper className={classes.paper}>{loggedUser?.user?.name}</Paper>)}
+        {isLoggedIn && (
+          <div>
+            <ListItem button key={'logoutbuttonListItem'} onClick={() => {
+              dispatch(logoutUser())
+              setRedirect('/')
+            }}>
+              <ListItemIcon>
+                <ExitToAppIcon key={'logoutbuttonListItemIcon'} />
+                </ListItemIcon>
+              <ListItemText primary={'Log Out'} />
+            </ListItem>
+            <Paper className={classes.paper}>{loggedUser?.user?.name}</Paper>
+          </div>
+        )}
       </List>
     </div>
   );
   
-  if(redirect !== null) {
+  if(redirect !== null && redirect !== window.location.pathname) {
     return <Redirect push to={redirect} />
   }
   else {

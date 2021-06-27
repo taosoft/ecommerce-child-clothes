@@ -18,6 +18,7 @@ import MaterialTable from "@material-table/core";
 import { useDispatch, useSelector } from 'react-redux';
 import { loadStockProducts, selectStock, updateStockProduct, deleteProductStock } from '../../app/stores/stockSlice';
 import ControlledOpenSelect from "../ProductList/MenuFiltrado";
+import { selectLoggedUser } from "../../app/stores/authSlice";
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -120,7 +121,7 @@ function Copyright() {
   }
 
 const ProductTable = () => {
-
+  const user = useSelector(selectLoggedUser);
   const products = [...useSelector(selectStock)];
   const dispatch = useDispatch();  
   useEffect(() => {
@@ -141,11 +142,11 @@ const ProductTable = () => {
           data={products}
           editable={{
             onRowUpdate: (newData, oldData) => {
-              dispatch(updateStockProduct(newData));
+              dispatch(updateStockProduct(newData, user?.token));
               return Promise.resolve();
           },
           onRowDelete: data =>  {
-            dispatch(deleteProductStock(data));
+            dispatch(deleteProductStock(data, user?.token));
             return Promise.resolve();
           }
         }}

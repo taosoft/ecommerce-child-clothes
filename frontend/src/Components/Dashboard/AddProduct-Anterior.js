@@ -7,9 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import Footer from '../LandingPage/Footer'
 import Header from '../LandingPage/Header';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addStockProduct } from '../../app/stores/stockSlice';
 import { Redirect } from 'react-router-dom';
+import { selectLoggedUser } from '../../app/stores/authSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +56,7 @@ export default function AddProduct() {
   const [stock, setStock] = useState(0)
   const [image, setImage] = useState(null)
   const [redirect, setRedirect] = useState(null)
+  const user = useSelector(selectLoggedUser);
 
   const dispatch = useDispatch();
 
@@ -69,7 +71,7 @@ export default function AddProduct() {
         imageText: title,
         quantity: Math.floor(Math.random() * 100)
       }
-      dispatch(addStockProduct(newProduct));
+      dispatch(addStockProduct(newProduct, user?.token));
       setRedirect('dashboard/products')
     }
     else {

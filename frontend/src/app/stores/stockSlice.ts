@@ -63,20 +63,20 @@ export const loadStockProducts = (): AppThunk => dispatch => {
     .catch(() => dispatch(loadProductsFailed()));
 };
 
-export const addStockProduct = (productDescription: any): AppThunk => dispatch => {
-  createStockProduct(productDescription)
+export const addStockProduct = (productDescription: any, token: string): AppThunk => dispatch => {
+  createStockProduct(productDescription, token)
     .then(response => dispatch(addProductSuccess(response.data.data)))
     .catch(() => dispatch(loadProductsFailed()));
 };
 
-export const updateStockProduct = (productDescription: any): AppThunk => dispatch => {
-  updateProductStock(productDescription)
+export const updateStockProduct = (productDescription: any, token: string): AppThunk => dispatch => {
+  updateProductStock(productDescription, token)
     .then(response => dispatch(updateProductStockSuccess(response.data.updatedStock)))
     .catch((error) => console.log(error));
 };
 
-export const deleteProductStock = (productDescription: any): AppThunk => dispatch => {
-  deleteStockProduct(productDescription)
+export const deleteProductStock = (productDescription: any, token: string): AppThunk => dispatch => {
+  deleteStockProduct(productDescription, token)
     .then(response => dispatch(deleteProductStockSuccess(response.data.deletedStockId)))
     .catch((error) => console.log(error));
 };

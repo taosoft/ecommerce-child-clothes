@@ -5,7 +5,7 @@ const Authorization = require("../auth/authorization");
 
 router.get("/", StockController.getStocks);
 router.get("/:_id", StockController.getStock);
-router.post("/", StockController.createStock);
-router.put("/", StockController.updateProduct);
+router.post("/", Authorization, StockController.createStock);
+router.put("/", Authorization, StockController.updateProduct);
 
 module.exports = router;
