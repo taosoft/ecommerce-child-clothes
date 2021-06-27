@@ -62,7 +62,7 @@ export default function Review() {
             <Button onClick={() => editProductToCart(product.product._id, true) }>
               <Icon color="primary" fontSize="small" >add_circle</Icon>
             </Button>
-            <Button onClick={() => { console.log(product.product._id); dispatch(deleteProductFromCart(product.product._id)) } }>
+            <Button onClick={() => dispatch(deleteProductFromCart(product.product._id)) }>
               <Icon color="primary" fontSize="small" >delete</Icon>
             </Button>
           </ListItem>
