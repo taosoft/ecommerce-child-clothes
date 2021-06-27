@@ -24,22 +24,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Review() {
   const classes = useStyles();
-  const copia = useSelector(selectCartProducts);
-  const products = [...copia];
+  const products = useSelector(selectCartProducts);
+  //const products = [...copia];
   const stockProducts = useSelector(selectStock);
   const dispatch = useDispatch();
 
   const editProductToCart = (productId, isAdd) => {
+    let quantityUpdated;
     let product = products.find(product => product.product._id === productId);
-    const stockProduct = stockProducts.find(product => product.product._id === product._id);
+    const stockProduct = stockProducts.find(pro => pro.product._id === product.product._id);
 
     if(isAdd) {
-      product.quantity = product && (product.quantity + 1) > stockProduct.quantity ? product.quantity : product.quantity + 1;
+      quantityUpdated = product && (product.quantity + 1) > stockProduct.quantity ? product.quantity : product.quantity + 1;
     }
     else {
-      product.quantity = product && (product.quantity - 1) < 1 ? product.quantity : product.quantity - 1;
+      quantityUpdated = product && (product.quantity - 1) < 1 ? product.quantity : product.quantity - 1;
     }
-    dispatch(updateCartProductSuccess(product));
+    const productUpdated = {
+      product: product.product,
+      quantity: quantityUpdated
+    }
+    dispatch(updateCartProductSuccess(productUpdated));
   };
 
   return (
@@ -50,10 +55,10 @@ export default function Review() {
       <List disablePadding>
         {products.map((product) => (
           <ListItem className={classes.listItem} key={product.product._id}>
+            <ListItemText primary={product.product.title} secondary={product.product.description} />
             <Button onClick={() => editProductToCart(product.product._id, false)}>
               <Icon color="primary" fontSize="small" >remove_circle</Icon>
             </Button>
-            <ListItemText primary={product.product.title} secondary={product.product.description} />
             <Typography variant="body2">{product.quantity} x ${product.product.price} = ${product.product.price}</Typography>
             <Button onClick={() => editProductToCart(product.product._id, true) }>
               <Icon color="primary" fontSize="small" >add_circle</Icon>
