@@ -120,7 +120,6 @@ function Copyright() {
   }
 
 const ProductTable = () => {
-
   const products = [...useSelector(selectStock)];
   const dispatch = useDispatch();  
   useEffect(() => {

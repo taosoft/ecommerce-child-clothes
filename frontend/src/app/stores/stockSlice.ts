@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import CartProduct from '../../models/cartProduct';
 import { StockProduct } from '../../models/stockProduct';
 import { getStockProducts, createStockProduct, updateProductStock, deleteStockProduct } from '../../services/product.service';
 import { AppThunk, RootState } from '../store';
@@ -22,7 +21,7 @@ export const stockSlice = createSlice({
     addProductSuccess: (state, action: PayloadAction<StockProduct>) => {
       state.products = [...state.products, action.payload];
     },
-    updateProductStockSuccess: (state, action: PayloadAction<CartProduct>) => {
+    updateProductStockSuccess: (state, action: PayloadAction<StockProduct>) => {
       let stockProduct = state.products.find(product => product.product._id === action.payload.product?._id);
       if (stockProduct) {
         stockProduct.quantity = action.payload.quantity;
