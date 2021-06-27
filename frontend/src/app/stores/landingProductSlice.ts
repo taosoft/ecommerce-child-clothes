@@ -4,9 +4,9 @@ import { getLandingPageProducts } from '../../services/product.service';
 import Product from '../../models/product';
 
 interface LandingProductState {
-  products: Product[];
-  failed: boolean;
-  loading: boolean;
+  products: Product[],
+  failed: boolean,
+  loading: boolean
 }
 
 const initialState: LandingProductState = {
@@ -45,5 +45,6 @@ export const loadLandingPageProducts = (): AppThunk => dispatch => {
 };
 
 export const selectLandingPageProducts = (state: RootState) => state.landingProducts.products;
+export const selectIsLoading = (state: RootState) => state.stock.loading;
 
 export default landingProductSlice.reducer;
