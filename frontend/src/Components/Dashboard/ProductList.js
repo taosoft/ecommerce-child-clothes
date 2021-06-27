@@ -17,7 +17,6 @@ import HomeIcon from '@material-ui/icons/Home'
 import MaterialTable from "@material-table/core";
 import { useDispatch, useSelector } from 'react-redux';
 import { loadStockProducts, selectStock, updateStockProduct, deleteProductStock } from '../../app/stores/stockSlice';
-import ControlledOpenSelect from "../ProductList/MenuFiltrado";
 import { selectLoggedUser } from "../../app/stores/authSlice";
 
 const drawerWidth = 240;
