@@ -32,8 +32,9 @@ export const cartSlice = createSlice({
         state.products = [];
       }
       else {
-        let products = remove(state.products, (product: CartProduct) => product?.product?._id === action.payload);
-        state.products = products;
+        //let product = remove(state.products, (product: CartProduct) => product?.product?._id === action.payload);
+        const some_product = state.products.filter((product: CartProduct) => product.product?._id !== action.payload);
+        state.products = some_product;
       }
     }
   },
