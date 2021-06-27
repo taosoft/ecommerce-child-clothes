@@ -45,6 +45,6 @@ export const loadLandingPageProducts = (): AppThunk => dispatch => {
 };
 
 export const selectLandingPageProducts = (state: RootState) => state.landingProducts.products;
-export const selectIsLoading = (state: RootState) => state.stock.loading;
+export const selectIsLoading = (state: RootState) => state.landingProducts.loading;
 
 export default landingProductSlice.reducer;

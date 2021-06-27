@@ -168,7 +168,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
               );
             }
         )}
-        {isLoggedIn && (<Paper className={classes.paper}>{loggedUser.user.name}</Paper>)}
+        {isLoggedIn && (<Paper className={classes.paper}>{loggedUser?.user?.name}</Paper>)}
       </List>
     </div>
   );
