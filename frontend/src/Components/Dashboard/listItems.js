@@ -8,8 +8,6 @@ import ListIcon from '@material-ui/icons/List';
 import { Redirect } from 'react-router-dom'
 import List from '@material-ui/core/List';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
-
 
 export default function MainListItems () {
   const [redirect, setRedirect] = useState(null)
