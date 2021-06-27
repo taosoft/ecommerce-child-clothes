@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Review() {
   const classes = useStyles();
   const products = useSelector(selectCartProducts);
-  //const products = [...copia];
   const stockProducts = useSelector(selectStock);
   const dispatch = useDispatch();
 
