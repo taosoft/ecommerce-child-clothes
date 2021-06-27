@@ -93,13 +93,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ showSearchBar = true, showCartBadge = true , searchText = null}) {
+export default function Header({ showSearchBar = true, showCartBadge = true, searchText = null }) {
   const classes = useStyles();
   const isLoggedIn = useSelector(selectIsLogged);
   const cartCount = useSelector(selectCartCount);
   const loggedUser = useSelector(selectLoggedUser);
   const dispatch = useDispatch()
-  
+
   const [redirect, setRedirect] = useState(null)
   const [state, setState] = useState({
     left: false,
@@ -109,12 +109,12 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
   const redirectToCart = () => {
     if (isLoggedIn)
       setRedirect('/cart');
-    else 
+    else
       setRedirect('/login');
   }
 
   const handleSearch = (event) => {
-    if(event.key === 'Enter') {
+    if (event.key === 'Enter') {
       searchText(event.target.value)
     }
   }
@@ -138,39 +138,39 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {[{text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products"}, 
-          {text: 'Dashboard', show: loggedUser?.user?.isAdmin, component: DashboardIcon, path: "/dashboard"},
-          {text: 'Nosotros', show: true, component: InfoIcon, path: "/aboutus"}]
+        {[{ text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products" },
+        { text: 'Dashboard', show: loggedUser?.user?.isAdmin, component: DashboardIcon, path: "/dashboard" },
+        { text: 'Nosotros', show: true, component: InfoIcon, path: "/aboutus" }]
           .filter((data) => data.show === true)
           .map((data, index) => {
-              const SpecificIcon = data.component;
-              return (
-                <ListItem button key={index} onClick={() => setRedirect(data.path)}>
-                  <ListItemIcon>
-                      <SpecificIcon key={index} />
-                  </ListItemIcon>
-                  <ListItemText primary={data.text} />
-                </ListItem>
-              );
+            const SpecificIcon = data.component;
+            return (
+              <ListItem button key={index} onClick={() => setRedirect(data.path)}>
+                <ListItemIcon>
+                  <SpecificIcon key={index} />
+                </ListItemIcon>
+                <ListItemText primary={data.text} />
+              </ListItem>
+            );
           }
-        )}
+          )}
       </List>
       <Divider />
       <List>
-        {[{text: 'Sign In', show: !isLoggedIn, component: VpnKeyIcon, path: "/login"}, 
-          {text: 'Sign Up', show: !isLoggedIn, component: VpnKeyIcon, path: "/singup"}]
+        {[{ text: 'Sign In', show: !isLoggedIn, component: VpnKeyIcon, path: "/login" },
+        { text: 'Sign Up', show: !isLoggedIn, component: VpnKeyIcon, path: "/singup" }]
           .filter((data) => data.show === true).map((data, index) => {
-              const SpecificIcon = data.component;
-              return (
-                <ListItem button key={index} onClick={() => setRedirect(data.path)}>
-                  <ListItemIcon>
-                    <SpecificIcon key={index} />
-                    </ListItemIcon>
-                  <ListItemText primary={data.text} />
-                </ListItem>
-              );
-            }
-        )}
+            const SpecificIcon = data.component;
+            return (
+              <ListItem button key={index} onClick={() => setRedirect(data.path)}>
+                <ListItemIcon>
+                  <SpecificIcon key={index} />
+                </ListItemIcon>
+                <ListItemText primary={data.text} />
+              </ListItem>
+            );
+          }
+          )}
         {isLoggedIn && (
           <div>
             <ListItem button key={'logoutbuttonListItem'} onClick={() => {
@@ -179,7 +179,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
             }}>
               <ListItemIcon>
                 <ExitToAppIcon key={'logoutbuttonListItemIcon'} />
-                </ListItemIcon>
+              </ListItemIcon>
               <ListItemText primary={'Log Out'} />
             </ListItem>
             <Paper className={classes.paper}>{loggedUser?.user?.name}</Paper>
@@ -188,8 +188,8 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
       </List>
     </div>
   );
-  
-  if(redirect !== null && redirect !== window.location.pathname) {
+
+  if (redirect !== null && redirect !== window.location.pathname) {
     return <Redirect push to={redirect} />
   }
   else {
@@ -203,7 +203,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
         >
           {list(state.name)}
         </SwipeableDrawer>
-        <AppBar position="static">
+        <AppBar position="static" style={{ backgroundColor: "#CC0066" }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -222,7 +222,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true , se
             <div className={classes.title}>
               Small World
             </div>
-            {showCartBadge && (<CardBadge badgeContent={cartCount} redirectToCart={redirectToCart}/>)}
+            {showCartBadge && (<CardBadge badgeContent={cartCount} redirectToCart={redirectToCart} />)}
             {
               showSearchBar && (
                 <div className={classes.search}>
