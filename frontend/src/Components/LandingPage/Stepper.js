@@ -3,17 +3,17 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import coverImage from '../../Images/cover';
-import colthesImage from '../../Images/test';
+import colthesImage from '../../Images/clothes';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const tutorialSteps = [
+const imagesStepper = [
   {
     label: 'Small World',
     imgPath: coverImage,
   },
   {
-    label: 'Bali, Indonesia',
+    label: 'Ropa colgada',
     imgPath: colthesImage,
   },
 ];
@@ -55,7 +55,7 @@ function Stepper() {
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {tutorialSteps.map((step, index) => (
+        {imagesStepper.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
               <img className={classes.img} src={step.imgPath} alt={step.label} />
