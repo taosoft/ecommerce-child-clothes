@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import CartProduct from '../../models/cartProduct';
-import { remove } from 'lodash';
-
 interface CartState {
   products: CartProduct[];
 }
@@ -32,7 +30,6 @@ export const cartSlice = createSlice({
         state.products = [];
       }
       else {
-        //let product = remove(state.products, (product: CartProduct) => product?.product?._id === action.payload);
         const some_product = state.products.filter((product: CartProduct) => product.product?._id !== action.payload);
         state.products = some_product;
       }
