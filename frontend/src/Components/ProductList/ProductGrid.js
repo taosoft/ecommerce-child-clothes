@@ -72,7 +72,7 @@ export default function ProductGrid(){
         if(estado === 2) products.sort((a, b) => a.product.price - b.product.price) // < to >
         else products.sort((a, b) => b.product.price - a.product.price) // > to <
         if(search !== null) {
-            products = [...products.filter(product => product.product.title.includes(search))]
+            products = [...products.filter(product => product.product.title.toLowerCase().includes(search.toLowerCase()))]
         }
         
         return (
