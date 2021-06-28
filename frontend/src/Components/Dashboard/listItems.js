@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 export default function MainListItems () {
   const [redirect, setRedirect] = useState(null)
 
-  if(redirect !== null) {
+  if(redirect !== null && redirect !== window.location.pathname) {
     return <Redirect push to={redirect} />
   }
   else {
