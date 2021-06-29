@@ -12,7 +12,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { createUser, selectIsLoading, selectIsCreatedUser } from '../../app/stores/authSlice';
-import { useRef } from 'react'
+import { useRef, useState } from 'react';
+import Alert from '@material-ui/lab/Alert';
+import IconButton from '@material-ui/core/IconButton';
+import Collapse from '@material-ui/core/Collapse';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,11 +51,47 @@ export default function SignUp() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const isCreatedUser = useSelector(selectIsCreatedUser);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState(-1);
 
   const firstNameRef = useRef('')
   const lastNameRef = useRef('') 
   const emailRef = useRef('')
   const passwordRef = useRef('')   
+
+  const validarCampos = (nombre, apellido, email, contraseña) => {
+    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    
+    if(!nombre) {
+      setError(0);
+      return false;
+    }
+    else if(!apellido) {
+      setError(1);
+      return false;
+    }
+    else if(!email) {
+      setError(2);
+      return false;
+    }
+    else if(!re.test(email)) {
+      setError(3);
+      return false;
+    }
+    else if(!contraseña) {
+      setError(4);
+      return false;
+    }
+
+    return true;
+  };
+
+  const textoError = (error) => {
+    if(error === 0) return "Nombre inválido";
+    else if(error === 1) return "Apellido inválido";
+    else if(error === 2 || error === 3 ) return "Email inválido";
+    else if(error === 4) return "Contraseña inválida";
+  };
 
   if(isCreatedUser) {
     return <Redirect push to={"/login"} />
@@ -125,15 +165,39 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => dispatch(createUser(firstNameRef.current.value, lastNameRef.current.value, emailRef.current.value, passwordRef.current.value))}
+            onClick={() => validarCampos(firstNameRef.current.value, lastNameRef.current.value, emailRef.current.value, passwordRef.current.value) ? dispatch(createUser(firstNameRef.current.value, lastNameRef.current.value, emailRef.current.value, passwordRef.current.value)) : setOpen(true)}
           >
             Registrar
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/login" variant="body2">
-                Ya está registrado? Ingrese
+                ¿No estás registrado? Registrese.
               </Link>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item>
+              <Collapse in={open}>
+                <Alert
+                  severity="error"
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setOpen(-1);
+                        setOpen(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                >
+                  {textoError(error)}
+                </Alert>
+              </Collapse>
             </Grid>
           </Grid>
         </form>
