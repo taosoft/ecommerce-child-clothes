@@ -10,3 +10,11 @@ export async function getSales(token: string): Promise<any> {
     }
   });
 }
+
+export async function createSale(sale: Sale, token: string): Promise<any> {
+  return await axios.post<Sale>(baseUrl + '/api/sales', sale, {
+    headers: {
+    'authorization': `Bearer ${token}` 
+    }
+  });
+}

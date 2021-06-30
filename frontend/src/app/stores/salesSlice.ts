@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Sale from '../../models/sale';
-import { getSales } from '../../services/sales.service';
+import { createSale, getSales } from '../../services/sales.service';
 import { AppThunk, RootState } from '../store';
 
 interface SaleState {
@@ -15,7 +15,7 @@ export const saleSlice = createSlice({
   name: 'sale',
   initialState,
   reducers: {
-    addSale: (state, action: PayloadAction<Sale>) => {
+    createSaleSuccess: (state, action: PayloadAction<Sale>) => {
       state.sales = [...state.sales, action.payload];
     },
     loadSalesSuccess: (state, action: PayloadAction<Sale[]>) => {
@@ -27,12 +27,18 @@ export const saleSlice = createSlice({
   },
 });
 
-export const { addSale, loadSalesSuccess, loadSalesFailed } = saleSlice.actions;
+export const { createSaleSuccess, loadSalesSuccess, loadSalesFailed } = saleSlice.actions;
 
 export const loadSales = (token: string): AppThunk => dispatch => {
   getSales(token)
     .then(response => dispatch(loadSalesSuccess(response.data.data)))
     .catch(() => dispatch(loadSalesFailed()));
+};
+
+export const addNewSale = (sale: Sale, token: string): AppThunk => dispatch => {
+  createSale(sale, token)
+    .then(response => dispatch(createSaleSuccess(response.data.data)))
+    .catch((error) => console.log(error));
 };
 
 export const selectSales = (state: RootState) => state.sale.sales;

@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Review from './Review';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateProductStockSuccess } from '../../app/stores/stockSlice';
-import { selectCartProducts } from '../../app/stores/cartSlice';
+import { clearCart, selectCartProducts } from '../../app/stores/cartSlice';
 import { addSale } from '../../app/stores/salesSlice';
 import { selectLoggedUser } from '../../app/stores/authSlice';
 import Footer from '../LandingPage/Footer';
@@ -83,6 +83,7 @@ export default function Checkout() {
         }
         dispatch(addSale(newSale, user?.token));
         cartProducts.forEach(cartProduct => dispatch(updateProductStockSuccess(cartProduct)));
+        dispatch(clearCart())
     }
   };
 
