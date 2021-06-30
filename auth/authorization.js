@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const config = require("../config").config();
 
 const authorization = (req, res, next) => {
     let token = req.headers["x-access-token"] || req.headers["authorization"];
