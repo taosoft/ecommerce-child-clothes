@@ -5,6 +5,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Title from '../Dashboard/Title';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -97,6 +98,7 @@ export default function Orders() {
 
   return (
     <React.Fragment>
+      <Title>Realizaste {sales.length} compras</Title>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
           <TableHead>
