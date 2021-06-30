@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Sale from '../../models/sale';
-import { createSale, getSales } from '../../services/sales.service';
+import { createSale, getSales, getUserSales } from '../../services/sales.service';
 import { AppThunk, RootState } from '../store';
 
 interface SaleState {
@@ -31,6 +31,12 @@ export const { createSaleSuccess, loadSalesSuccess, loadSalesFailed } = saleSlic
 
 export const loadSales = (token: string): AppThunk => dispatch => {
   getSales(token)
+    .then(response => dispatch(loadSalesSuccess(response.data.data)))
+    .catch(() => dispatch(loadSalesFailed()));
+};
+
+export const loadUserSales = (id: string, token: string): AppThunk => dispatch => {
+  getUserSales(id, token)
     .then(response => dispatch(loadSalesSuccess(response.data.data)))
     .catch(() => dispatch(loadSalesFailed()));
 };

@@ -32,6 +32,15 @@ exports.getSale = async (saleId) => {
     }
 };
 
+exports.getUserSales = async (userId) => {
+    try {
+        return await Sale.find( {user: userId} );
+    } catch (e) {
+        console.log("error services", e);
+        throw Error("Error while searching Users");
+    }
+};
+
 exports.createSale = async (sale) => {
     const newSale = new Sale({
         cartProducts: sale.cartProducts,

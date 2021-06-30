@@ -10,11 +10,3 @@ export async function login(email: string, password: string): Promise<any> {
 export async function create(firstName: string, lastName: string, email: string, password: string): Promise<any> {
     return await axios.post<AuthorizedUser>(baseUrl + '/api/users/registration', { name: firstName + ' ' + lastName, email, password });
 }
-
-export async function getUser(userId: string, token: string): Promise<any> {
-    return await axios.get<AuthorizedUser>(baseUrl + `/api/users/${userId}`, {
-        headers: {
-            'authorization': `Bearer ${token}`
-        }
-    });
-}

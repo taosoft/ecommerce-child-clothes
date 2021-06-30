@@ -58,13 +58,13 @@ export default function StickyFooter() {
           Acerca de Small World
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
-            Somos una empresa en pleno crecimiento y con grandes expectativas. 
+          Somos un emprendimiento en pleno crecimiento y con grandes expectativas: queremos ofrecerte las mejores prendas para las y los chicos de tu familia.
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
-            Nuestro propósito es ser la empresa más grande de ropa de niños en América Latina, otorgando calidad y precios accesibles.
+          Nenas, nenes, bebés, grandes, chiquitos, superhéroes, princesas... Tenemos opciones para todos los gustos, con los mejores precios y la mejor calidad.
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
-            Nuestro propósito es ser la empresa más grande de ropa de niños en América Latina, otorgando calidad y precios accesibles.
+          ¿Qué esperás para conocernos? Small World es un mundo nuevo en ropa para las y los peques de la casa. Acompañanos en nuestro viaje.
         </Typography>
       </Container>
       <Container maxWidth="lg">

@@ -33,6 +33,21 @@ exports.getSale = async (req, res, next) => {
     }
 };
 
+exports.getUserSales = async (req, res, next) => {
+    try {
+        const Sale = await SaleService.getUserSales(req.params.id);
+        // Return the Users list with the appropriate HTTP password Code and Message.
+        return res.status(200).json({
+            status: 200,
+            data: Sale,
+            message: "Succesfully Sales Recieved",
+        });
+    } catch (e) {
+        //Return an Error Response Message with Code and the Error Message.
+        return res.status(400).json({ status: 400, message: e.message });
+    }
+};
+
 exports.createSale = async (req, res, next) => {
     const Sale = {
         cartProducts: req.body.products,

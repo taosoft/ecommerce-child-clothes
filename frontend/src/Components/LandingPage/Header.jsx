@@ -139,6 +139,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true, sea
     >
       <List>
         {[{ text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products" },
+        { text: 'Mis Compras', show: loggedUser ? true : false, component: ShoppingBasketIcon, path: "/purchases" },
         { text: 'Dashboard', show: loggedUser?.user?.isAdmin, component: DashboardIcon, path: "/dashboard" },
         { text: 'Nosotros', show: true, component: InfoIcon, path: "/aboutus" }]
           .filter((data) => data.show === true)
