@@ -8,7 +8,7 @@ import Review from './Review';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateProductStockSuccess } from '../../app/stores/stockSlice';
 import { clearCart, selectCartProducts } from '../../app/stores/cartSlice';
-import { addSale } from '../../app/stores/salesSlice';
+import { addNewSale } from '../../app/stores/salesSlice';
 import { selectLoggedUser } from '../../app/stores/authSlice';
 import Footer from '../LandingPage/Footer';
 import Header from '../LandingPage/Header';
@@ -81,7 +81,7 @@ export default function Checkout() {
             user: user,
             date: new Date()
         }
-        dispatch(addSale(newSale, user?.token));
+        dispatch(addNewSale(newSale, user?.token));
         cartProducts.forEach(cartProduct => dispatch(updateProductStockSuccess(cartProduct)));
         dispatch(clearCart())
     }
