@@ -40,7 +40,7 @@ exports.createSale = async (sale) => {
 
     try {
         // Saving the Sale
-        await newSale.save();
+        return await newSale.save();
     } catch (e) {
         // return a Error message describing the reason
         console.log(e);

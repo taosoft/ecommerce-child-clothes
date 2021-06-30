@@ -65,7 +65,7 @@ function Row(props) {
                 </TableHead>
                 <TableBody>
                   {row.cartProducts.map((product) => (
-                    <TableRow key={product.product._id}>
+                    <TableRow key={product.product?._id}>
                       <TableCell component="th" scope="row">
                         {product.product.title}
                       </TableCell>
@@ -113,7 +113,7 @@ export default function Orders() {
           </TableHead>
           <TableBody>
             {sales.map((row) => (
-              <Row key={row._id} row={row} />
+              <Row key={row?._id} row={row} />
             ))}
           </TableBody>
         </Table>
