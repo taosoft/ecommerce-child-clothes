@@ -42,7 +42,7 @@ function Row(props) {
           {/* {new Intl.DateTimeFormat('es-ES', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(row.date)} */}
           {`${new Date(row.creationDate).getDate()}/${new Date(row.creationDate).getMonth()+1}/${new Date(row.creationDate).getFullYear()}`}
         </TableCell>
-        <TableCell>{row.user.firstName} {row.user.lastName}</TableCell>
+        <TableCell>{row.user?.name}</TableCell>
         <TableCell align="right">{row.cartProducts.length}</TableCell>
         <TableCell align="right">${row.cartProducts.map(product => product.product.price * product.quantity)?.reduce((a,b) => a + b).toFixed(2)}</TableCell>
       </TableRow>

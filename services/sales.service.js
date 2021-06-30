@@ -5,10 +5,17 @@ const Sale = require("../models/Sale.model");
 _this = this;
 
 // Async function to get the User List
-exports.getSales = async () => {
+exports.getSales = async (cb) => {
     // Try Catch the awaited promise to handle the error
     try {
-        return await Sale.find();
+        return await Sale.find()
+        .populate("user")
+        .exec((error, result) => {
+            if (error) {
+                throw Error("No se puedo obtener los productos");
+            }
+            cb(result);
+        });
     } catch (e) {
         // return a Error message describing the reason
         console.log("error services", e);
