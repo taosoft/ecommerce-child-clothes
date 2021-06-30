@@ -29,7 +29,7 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
   const classes = useRowStyles();
-  
+
   return (
     <React.Fragment>
       <TableRow className={classes.root}>
@@ -39,7 +39,6 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {/* {new Intl.DateTimeFormat('es-ES', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(row.date)} */}
           {`${new Date(row.creationDate).getDate()}/${new Date(row.creationDate).getMonth()+1}/${new Date(row.creationDate).getFullYear()}`}
         </TableCell>
         <TableCell>{row.user.firstName} {row.user.lastName}</TableCell>
