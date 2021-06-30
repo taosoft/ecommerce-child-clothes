@@ -139,16 +139,16 @@ export default function ProductList() {
   const darDeAlta = () => {
     if(title !== '' && description !== '' && price !== 0 && stock !== 0 && image !== null) {
       // Se carga el producto al store
-      let newProduct = {
+      const newProduct = {
         title: title,
         price: price,
         description: description,
         image: image,
         imageText: title,
-        quantity: Math.floor(Math.random() * 100)
+        quantity: stock
       }
       dispatch(addStockProduct(newProduct, user?.token));
-      setRedirect('dashboard/products')
+      setRedirect('/dashboard/product-list')
     }
     else {
       alert('Debe completar todos los campos')
@@ -162,7 +162,7 @@ export default function ProductList() {
     return (
       <div className={classes.root}>
           <CssBaseline />
-          <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+          <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)} style={{ backgroundColor: "#CC0066" }}>
             <Toolbar className={classes.toolbar}>
               <IconButton
                 edge="start"
