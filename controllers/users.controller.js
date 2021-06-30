@@ -35,8 +35,6 @@ exports.getUser = async (req, res, next) => {
 };
 
 exports.createUser = async (req, res, next) => {
-    // Req.Body contains the form submit values.
-    console.log("llegue al controller", req.body);
     const User = {
         name: req.body.name,
         email: req.body.email,

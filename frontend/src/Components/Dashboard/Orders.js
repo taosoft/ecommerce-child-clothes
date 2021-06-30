@@ -41,7 +41,7 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {`${new Date(row.creationDate).getDate()}/${new Date(row.creationDate).getMonth()+1}/${new Date(row.creationDate).getFullYear()}`}
         </TableCell>
-        <TableCell>{row.user.firstName} {row.user.lastName}</TableCell>
+        <TableCell>{row.user?.name}</TableCell>
         <TableCell align="right">{row.cartProducts.length}</TableCell>
         <TableCell align="right">${row.cartProducts.map(product => product.product.price * product.quantity)?.reduce((a,b) => a + b).toFixed(2)}</TableCell>
       </TableRow>
@@ -64,7 +64,7 @@ function Row(props) {
                 </TableHead>
                 <TableBody>
                   {row.cartProducts.map((product) => (
-                    <TableRow key={product.product._id}>
+                    <TableRow key={product.product?._id}>
                       <TableCell component="th" scope="row">
                         {product.product.title}
                       </TableCell>
@@ -112,7 +112,7 @@ export default function Orders() {
           </TableHead>
           <TableBody>
             {sales.map((row) => (
-              <Row key={row._id} row={row} />
+              <Row key={row?._id} row={row} />
             ))}
           </TableBody>
         </Table>

@@ -37,7 +37,7 @@ export const loadSales = (token: string): AppThunk => dispatch => {
 
 export const addNewSale = (sale: Sale, token: string): AppThunk => dispatch => {
   createSale(sale, token)
-    .then(response => dispatch(createSaleSuccess(response.data.data)))
+    .then(response => dispatch(createSaleSuccess(response.data.createdSale)))
     .catch((error) => console.log(error));
 };
 

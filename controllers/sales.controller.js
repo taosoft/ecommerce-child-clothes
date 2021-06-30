@@ -6,12 +6,11 @@ _this = this;
 // Async Controller function to get the To do List
 exports.getSales = async (req, res, next) => {
     try {
-        const Sales = await SaleService.getSales();
-        // Return the Users list with the appropriate HTTP password Code and Message.
-        return res.status(200).json({
-            status: 200,
-            data: Sales,
-            message: "Succesfully Sales Recieved",
+        await SaleService.getSales((result) => {
+            return res.status(200).json({
+                data: result,
+                message: "Successfully Sales Received",
+            });
         });
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
@@ -35,8 +34,6 @@ exports.getSale = async (req, res, next) => {
 };
 
 exports.createSale = async (req, res, next) => {
-    // Req.Body contains the form submit values.
-    console.log("llegue al controller", req.body);
     const Sale = {
         cartProducts: req.body.products,
         user: req.body.user.user._id,
