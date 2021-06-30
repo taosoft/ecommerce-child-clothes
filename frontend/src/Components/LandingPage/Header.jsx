@@ -15,6 +15,7 @@ import Divider from '@material-ui/core/Divider';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import LocalMallIcon from '@material-ui/icons/LocalMall';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import InfoIcon from '@material-ui/icons/Info';
 import { Redirect, Link } from 'react-router-dom'
@@ -139,7 +140,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true, sea
     >
       <List>
         {[{ text: 'Productos', show: true, component: ShoppingBasketIcon, path: "/products" },
-        { text: 'Mis Compras', show: loggedUser ? true : false, component: ShoppingBasketIcon, path: "/purchases" },
+        { text: 'Mis Compras', show: loggedUser ? true : false, component: LocalMallIcon, path: "/purchases" },
         { text: 'Dashboard', show: loggedUser?.user?.isAdmin, component: DashboardIcon, path: "/dashboard" },
         { text: 'Nosotros', show: true, component: InfoIcon, path: "/aboutus" }]
           .filter((data) => data.show === true)

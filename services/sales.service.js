@@ -23,18 +23,25 @@ exports.getSales = async (cb) => {
     }
 };
 
-exports.getSale = async (saleId) => {
+exports.getUserSales = async (userId, cb) => {
     try {
-        return await Sale.findById(saleId);
+        return await Sale.find({ user: userId })
+        .populate("user")
+        .exec((error, result) => {
+            if (error) {
+                throw Error("No se puedo obtener los productos");
+            }
+            cb(result);
+        });
     } catch (e) {
         console.log("error services", e);
         throw Error("Error while searching Users");
     }
 };
 
-exports.getUserSales = async (userId) => {
+exports.getSale = async (saleId) => {
     try {
-        return await Sale.find( {user: userId} );
+        return await Sale.findById(saleId);
     } catch (e) {
         console.log("error services", e);
         throw Error("Error while searching Users");
