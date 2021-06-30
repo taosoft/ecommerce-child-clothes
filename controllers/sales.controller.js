@@ -39,7 +39,7 @@ exports.createSale = async (req, res, next) => {
     console.log("llegue al controller", req.body);
     const Sale = {
         cartProducts: req.body.cartProducts,
-        user: req.body.user,
+        user: req.body.user._id,
     };
     try {
         // Calling the Service function with the new object from the Request Body
