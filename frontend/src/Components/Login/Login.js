@@ -78,7 +78,7 @@ export default function Login() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Inicio de sesión
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -117,7 +117,7 @@ export default function Login() {
           <Grid container>
             <Grid item>
               <Link to="/singup" variant="body2">
-                {"Todavía no tiene cuenta? Regístrese"}
+                {"¿No estás registrado? Registrese."}
               </Link>
             </Grid>
           </Grid>

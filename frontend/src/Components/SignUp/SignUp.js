@@ -105,7 +105,7 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Registro de usuario
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -172,7 +172,7 @@ export default function SignUp() {
           <Grid container justify="flex-end">
             <Grid item>
               <Link to="/login" variant="body2">
-                ¿No estás registrado? Registrese.
+                ¿Estás registrado? Inicie sesión.
               </Link>
             </Grid>
           </Grid>
