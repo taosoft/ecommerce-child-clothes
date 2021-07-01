@@ -169,7 +169,12 @@ export default function SignUp() {
           >
             Registrar
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify="space-between">
+            <Grid item>
+              <Link to="/" variant="body2">
+                Volver a la página.
+              </Link>
+            </Grid>
             <Grid item>
               <Link to="/login" variant="body2">
                 ¿Estás registrado? Inicie sesión.

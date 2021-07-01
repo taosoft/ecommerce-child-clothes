@@ -122,10 +122,15 @@ export default function Login() {
           >
             Ingresar
           </Button>
-          <Grid container>
+          <Grid container justify="space-between">
             <Grid item>
               <Link to="/singup" variant="body2">
-                {"¿No estás registrado? Registrese."}
+                ¿No estás registrado? Registrese.
+              </Link>
+            </Grid>
+            <Grid item >
+              <Link to="/" variant="body2">
+                Volver a la página.
               </Link>
             </Grid>
           </Grid>
