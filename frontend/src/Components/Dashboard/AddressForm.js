@@ -37,7 +37,7 @@ export default function AddressForm(props) {
       <Typography variant="h6" gutterBottom>
         Datos del producto
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container justify="flex-start" spacing={3}>
         <Grid item xs={12}>
           <TextField
             required

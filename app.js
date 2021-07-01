@@ -64,6 +64,7 @@ const opts = {
     useNewUrlParser: true,
     connectTimeoutMS: 20000,
     useUnifiedTopology: true,
+    useFindAndModify: false,
 };
 
 mongoose

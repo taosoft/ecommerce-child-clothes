@@ -21,6 +21,7 @@ import { Redirect } from 'react-router-dom';
 import AddressForm from './AddressForm';
 import Footer from '../LandingPage/Footer';
 import { selectLoggedUser } from "../../app/stores/authSlice";
+import Grid from '@material-ui/core/Grid';
 
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
@@ -84,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
-    height: '60vh',
+    height: '55vh',
     width: 'auto',
     background: 'white',
     marginTop: theme.spacing(20),
@@ -196,7 +197,7 @@ export default function ProductList() {
             <Divider />
             <MainListItems />
           </Drawer>
-          <Container className={classes.content}>
+          <Container className={classes.content} justify="center" >
             <AddressForm
               title={setTitle}
               description={setDescription}
