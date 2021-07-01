@@ -98,7 +98,7 @@ export default function Orders() {
 
   return (
     <React.Fragment>
-      <Title>Realizaste {sales.length} compras</Title>
+      <Title>{sales.length === 1 ? "Realizaste 1 compra" : `Realizaste ${sales.length} compras` }</Title>
       <TableContainer component={Paper}>
         <Table aria-label="collapsible table">
           <TableHead>
