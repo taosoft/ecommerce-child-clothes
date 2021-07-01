@@ -81,7 +81,7 @@ export const createUser = (firstName: string, lastName: string, email: string, p
     .catch(() => addUserFailed())
 }
 
-export const logoutUser = () : AppThunk => dispatch => {
+export const logoutUser = (): AppThunk => dispatch => {
   dispatch(logoutSuccess());
 };
 

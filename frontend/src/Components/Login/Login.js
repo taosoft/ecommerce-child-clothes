@@ -8,7 +8,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { loginUser, selectIsLoading } from '../../app/stores/authSlice';
+import { loginUser, selectIsLoading, selectIsLogged } from '../../app/stores/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -50,12 +50,13 @@ export default function Login() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-  const isLogged = useSelector(selectIsLoading);
+  const isLogged = useSelector(selectIsLogged);
 
   const search = useLocation().search;
   const confirmation = new URLSearchParams(search).get('confirmation');
 
   const [open, setOpen] = useState(false);
+  const [openError, setOpenError] = useState(false);
 
   useEffect(() => {
     if(confirmation) {
@@ -65,6 +66,13 @@ export default function Login() {
 
   const emailRef = useRef('')
   const passwordRef = useRef('') 
+
+  const validarCampos = (email, password) => {
+    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(!password || !email) return false;
+    else if(!re.test(email)) return false;
+    else return true;
+  }
 
   if(isLogged) {
     return <Redirect push to={"/"} />
@@ -110,7 +118,7 @@ export default function Login() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => dispatch(loginUser(emailRef.current.value, passwordRef.current.value))}
+            onClick={() => validarCampos(emailRef.current.value, passwordRef.current.value) ? dispatch(loginUser(emailRef.current.value, passwordRef.current.value)) : setOpenError(true)}
           >
             Ingresar
           </Button>
@@ -139,6 +147,29 @@ export default function Login() {
                   }
                 >
                   Su cuenta fue confirmada correctamente!
+                </Alert>
+              </Collapse>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item>
+              <Collapse in={openError}>
+                <Alert
+                  severity="error"
+                  action={
+                    <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setOpenError(false);
+                      }}
+                    >
+                      <CloseIcon fontSize="inherit" />
+                    </IconButton>
+                  }
+                >
+                  Email y/o contraseña incorrectos
                 </Alert>
               </Collapse>
             </Grid>

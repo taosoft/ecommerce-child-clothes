@@ -159,8 +159,8 @@ export default function Header({ showSearchBar = true, showCartBadge = true, sea
       </List>
       <Divider />
       <List>
-        {[{ text: 'Sign In', show: !isLoggedIn, component: VpnKeyIcon, path: "/login" },
-        { text: 'Sign Up', show: !isLoggedIn, component: VpnKeyIcon, path: "/singup" }]
+        {[{ text: 'Inicio de sesión', show: !isLoggedIn, component: VpnKeyIcon, path: "/login" },
+        { text: 'Registrarse', show: !isLoggedIn, component: VpnKeyIcon, path: "/singup" }]
           .filter((data) => data.show === true).map((data, index) => {
             const SpecificIcon = data.component;
             return (
@@ -182,7 +182,7 @@ export default function Header({ showSearchBar = true, showCartBadge = true, sea
               <ListItemIcon>
                 <ExitToAppIcon key={'logoutbuttonListItemIcon'} />
               </ListItemIcon>
-              <ListItemText primary={'Log Out'} />
+              <ListItemText primary={'Cerrar sesión'} />
             </ListItem>
             <Paper className={classes.paper}>{loggedUser?.user?.name}</Paper>
           </div>
