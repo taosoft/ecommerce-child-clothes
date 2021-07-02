@@ -15,7 +15,7 @@ export async function getStockProducts(): Promise<any> {
 export async function createStockProduct(productDescription: any, token: string): Promise<any> {
   return await axios.post<StockProduct[]>(baseUrl + "/api/stock", productDescription, {
     headers: {
-    'authorization': `Bearer ${token}` 
+      'authorization': `Bearer ${token}`
     }
   });
 }
@@ -23,7 +23,15 @@ export async function createStockProduct(productDescription: any, token: string)
 export async function updateProductStock(productDescription: any, token: string): Promise<any> {
   return await axios.put<StockProduct>(baseUrl + "/api/stock", productDescription, {
     headers: {
-      'authorization': `Bearer ${token}` 
+      'authorization': `Bearer ${token}`
+    }
+  });
+}
+
+export async function updateOnlyStock(productDescription: any, token: string): Promise<any> {
+  return await axios.put<any>(baseUrl + `/api/stock/${productDescription.product._id}`, productDescription, {
+    headers: {
+      'authorization': `Bearer ${token}`
     }
   });
 }

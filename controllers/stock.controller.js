@@ -100,3 +100,19 @@ exports.updateProduct = async (req, res, next) => {
             .json({ status: 500, message: "Product update was Unsuccessfull" });
     }
 };
+
+exports.updateOnlyStock = async (req, res, next) => {
+    try {
+        await StockService.updateOnlyStock(req.params.productId, req.body.quantity);
+        await StockService.getStock(req.params.productId , (stock) => {
+            return res
+                .status(200)
+                .json({ updatedStock: stock , message: "Successfully Updated Stock" }); 
+        });
+    } catch (e) {
+        console.log(e);
+        return res
+            .status(500)
+            .json({ status: 500, message: "Stock update was Unsuccessfull" });
+    }
+};

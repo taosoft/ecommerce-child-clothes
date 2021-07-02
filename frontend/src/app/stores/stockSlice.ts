@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StockProduct } from '../../models/stockProduct';
-import { getStockProducts, createStockProduct, updateProductStock, deleteStockProduct } from '../../services/product.service';
+import { getStockProducts, createStockProduct, updateProductStock, deleteStockProduct, updateOnlyStock } from '../../services/product.service';
 import { AppThunk, RootState } from '../store';
 import { remove } from 'lodash';
 
@@ -70,6 +70,12 @@ export const addStockProduct = (productDescription: any, token: string): AppThun
 
 export const updateStockProduct = (productDescription: any, token: string): AppThunk => dispatch => {
   updateProductStock(productDescription, token)
+    .then(response => dispatch(updateProductStockSuccess(response.data.updatedStock)))
+    .catch((error) => console.log(error));
+};
+
+export const updateStockOnly = (productDescription: any, token: string): AppThunk => dispatch => {
+  updateOnlyStock(productDescription, token)
     .then(response => dispatch(updateProductStockSuccess(response.data.updatedStock)))
     .catch((error) => console.log(error));
 };

@@ -56,6 +56,15 @@ exports.updateStock = async (product) => {
     }
 };
 
+exports.updateOnlyStock = async (productId, quantity) => {
+    try {
+        await Stock.findOneAndUpdate( {product: productId}, {$inc: { "quantity": -quantity }});
+    } catch (e) {
+        console.log(e);
+        throw Error("Error while updating Product");
+    }
+};
+
 exports.deleteStock = async (stockId) => {
     try {
         await Stock.findOneAndDelete({ _id: stockId });
