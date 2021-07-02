@@ -142,11 +142,19 @@ const ProductTable = () => {
           editable={{
             onRowUpdate: (newData, oldData) => {
               dispatch(updateStockProduct(newData, user?.token));
-              return Promise.resolve();
+              return new Promise((resolve,rej) => {
+                setTimeout(() => {
+                  resolve();
+                }, 2500)
+              });
           },
           onRowDelete: data =>  {
             dispatch(deleteProductStock(data, user?.token));
-            return Promise.resolve();
+            return new Promise((resolve,rej) => {
+              setTimeout(() => {
+                resolve();
+              }, 2500)
+            });
           }
         }}
         />
