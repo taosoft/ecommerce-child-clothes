@@ -16,7 +16,7 @@ import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home'
 import MaterialTable from "@material-table/core";
 import { useDispatch, useSelector } from 'react-redux';
-import { loadStockProducts, selectStock, updateStockProduct, deleteProductStock } from '../../app/stores/stockSlice';
+import { loadStockProducts, selectStock, updateStockProduct, deleteProductStock, selectIsLoading } from '../../app/stores/stockSlice';
 import { selectLoggedUser } from "../../app/stores/authSlice";
 
 const drawerWidth = 240;
@@ -122,6 +122,7 @@ function Copyright() {
 const ProductTable = () => {
   const user = useSelector(selectLoggedUser);
   const products = [...useSelector(selectStock)];
+  const loading = useSelector(selectIsLoading);
   const dispatch = useDispatch();  
   useEffect(() => {
     if(products.length === 0){
@@ -144,8 +145,8 @@ const ProductTable = () => {
               dispatch(updateStockProduct(newData, user?.token));
               return new Promise((resolve,rej) => {
                 setTimeout(() => {
-                  resolve();
-                }, 2500)
+                    resolve();
+                }, 3000)
               });
           },
           onRowDelete: data =>  {
@@ -153,7 +154,7 @@ const ProductTable = () => {
             return new Promise((resolve,rej) => {
               setTimeout(() => {
                 resolve();
-              }, 2500)
+              }, 3000)
             });
           }
         }}

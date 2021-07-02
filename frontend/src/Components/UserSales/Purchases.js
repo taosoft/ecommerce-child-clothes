@@ -15,15 +15,21 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { Paper, TableContainer } from '@material-ui/core';
 import { selectLoggedUser } from '../../app/stores/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadSales, loadUserSales, selectSales } from '../../app/stores/salesSlice';
+import { loadSales, loadUserSales, selectSales, selectIsLoading } from '../../app/stores/salesSlice';
+import { Backdrop } from '@material-ui/core';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const useRowStyles = makeStyles({
+const useRowStyles = makeStyles( (theme) => ({
   root: {
     '& > *': {
       borderBottom: 'unset',
     },
   },
-});
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+}));
 
 function Row(props) {
   const { row } = props;
@@ -89,6 +95,8 @@ function Row(props) {
 export default function Orders() {  
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedUser);
+  const isLoading = useSelector(selectIsLoading);
+  const classes = useRowStyles();
 
   useEffect(() => {
     dispatch(loadUserSales(user?.user?._id, user?.token));
@@ -117,6 +125,9 @@ export default function Orders() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Backdrop className={classes.backdrop} open={isLoading}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </React.Fragment>
   );
 }
