@@ -18,7 +18,6 @@ import MainListItems from './listItems'
 import Orders from './Orders';
 import Button from '@material-ui/core/Button';
 import HomeIcon from '@material-ui/icons/Home'
-import Footer from '../LandingPage/Footer';
 
 const drawerWidth = 240;
 
@@ -166,7 +165,6 @@ export default function Dashboard() {
             </Grid>
           </Grid>
         </Container>
-        <Footer />
       </main>
     </div>
   );
