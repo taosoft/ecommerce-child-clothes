@@ -40,7 +40,7 @@ export default function ProductGrid(){
     const isLoading = useSelector(selectIsLoading);
     const [estado, setEstado] = useState(2); // default: < to >
     const [search, setSearch] = useState(null)
-    let products = [...copia];
+    let products = [...copia.filter(product => product.quantity > 0)];
     const dispatch = useDispatch();  
 
     useEffect(() => {

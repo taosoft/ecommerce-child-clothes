@@ -93,10 +93,6 @@ export default function SignUp() {
     else if(error === 4) return "Contraseña inválida";
   };
 
-  if(isCreatedUser) {
-    return <Redirect push to={"/login"} />
-  }
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -201,6 +197,15 @@ export default function SignUp() {
                   }
                 >
                   {textoError(error)}
+                </Alert>
+              </Collapse>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item>
+              <Collapse in={isCreatedUser}>
+                <Alert>
+                  Se envió un correo de verificación!
                 </Alert>
               </Collapse>
             </Grid>
