@@ -8,7 +8,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { loginUser, selectIsLoading, selectIsLogged } from '../../app/stores/authSlice';
+import { loginUser, selectIsLoading, selectIsLogged, selectLoginFailed } from '../../app/stores/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -51,6 +51,7 @@ export default function Login() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const isLogged = useSelector(selectIsLogged);
+  const hasFailed = useSelector(selectLoginFailed);
 
   const search = useLocation().search;
   const confirmation = new URLSearchParams(search).get('confirmation');
@@ -63,6 +64,10 @@ export default function Login() {
       setOpen(true)
     }
   }, [])
+
+  useEffect(() => {
+    if(hasFailed) setOpenError(true)
+  }, [hasFailed])
 
   const emailRef = useRef('')
   const passwordRef = useRef('') 
@@ -134,7 +139,7 @@ export default function Login() {
               </Link>
             </Grid>
           </Grid>
-          <Grid container>
+          <Grid container style={{justifyContent: "center"}}>
             <Grid item>
               <Collapse in={open}>
                 <Alert
@@ -156,7 +161,7 @@ export default function Login() {
               </Collapse>
             </Grid>
           </Grid>
-          <Grid container>
+          <Grid container style={{justifyContent: "center"}}>
             <Grid item>
               <Collapse in={openError}>
                 <Alert

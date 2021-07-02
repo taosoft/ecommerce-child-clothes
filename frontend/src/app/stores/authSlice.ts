@@ -27,6 +27,7 @@ export const authSlice = createSlice({
       state.loggedUser = action.payload;
       state.loading = false;
       state.isLogged = true;
+      state.failed = false;
     },
     loadingUser: (state) => {
       state.loading = true;
@@ -89,5 +90,6 @@ export const selectIsLogged = (state: RootState) => state.auth.isLogged;
 export const selectLoggedUser = (state: RootState) => state.auth.loggedUser;
 export const selectIsLoading = (state: RootState) => state.auth.loading;
 export const selectIsCreatedUser = (state: RootState) => state.auth.createdUser;
+export const selectLoginFailed = (state: RootState) => state.auth.failed;
 
 export default authSlice.reducer;
