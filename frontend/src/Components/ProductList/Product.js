@@ -6,6 +6,9 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
     card: {
@@ -31,6 +34,7 @@ const useStyles = makeStyles(() => ({
 
 export default function Product(props) {
     const classes = useStyles();
+    const [redirect, setRedirect] = useState(false)
 
     const handleAddShoppingCart = (event) => {
         event.stopPropagation();
@@ -38,8 +42,18 @@ export default function Product(props) {
         props.addToCart();
     };
 
+    if(redirect) {
+        return <Redirect push to={"/products"} />
+    }
+
     return (
         <Card className={classes.card}>
+            {props.redirect && (
+                <IconButton aria-label="delete" className={classes.margin} size="small" onClick={() => setRedirect(true)}>
+                    <ArrowBackIcon fontSize="inherit" />
+                </IconButton>
+                )
+            }
             <CardMedia
                 className={classes.cardMedia}
                 src={props.image}

@@ -89,6 +89,7 @@ function SingleProduct(props: any) {
                       title={product?.product.title}
                       image={product?.product.image}
                       addToCart={addProductToCart}
+                      redirect={true}
                   />
                 </Typography>
                 <Typography>

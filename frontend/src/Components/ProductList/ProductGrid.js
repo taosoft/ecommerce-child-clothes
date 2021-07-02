@@ -93,6 +93,7 @@ export default function ProductGrid(){
                                         title={product.product.title}
                                         image={product.product.image}
                                         addToCart={() => addProductToCart(product)}
+                                        redirect={false}
                                     />
                                 </CardActionArea>
                             </Grid>
